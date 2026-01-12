@@ -1,0 +1,84 @@
+---
+import "../styles/colors.css";
+
+export interface Props {
+    label?: string;
+    showLabel?: boolean;
+    icon?: string;
+    showIcon?: boolean;
+    iconPosition?: "left" | "right";
+    type?: "button" | "submit" | "reset";
+    disabled?: boolean;
+}
+
+const {
+    label = "Button",
+    showLabel = true,
+    icon,
+    showIcon = false,
+    iconPosition = "left",
+    type = "button",
+    disabled = false,
+} = Astro.props;
+---
+
+<button
+    type={type}
+    class="btn"
+    disabled={disabled}
+    data-icon-position={iconPosition}
+>
+    {
+        showIcon && icon && iconPosition === "left" && (
+            <span class="material-icons btn__icon" aria-hidden="true">
+                {icon}
+            </span>
+        )
+    }
+
+    {showLabel && <span class="btn__label">{label}</span>}
+
+    {
+        showIcon && icon && iconPosition === "right" && (
+            <span class="material-icons btn__icon" aria-hidden="true">
+                {icon}
+            </span>
+        )
+    }
+</button>
+
+<style>
+    .btn {
+        display: inline-flex;
+        align-items: center;
+
+        padding: 8px;
+        border-radius: 8px;
+        border: none;
+
+        font: inherit;
+        cursor: pointer;
+
+        background: var(--color-button-bg, #222);
+        color: var(--color-button-text, #fff);
+    }
+
+    .btn:hover:not(:disabled) {
+        background: var(--color-button-bg-hover, #555555);
+    }
+
+    .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .btn__icon {
+        font-size: 1.2rem;
+        line-height: 1;
+    }
+
+    .btn__label {
+        white-space: nowrap;
+        padding: 0px 2px;
+    }
+</style>

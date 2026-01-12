@@ -1,0 +1,29 @@
+---
+const { title = "Your Name" } = Astro.props;
+import "../styles/colors.css";
+---
+
+<!-- BaseLayout.astro --><!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{Astro.props.title}</title>
+        <link rel="stylesheet" href="/src/styles/tokens.css" />
+        <link rel="stylesheet" href="/src/styles/globals.css" />
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <slot />
+    </body>
+
+    <style>
+        body {
+            display: flex; /* enable flex centering */
+            justify-content: center; /* center horizontally */
+        }
+    </style>
+</html>

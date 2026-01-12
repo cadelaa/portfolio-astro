@@ -1,0 +1,37 @@
+/* src/styles/primitives.css */
+:root {
+
+    /* White & Black */
+    --white: #fff;
+    --black: #000;
+
+    /* Neutral scale */
+    --neutral-5: #E6E6E6;
+    --neutral-10: #CCCCCC;
+    --neutral-20: #B2B2B2;
+    --neutral-30: #999999;
+    --neutral-40: #808080;
+    --neutral-50: #686868;
+    --neutral-60: #555555;
+    --neutral-70: #4C4C4C;
+    --neutral-80: #404040;
+    --neutral-90: #333333;
+    --neutral-100: #262626;
+    --neutral-110: #1A1A1A;
+    --neutral-115: #131313;
+
+    /* Brand (blue example) */
+    --neutral-5: ;
+    --neutral-10: ;
+    --neutral-20: ;
+    --neutral-30: ;
+    --neutral-40: ;
+    --neutral-50: ;
+    --neutral-60: ;
+    --neutral-70: ;
+    --neutral-80: ;
+    --neutral-90: ;
+    --neutral-100: ;
+    --neutral-110: ;
+    --neutral-115: ;
+}

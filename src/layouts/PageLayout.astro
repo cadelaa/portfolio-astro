@@ -1,0 +1,23 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+// import Header from "../components/navigation/Header.astro";
+// import Footer from "../components/navigation/Footer.astro";
+import "../styles/colors.css";
+
+const { title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+    <main class="page">
+        <slot />
+    </main>
+</BaseLayout>
+
+<style>
+    .page {
+        max-width: 1440px;
+        width: 100%;
+        margin: 64px;
+        background-color: red;
+    }
+</style>
