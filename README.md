@@ -9,3 +9,5 @@ Work in progress
 - started the project
 - Setting up structure, styles, readme
 - started to mess with layouts & components
+- Started to create the project card component
+- Starting to build out the layout of the homepage with some placeholder elements
