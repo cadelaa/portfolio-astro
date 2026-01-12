@@ -1,0 +1,128 @@
+---
+import "../styles/colors.css";
+
+export interface Props {
+    title: string;
+    tags?: string[];
+    desktopImage?: string;
+    mobileImages?: string[];
+    disabled?: boolean;
+}
+
+const {
+    title,
+    tags = [],
+    desktopImage,
+    mobileImages = [],
+    disabled = false,
+} = Astro.props;
+---
+
+<card class="card" class:list={{ disabled }}>
+    <div class="head-content">
+        <h4 class="card-title">{title}</h4>
+        <div class="tag-group">
+            <div class="tag-container">
+                <p class="Tag">Tag one</p>
+            </div>
+            <div class="tag-container">
+                <p class="Tag">Tag two</p>
+            </div>
+            <div class="tag-container">
+                <p class="Tag">Tag three</p>
+            </div>
+        </div>
+    </div>
+    <div class="images"></div>
+    <div class="image-group">
+        <div class="image mobile-image"></div>
+        <div class="image mobile-image"></div>
+    </div>
+    <div class="image desktop-image"></div>
+</card>
+
+<style>
+    .head-content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 32px;
+        height: 450px;
+        overflow: hidden;
+        background: var(--bg-default);
+        color: var(--text-primary);
+        border-radius: 8px;
+        border: 1px solid var(--border-subtle);
+        transition: background-color 0.3s ease;
+        transition: border 0.3s ease;
+    }
+
+    .card:hover {
+        background-color: var(--bg-default-hover);
+        border: 1px solid var(--border-hover);
+    }
+
+    .card-title {
+        margin: 0;
+    }
+
+    .tag-group {
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+    }
+
+    .tag-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--bg-secondary);
+        padding: 2px 4px;
+        border-radius: 4px;
+        transition: background-color 0 ease;
+    }
+
+    .card:hover .tag-container {
+        background-color: var(--bg-secondary-hover);
+    }
+
+    .image-group {
+        display: flex;
+        gap: 16px;
+    }
+
+    .image {
+        background: var(--bg-secondary);
+        width: 100%;
+        height: 350px;
+        border: 1px solid var(--border-subtle);
+        border-radius: 8px;
+        transform: translateY(64px);
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover .image {
+        background-color: var(--bg-secondary-hover);
+        border: 1px solid var(--border-hover);
+        transform: translateY(0);
+    }
+
+    .desktop-image {
+        height: 400px;
+    }
+
+    .mobile-image {
+        height: 400px;
+    }
+
+    .card.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+</style>

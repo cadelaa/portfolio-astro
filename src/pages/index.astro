@@ -1,7 +1,10 @@
 ---
 import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageLayout from "../layouts/PageLayout.astro";
+import "../styles/typography.css";
+import "../styles/colors.css";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -9,7 +12,81 @@ import PageLayout from "../layouts/PageLayout.astro";
 
 <BaseLayout>
 	<PageLayout>
-		<Button />
-		<Button label="Download" showIcon icon="download" iconPosition="left" />
+		<div style="background-color: #eee; padding: 16px 64px;">
+			<body class="H1"> Navigation Bar Placeholder </body>
+		</div>
+		<div
+			style="padding: 64px; height: 352px; align-items: center; display: flex; justify-content: center;"
+		>
+			<h1 class="H1" style="text-align: center;">
+				Product designer and front-end developer with a focus on
+				consumer-facing apps & design systems
+			</h1>
+		</div>
+		<div>
+			<grid
+				style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 32px 64px 16px 64px;"
+			>
+				<Card
+					title="Improving communication to the public during disaster events"
+					tags={["React", "Tailwind", "Astro"]}
+					desktopImage="/images/desktop.png"
+					mobileImages={[
+						"/images/mobile-1.png",
+						"/images/mobile-2.png",
+					]}
+				/>
+				<Card
+					title="Led the creation of an internal app introducing efficiencies in timesheets"
+					tags={["React", "Tailwind", "Astro"]}
+					desktopImage="/images/desktop.png"
+					mobileImages={[
+						"/images/mobile-1.png",
+						"/images/mobile-2.png",
+					]}
+				/>
+				<Card
+					title="Helping young adults better organise their food knowledge"
+					tags={["React", "Tailwind", "Astro"]}
+					desktopImage="/images/desktop.png"
+					mobileImages={[
+						"/images/mobile-1.png",
+						"/images/mobile-2.png",
+					]}
+				/>
+				<Card
+					title="Building a clearer Portfolio to showcase design & dev skills"
+					tags={["React", "Tailwind", "Astro"]}
+					desktopImage="/images/desktop.png"
+					mobileImages={[
+						"/images/mobile-1.png",
+						"/images/mobile-2.png",
+					]}
+				/>
+				<div
+					style="background-color: #eee; height: 166px; display: flex; justify-content: center; align-items: center;"
+				>
+					<p class="Body">Link One</p>
+				</div>
+				<div
+					style="background-color: #eee; height: 166px; display: flex; justify-content: center; align-items: center;"
+				>
+					<p class="Body">Link Two</p>
+				</div>
+				<div
+					style="background-color: #eee; height: 166px; display: flex; justify-content: center; align-items: center;"
+				>
+					<p class="Body">Link Three</p>
+				</div>
+				<div
+					style="background-color: #eee; height: 166px; display: flex; justify-content: center; align-items: center;"
+				>
+					<p class="Body">Link Four</p>
+				</div>
+			</grid>
+		</div>
+		<div style="background-color: #eee; padding: 16px 64px;">
+			<body class="H1"> Footer Bar Placeholder </body>
+		</div>
 	</PageLayout>
 </BaseLayout>
