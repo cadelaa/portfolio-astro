@@ -1,11 +1,16 @@
 ---
 import "../styles/colors.css";
+import "../styles/spacing.css";
+import "../styles/radius.css";
+import Tag from "../components/Tag.astro";
 
 export interface Props {
     title: string;
     tags?: string[];
     desktopImage?: string;
     mobileImages?: string[];
+    showDesktopImage?: boolean;
+    showMobileImages?: boolean;
     disabled?: boolean;
 }
 
@@ -14,6 +19,8 @@ const {
     tags = [],
     desktopImage,
     mobileImages = [],
+    showDesktopImage = true,
+    showMobileImages = true,
     disabled = false,
 } = Astro.props;
 ---
@@ -21,108 +28,108 @@ const {
 <card class="card" class:list={{ disabled }}>
     <div class="head-content">
         <h4 class="card-title">{title}</h4>
-        <div class="tag-group">
-            <div class="tag-container">
-                <p class="Tag">Tag one</p>
-            </div>
-            <div class="tag-container">
-                <p class="Tag">Tag two</p>
-            </div>
-            <div class="tag-container">
-                <p class="Tag">Tag three</p>
-            </div>
-        </div>
+        {
+            tags.length > 0 && (
+                <div class="tag-group">
+                    {tags.map((tag) => (
+                        <Tag
+                            label={tag}
+                            bgColor="var(--tag-bg-default)"
+                            bgHoverColor="var(--tag-bg-hover)"
+                            tagTextColor="var(--tag-text)"
+                        />
+                    ))}
+                </div>
+            )
+        }
     </div>
-    <div class="images"></div>
-    <div class="image-group">
-        <div class="image mobile-image"></div>
-        <div class="image mobile-image"></div>
-    </div>
-    <div class="image desktop-image"></div>
-</card>
-
-<style>
-    .head-content {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+    {
+        showMobileImages && (
+            <div class="image-group">
+                <div class="image" />
+                <div class="image" />
+            </div>
+        )
     }
 
+    {
+        showDesktopImage && (
+            <div class="image-group">
+                <div class="image" />
+            </div>
+        )
+    }
+</card>
+
+<style lang="scss">
     .card {
         display: flex;
         flex-direction: column;
-        gap: 24px;
-        padding: 32px;
-        height: 450px;
+        gap: var(--space-24);
+        padding: var(--space-32);
         overflow: hidden;
+        height: 450px;
         background: var(--bg-default);
         color: var(--text-primary);
-        border-radius: 8px;
+        border-radius: var(--radius-8);
         border: 1px solid var(--border-subtle);
-        transition: background-color 0.3s ease;
-        transition: border 0.3s ease;
-    }
 
-    .card:hover {
-        background-color: var(--bg-default-hover);
-        border: 1px solid var(--border-hover);
+        --tag-bg-default: var(--bg-secondary);
+        --tag-bg-hover: var(--bg-secondary-hover);
+        --tag-text: var(--text-secondary);
+
+        transition:
+            background-color 0.3s ease,
+            border 0.3s ease;
+
+        .head-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-8);
+        }
+
+        .tag-group {
+            display: flex;
+            gap: var(--space-4);
+            flex-wrap: wrap;
+        }
+
+        .image {
+            background: var(--bg-secondary);
+            width: 100%;
+            height: 400px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            transform: translateY(var(--space-64));
+            transition: transform 0.3s ease;
+        }
+
+        &:hover {
+            background-color: var(--bg-default-hover);
+            border: 1px solid var(--border-hover);
+
+            --tag-bg-default: var(--bg-secondary-hover);
+            --tag-bg-hover: var(--bg-secondary);
+
+            .image {
+                background-color: var(--bg-secondary-hover);
+                border: 1px solid var(--border-hover);
+                transform: translateY(0);
+            }
+        }
+
+        .image-group {
+            display: flex;
+            gap: var(--space-16);
+        }
+
+        &.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
     }
 
     .card-title {
         margin: 0;
-    }
-
-    .tag-group {
-        display: flex;
-        gap: 4px;
-        flex-wrap: wrap;
-    }
-
-    .tag-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: var(--bg-secondary);
-        padding: 2px 4px;
-        border-radius: 4px;
-        transition: background-color 0 ease;
-    }
-
-    .card:hover .tag-container {
-        background-color: var(--bg-secondary-hover);
-    }
-
-    .image-group {
-        display: flex;
-        gap: 16px;
-    }
-
-    .image {
-        background: var(--bg-secondary);
-        width: 100%;
-        height: 350px;
-        border: 1px solid var(--border-subtle);
-        border-radius: 8px;
-        transform: translateY(64px);
-        transition: transform 0.3s ease;
-    }
-
-    .card:hover .image {
-        background-color: var(--bg-secondary-hover);
-        border: 1px solid var(--border-hover);
-        transform: translateY(0);
-    }
-
-    .desktop-image {
-        height: 400px;
-    }
-
-    .mobile-image {
-        height: 400px;
-    }
-
-    .card.disabled {
-        opacity: 0.5;
-        pointer-events: none;
     }
 </style>
