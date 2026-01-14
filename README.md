@@ -17,3 +17,11 @@ Work in progress
 
 - Updated typography from inter (google fonts) to inter display from rsms
 - Removed margin from typography styles, added negative letter spacing
+
+14/01/2026 v0.3
+
+- Created and styled tag component
+- Replaced placeholder tag in Card component with imported Tag component
+- Edited card component to use the tag component, and refined the hover interaction, edited image layout
+- Edited typography styles, specifically removed margin, changed line height
+- Added spacing.css & radius.css to create variables sooner rather then later
