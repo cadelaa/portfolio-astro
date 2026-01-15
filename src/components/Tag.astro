@@ -13,12 +13,12 @@ export interface Props {
 const { label, bgColor = "var(--bg-secondary)" } = Astro.props;
 ---
 
-<div class="tag" style={`--tag-bg: ${bgColor};`}>
+<div class="tag-container" style={`--tag-bg: ${bgColor};`}>
     <span class="Tag">{label}</span>
 </div>
 
 <style lang="scss">
-    .tag {
+    .tag-container {
         display: inline-block;
         padding: 0 var(--space-4);
         background: var(--tag-bg);
