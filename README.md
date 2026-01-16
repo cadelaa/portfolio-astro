@@ -34,3 +34,13 @@ Work in progress
 - Edited and refined Button.astro which now has a primary and secondary style
 - Better naming for classes in Tag.astro component
 - Other minor changes
+
+
+16/01/2026 v0.5
+
+- Updated MediumCard component with the ability to change its hover color, and added the
+  measurable metric icon and tag which can be shown or hidden in each card
+- Added Material Symbols to the BaseLayout to ensure icons can be used in layouts and components
+- SmallCard component is now been built out and is either finished or nearly there
+- Added a brief amount of blue primitives & color variables for testing
+- Added default style for material icons to typography.css

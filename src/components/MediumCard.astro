@@ -2,32 +2,65 @@
 import "../styles/colors.css";
 import "../styles/spacing.css";
 import "../styles/radius.css";
+import "../styles/typography.css";
 import Tag from "../components/Tag.astro";
 
 export interface Props {
+    showMeasurableMetric?: boolean;
+    measurableMetric: string;
+    measurableMetricIcon?: string;
+
     title: string;
     tags?: string[];
+
     desktopImage?: string;
     mobileImages?: string[];
     showDesktopImage?: boolean;
     showMobileImages?: boolean;
+
+    cardBackgroundHover?: string;
+    tagBackgroundHover?: string;
+
     disabled?: boolean;
 }
 
 const {
+    showMeasurableMetric = true,
+    measurableMetricIcon,
+    measurableMetric,
+
     title,
     tags = [],
+
     desktopImage,
     mobileImages = [],
     showDesktopImage = true,
     showMobileImages = true,
+
+    cardBackgroundHover = "var(--card-bg-hover)",
+    tagBackgroundHover = "var(--tag-bg-hover)",
+
     disabled = false,
 } = Astro.props;
 ---
 
-<card class="card" class:list={{ disabled }}>
+<div
+    class="medium-card"
+    class:list={{ disabled }}
+    style={`--card-bg-hover: ${cardBackgroundHover};`}
+>
     <div class="head-content">
-        <h4 class="card-title">{title}</h4>
+        {
+            showMeasurableMetric && (
+                <div class="measurable-metric">
+                    <span class="material-symbols-outlined">
+                        {measurableMetricIcon}
+                    </span>
+                    <span class="Body">{measurableMetric}</span>
+                </div>
+            )
+        }
+        <h4 class="card-title H4">{title}</h4>
         {
             tags.length > 0 && (
                 <div class="tag-group">
@@ -59,10 +92,10 @@ const {
             </div>
         )
     }
-</card>
+</div>
 
 <style lang="scss">
-    .card {
+    .medium-card {
         display: flex;
         flex-direction: column;
         gap: var(--space-24);
@@ -75,17 +108,41 @@ const {
         border: 1px solid var(--border-subtle);
 
         --tag-bg-default: var(--bg-secondary);
-        --tag-bg-hover: var(--bg-secondary-hover);
-        --tag-text: var(--text-secondary);
+        --tag-text: var(--text-subtle);
 
         transition:
             background-color 0.3s ease,
             border 0.3s ease;
 
+        &:hover {
+            background-color: var(--card-bg-hover);
+            border: 1px solid var(--border-hover);
+
+            --tag-bg-default: var(--bg-secondary-hover);
+            --tag-text: var(--text-primary);
+
+            .image {
+                background-color: var(--bg-secondary-hover);
+                border: 1px solid var(--border-hover);
+                transform: translateY(0);
+            }
+
+            .measurable-metric {
+                color: var(--text-primary);
+            }
+        }
+
         .head-content {
             display: flex;
             flex-direction: column;
             gap: var(--space-8);
+        }
+
+        .measurable-metric {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--text-subtle);
         }
 
         .tag-group {
@@ -104,20 +161,6 @@ const {
             transition: transform 0.3s ease;
         }
 
-        &:hover {
-            background-color: var(--bg-default-hover);
-            border: 1px solid var(--border-hover);
-
-            --tag-bg-default: var(--bg-secondary-hover);
-            --tag-bg-hover: var(--bg-secondary);
-
-            .image {
-                background-color: var(--bg-secondary-hover);
-                border: 1px solid var(--border-hover);
-                transform: translateY(0);
-            }
-        }
-
         .image-group {
             display: flex;
             gap: var(--space-16);
@@ -131,5 +174,20 @@ const {
 
     .card-title {
         margin: 0;
+    }
+
+    .material-symbols-outlined {
+        font-family: "Material Symbols Outlined";
+        font-weight: bold;
+        font-style: normal;
+        font-size: 28px;
+        /* Preferred icon size */
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
     }
 </style>

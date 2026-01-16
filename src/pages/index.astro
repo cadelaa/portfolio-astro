@@ -1,6 +1,7 @@
 ---
 import Button from "../components/Button.astro";
-import Card from "../components/MediumCard.astro";
+import MediumCard from "../components/MediumCard.astro";
+import SmallCard from "../components/SmallCard.astro";
 import Tag from "../components/Tag.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageLayout from "../layouts/PageLayout.astro";
@@ -28,9 +29,14 @@ import "../styles/colors.css";
 			<grid
 				style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 32px 64px 16px 64px;"
 			>
-				<Card
+				<MediumCard
+					showMeasurableMetric={true}
+					measurableMetricIcon="trending_down"
+					measurableMetric="Reducing congnitive load"
+					---
 					title="Improving communication to the public during disaster events"
 					tags={["Type", "Area", "Role", "Year"]}
+					---
 					showDesktopImage={true}
 					showMobileImages={false}
 					desktopImage="/images/desktop.png"
@@ -38,10 +44,17 @@ import "../styles/colors.css";
 						"/images/mobile-1.png",
 						"/images/mobile-2.png",
 					]}
+					---
+					cardBackgroundHover="var(--bg-blue)"
+					tagBackgroundHover="var(--bg-blue-hover)"
 				/>
-				<Card
+				<MediumCard
+					measurableMetric="Saving time for 1000+ fieldworkers"
+					measurableMetricIcon="bolt"
+					---
 					title="Led the creation of an internal app introducing efficiencies in timesheets"
 					tags={["Type", "Area", "Role", "Year"]}
+					---
 					showDesktopImage={false}
 					showMobileImages={true}
 					desktopImage="/images/desktop.png"
@@ -49,10 +62,17 @@ import "../styles/colors.css";
 						"/images/mobile-1.png",
 						"/images/mobile-2.png",
 					]}
+					---
+					cardBackgroundHover="var(--bg-default-hover)"
+					tagBackgroundHover="var(--bg-blue-hover)"
 				/>
-				<Card
+				<MediumCard
+					showMeasurableMetric={false}
+					measurableMetric=""
+					---
 					title="Helping young adults better organise their food knowledge"
 					tags={["Type", "Area", "Role", "Year"]}
+					---
 					showDesktopImage={false}
 					showMobileImages={true}
 					desktopImage="/images/desktop.png"
@@ -60,10 +80,17 @@ import "../styles/colors.css";
 						"/images/mobile-1.png",
 						"/images/mobile-2.png",
 					]}
+					---
+					cardBackgroundHover="var(--bg-default-hover)"
+					tagBackgroundHover="var(--bg-blue-hover)"
 				/>
-				<Card
+				<MediumCard
+					measurableMetric="+97% user duration"
+					measurableMetricIcon="trending_up"
+					---
 					title="Building a clearer Portfolio to showcase design & dev skills"
 					tags={["Type", "Area", "Role", "Year"]}
+					---
 					showDesktopImage={true}
 					showMobileImages={false}
 					desktopImage="/images/desktop.png"
@@ -71,27 +98,31 @@ import "../styles/colors.css";
 						"/images/mobile-1.png",
 						"/images/mobile-2.png",
 					]}
+					---
+					cardBackgroundHover="var(--bg-default-hover)"
+					tagBackgroundHover="var(--bg-blue-hover)"
 				/>
-				<div
-					style="background-color: #eee; height: 166px; display: flex; justify-content: center; align-items: center;"
-				>
-					<p class="Body">Link One</p>
-				</div>
-				<div
-					style="background-color: #eee; height: 166px; display: flex; justify-content: center; align-items: center;"
-				>
-					<p class="Body">Link Two</p>
-				</div>
-				<div
-					style="background-color: #eee; height: 166px; display: flex; justify-content: center; align-items: center;"
-				>
-					<p class="Body">Link Three</p>
-				</div>
-				<div
-					style="background-color: #eee; height: 166px; display: flex; justify-content: center; align-items: center;"
-				>
-					<p class="Body">Link Four</p>
-				</div>
+				<SmallCard
+					icon="celebration"
+					title="Fun"
+					tags={["Recently Added"]}
+					description="Description of the link"
+				/>
+				<SmallCard
+					icon="devices"
+					title="Currently Working on"
+					description="Description of the link"
+				/>
+				<SmallCard
+					icon="lightbulb"
+					title="Ideas"
+					description="Description of the link"
+				/>
+				<SmallCard
+					icon="inventory_2"
+					title="Archived Projects"
+					description="Description of the link"
+				/>
 			</grid>
 		</div>
 		<div style="background-color: #eee; padding: 16px 64px;">

@@ -18,6 +18,11 @@
 
     --border-subtle: var(--neutral-10);
     --border-hover: var(--neutral-115);
+
+
+    /* Blue */
+    --bg-blue: var(--blue-10);
+    --bg-blue-hover: var(--blue-20);
 }
 
 /* dark mode overrides */
