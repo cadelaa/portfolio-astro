@@ -57,3 +57,4 @@ Work in progress
 - Added the ability to change tag background on hover for the MediumCard individually
 - Updated card info on index.astro
 - Added variables to primitives.css & colors.css
+- Added GitHub logo & placeholder linkedin logo
