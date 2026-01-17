@@ -48,3 +48,12 @@ Work in progress
 - SmallCard component is now been built out and is either finished or nearly there
 - Added a brief amount of blue primitives & color variables for testing
 - Added default style for material icons to typography.css
+
+---
+
+17/01/2026 v0.6
+
+- Created and added footer component to be used in all pages
+- Added the ability to change tag background on hover for the MediumCard individually
+- Updated card info on index.astro
+- Added variables to primitives.css & colors.css
