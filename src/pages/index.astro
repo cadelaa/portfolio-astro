@@ -2,6 +2,7 @@
 import Button from "../components/Button.astro";
 import MediumCard from "../components/MediumCard.astro";
 import SmallCard from "../components/SmallCard.astro";
+import Footer from "../components/Footer.astro";
 import Tag from "../components/Tag.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageLayout from "../layouts/PageLayout.astro";
@@ -35,10 +36,61 @@ import "../styles/colors.css";
 					measurableMetric="Reducing congnitive load"
 					---
 					title="Improving communication to the public during disaster events"
-					tags={["Type", "Area", "Role", "Year"]}
+					tags={[
+						"Redesign",
+						"Disaster Management",
+						"Product Designer",
+						"2025",
+					]}
 					---
 					showDesktopImage={true}
 					showMobileImages={false}
+					desktopImage="/images/desktop.png"
+					mobileImages={[
+						"/images/mobile-1.png",
+						"/images/mobile-2.png",
+					]}
+					---
+					cardBackgroundHover="var(--bg-orange)"
+					tagBackgroundHover="var(--bg-orange-hover)"
+				/>
+				<MediumCard
+					measurableMetric="Saving time for 1000+ fieldworkers"
+					measurableMetricIcon="bolt"
+					---
+					title="Led the creation of an internal app introducing efficiencies in timesheets"
+					tags={[
+						"App",
+						"Internal",
+						"Product Designer & Developer",
+						"2025",
+					]}
+					---
+					showDesktopImage={false}
+					showMobileImages={true}
+					desktopImage="/images/desktop.png"
+					mobileImages={[
+						"/images/mobile-1.png",
+						"/images/mobile-2.png",
+					]}
+					---
+					cardBackgroundHover="var(--bg-council-blue)"
+					tagBackgroundHover="var(--bg-council-blue-hover)"
+				/>
+				<MediumCard
+					showMeasurableMetric={false}
+					measurableMetric=""
+					---
+					title="Helping young adults better organise their food knowledge"
+					tags={[
+						"App Concept",
+						"Health & Fitness",
+						"Product Designer",
+						"2025",
+					]}
+					---
+					showDesktopImage={false}
+					showMobileImages={true}
 					desktopImage="/images/desktop.png"
 					mobileImages={[
 						"/images/mobile-1.png",
@@ -49,47 +101,11 @@ import "../styles/colors.css";
 					tagBackgroundHover="var(--bg-blue-hover)"
 				/>
 				<MediumCard
-					measurableMetric="Saving time for 1000+ fieldworkers"
-					measurableMetricIcon="bolt"
-					---
-					title="Led the creation of an internal app introducing efficiencies in timesheets"
-					tags={["Type", "Area", "Role", "Year"]}
-					---
-					showDesktopImage={false}
-					showMobileImages={true}
-					desktopImage="/images/desktop.png"
-					mobileImages={[
-						"/images/mobile-1.png",
-						"/images/mobile-2.png",
-					]}
-					---
-					cardBackgroundHover="var(--bg-default-hover)"
-					tagBackgroundHover="var(--bg-blue-hover)"
-				/>
-				<MediumCard
-					showMeasurableMetric={false}
-					measurableMetric=""
-					---
-					title="Helping young adults better organise their food knowledge"
-					tags={["Type", "Area", "Role", "Year"]}
-					---
-					showDesktopImage={false}
-					showMobileImages={true}
-					desktopImage="/images/desktop.png"
-					mobileImages={[
-						"/images/mobile-1.png",
-						"/images/mobile-2.png",
-					]}
-					---
-					cardBackgroundHover="var(--bg-default-hover)"
-					tagBackgroundHover="var(--bg-blue-hover)"
-				/>
-				<MediumCard
 					measurableMetric="+97% user duration"
 					measurableMetricIcon="trending_up"
 					---
 					title="Building a clearer Portfolio to showcase design & dev skills"
-					tags={["Type", "Area", "Role", "Year"]}
+					tags={["Website", "Portfolio", "Product Designer", "2025"]}
 					---
 					showDesktopImage={true}
 					showMobileImages={false}
@@ -99,34 +115,32 @@ import "../styles/colors.css";
 						"/images/mobile-2.png",
 					]}
 					---
-					cardBackgroundHover="var(--bg-default-hover)"
-					tagBackgroundHover="var(--bg-blue-hover)"
+					cardBackgroundHover="var(--bg-indigo)"
+					tagBackgroundHover="var(--bg-indigo-hover)"
 				/>
 				<SmallCard
 					icon="celebration"
 					title="Fun"
 					tags={["Recently Added"]}
-					description="Description of the link"
+					description="Stuff I enjoy working on that isn't related to being a product designer / front-end developer."
 				/>
 				<SmallCard
 					icon="devices"
 					title="Currently Working on"
-					description="Description of the link"
+					description="A timeline of all my projects I am working on, have worked on, and if they are still in progress, cancelled or paused."
 				/>
 				<SmallCard
 					icon="lightbulb"
 					title="Ideas"
-					description="Description of the link"
+					description="Smaller UI/UX redesigns, experiments, motion etc. Basically my playground of random stuff."
 				/>
 				<SmallCard
 					icon="inventory_2"
 					title="Archived Projects"
-					description="Description of the link"
+					description="Older projects that no longer best represent my skills & just older versions of current projects in my portfolio."
 				/>
 			</grid>
 		</div>
-		<div style="background-color: #eee; padding: 16px 64px;">
-			<body class="H1"> Footer Bar Placeholder </body>
-		</div>
+		<Footer />
 	</PageLayout>
 </BaseLayout>

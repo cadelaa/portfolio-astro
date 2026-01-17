@@ -1,0 +1,100 @@
+---
+import "../styles/colors.css";
+import "../styles/spacing.css";
+import "../styles/radius.css";
+import "../styles/typography.css";
+---
+
+<footer class="footer">
+    <p class="H6">
+        ALL RIGHTS RESERVED © {new Date().getFullYear()} MITCHELL ZELLER
+    </p>
+    <div class="link-container">
+        <a href="#" id="copy-email" class="link">
+            <span class="material-symbols-outlined" data-icon>content_copy</span
+            >
+            <span class="H6" data-label> Email </span>
+        </a>
+
+        <div class="link">
+            <span class="material-symbols-outlined">description</span>
+            <span class="H6"> Resume </span>
+        </div>
+        <div class="link">
+            <span class="material-symbols-outlined">commit</span>
+            <span class="H6"> GitHub </span>
+        </div>
+        <div class="link">
+            <span class="material-symbols-outlined">person_add</span>
+            <span class="H6"> Connect </span>
+        </div>
+    </div>
+</footer>
+
+<style lang="scss">
+    .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--space-16) var(--space-64);
+        text-align: center;
+        color: var(--text-subtle);
+    }
+
+    .link-container {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-16);
+        margin-top: var(--space-8);
+    }
+
+    .link {
+        color: var(--text-subtle);
+        text-decoration: none;
+        transition: color 0 ease;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+    }
+
+    .material-symbols-outlined {
+        font-family: "Material Symbols Outlined";
+        font-weight: bold;
+        font-style: normal;
+        font-size: 28px;
+        /* Preferred icon size */
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+    }
+</style>
+
+<script>
+    const link = document.getElementById("copy-email");
+    const icon = link?.querySelector("[data-icon]");
+    const label = link?.querySelector("[data-label]");
+    const email = "mitchzeller@hotmail.com";
+
+    link?.addEventListener("click", async (e) => {
+        e.preventDefault();
+
+        await navigator.clipboard.writeText(email);
+
+        // swap to copied state
+        icon.textContent = "check";
+        label.textContent = " Copied";
+
+        setTimeout(() => {
+            icon.textContent = "content_copy";
+            label.textContent = " Email";
+        }, 2000);
+    });
+</script>

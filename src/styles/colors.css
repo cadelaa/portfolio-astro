@@ -3,6 +3,7 @@
 
 /* Light mode (default) */
 :root {
+    /* Base */
     --bg-page: var(--white);
     --bg-default: var(--neutral-5);
     --bg-default-hover: var(--neutral-10);
@@ -21,8 +22,31 @@
 
 
     /* Blue */
+    --text-blue: var(--blue-90);
+
     --bg-blue: var(--blue-10);
     --bg-blue-hover: var(--blue-20);
+
+
+    /* Indigo */
+    --text-indigo: var(--indigo-80);
+
+    --bg-indigo: var(--indigo-10);
+    --bg-indigo-hover: var(--indigo-20);
+
+
+    /* Orange */
+    --text-orange: var(--orange-90);
+
+    --bg-orange: var(--orange-10);
+    --bg-orange-hover: var(--orange-20);
+
+
+    /* Council Blue */
+    --text-council-blue: var(--council-blue-90);
+
+    --bg-council-blue: var(--council-blue-10);
+    --bg-council-blue-hover: var(--council-blue-20);
 }
 
 /* dark mode overrides */

@@ -37,8 +37,8 @@ const {
     showDesktopImage = true,
     showMobileImages = true,
 
-    cardBackgroundHover = "var(--card-bg-hover)",
-    tagBackgroundHover = "var(--tag-bg-hover)",
+    cardBackgroundHover = "var(--bg-default-hover)",
+    tagBackgroundHover = "var(--bg-secondary-hover)",
 
     disabled = false,
 } = Astro.props;
@@ -47,7 +47,10 @@ const {
 <div
     class="medium-card"
     class:list={{ disabled }}
-    style={`--card-bg-hover: ${cardBackgroundHover};`}
+    style={`
+        --card-bg-hover: ${cardBackgroundHover};
+        --tag-bg-hover: ${tagBackgroundHover};
+    `}
 >
     <div class="head-content">
         {
@@ -115,10 +118,12 @@ const {
             border 0.3s ease;
 
         &:hover {
+            cursor: pointer;
+
             background-color: var(--card-bg-hover);
             border: 1px solid var(--border-hover);
 
-            --tag-bg-default: var(--bg-secondary-hover);
+            --tag-bg-default: var(--tag-bg-hover);
             --tag-text: var(--text-primary);
 
             .image {

@@ -91,12 +91,13 @@ const { icon, title, tags = [], description, disabled = false } = Astro.props;
         }
 
         &:hover {
+            cursor: pointer;
+
             background-color: var(--bg-default-hover);
             border: 1px solid var(--border-hover);
             color: var(--text-primary);
 
             --tag-bg-default: var(--bg-secondary-hover);
-            --tag-text: var(--text-primary);
 
             .image {
                 background-color: var(--bg-secondary-hover);

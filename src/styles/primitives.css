@@ -20,18 +20,68 @@
     --neutral-110: #1A1A1A;
     --neutral-115: #131313;
 
-    /* Brand (blue example) */
-    --blue-5: ;
+
+    /* Blue */
+    --blue-5: #DFE9FD;
     --blue-10: #BDD3FA;
     --blue-20: #9DBDF8;
-    --blue-30: ;
-    --blue-40: ;
-    --blue-50: ;
+    --blue-30: #7CA7F6;
+    --blue-40: #5C91F4;
+    --blue-50: #3D7CF2;
     --blue-60: #256CF0;
-    --blue-70: ;
-    --blue-80: ;
-    --blue-90: ;
-    --blue-100: ;
-    --blue-110: ;
-    --blue-115: ;
+    --blue-70: #2160D6;
+    --blue-80: #1C51B4;
+    --blue-90: #164190;
+    --blue-100: #11316C;
+    --blue-110: #0B2148;
+    --blue-115: #081835;
+
+
+    /* Indigo */
+    --indigo-5: #E5DFFD;
+    --indigo-10: #CABDFA;
+    --indigo-20: #B19DF8;
+    --indigo-30: #977CF6;
+    --indigo-40: #7D5CF4;
+    --indigo-50: #643DF2;
+    --indigo-60: #5125F0;
+    --indigo-70: #4821D6;
+    --indigo-80: #3D1CB4;
+    --indigo-90: #311690;
+    --indigo-100: #25116C;
+    --indigo-110: #180B48;
+    --indigo-115: #120835;
+
+
+    /* Orange */
+    --orange-5: #FDEBDF;
+    --orange-10: #FAD7BD;
+    --orange-20: #F8C39D;
+    --orange-30: #F6AF7C;
+    --orange-40: #F49B5C;
+    --orange-50: #F2893D;
+    --orange-60: #F07A25;
+    --orange-70: #D66D21;
+    --orange-80: #B45B1C;
+    --orange-90: #904916;
+    --orange-100: #6C3711;
+    --orange-110: #48250B;
+    --orange-115: #351B08;
+
+
+    /* Council Blue */
+    --council-blue-5: ;
+    --council-blue-10: #B2D0E1;
+    --council-blue-20: #8CB8D2;
+    --council-blue-30: ;
+    --council-blue-40: ;
+    --council-blue-50: ;
+    --council-blue-60: ;
+    --council-blue-70: ;
+    --council-blue-80: ;
+    --council-blue-90: ;
+    --council-blue-100: ;
+    --council-blue-110: ;
+    --council-blue-115: ;
+
 }

@@ -10,7 +10,12 @@ export interface Props {
     tagTextColor?: string;
 }
 
-const { label, bgColor = "var(--bg-secondary)" } = Astro.props;
+const {
+    label,
+    bgColor = "var(--tag-bg-default)",
+    bgHoverColor = "var(--tag-bg-hover)",
+    tagTextColor = "var(--tag-text)",
+} = Astro.props;
 ---
 
 <div class="tag-container" style={`--tag-bg: ${bgColor};`}>

@@ -12,12 +12,14 @@ Work in progress
 - Started to create the project card component
 - Starting to build out the layout of the homepage with some placeholder elements
 
+---
 
 13/01/2026 v0.2
 
 - Updated typography from inter (google fonts) to inter display from rsms
 - Removed margin from typography styles, added negative letter spacing
 
+---
 
 14/01/2026 v0.3
 
@@ -27,6 +29,7 @@ Work in progress
 - Edited typography styles, specifically removed margin, changed line height
 - Added spacing.css & radius.css to create variables sooner rather then later
 
+---
 
 15/01/2026 v0.4
 
@@ -35,6 +38,7 @@ Work in progress
 - Better naming for classes in Tag.astro component
 - Other minor changes
 
+---
 
 16/01/2026 v0.5
 

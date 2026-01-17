@@ -16,7 +16,7 @@ body,
     font-family: var(--font-sans);
     font-size: 1.0625rem;
     /* 17px */
-    line-height: 1;
+    line-height: 1.6;
     color: var(--color-text);
     margin: 0;
     letter-spacing: -0.02rem;
@@ -112,19 +112,4 @@ h6 {
     font-weight: var(--fw-regular);
     line-height: 1.2;
     margin: 0;
-}
-
-.material-symbols-outlined {
-    font-family: 'Material Symbols Outlined';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
-    /* Preferred icon size */
-    display: inline-block;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
-    white-space: nowrap;
-    direction: ltr;
 }
