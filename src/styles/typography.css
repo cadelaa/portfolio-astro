@@ -86,7 +86,7 @@ h6 {
     font-weight: var(--fw-semibold);
     font-size: 1.0625rem;
     /* 17px */
-    line-height: 1.4;
+    line-height: 1;
     letter-spacing: -0.02rem;
     margin: 0;
 }
