@@ -1,0 +1,76 @@
+---
+import "../styles/colors.css";
+import "../styles/spacing.css";
+import "../styles/radius.css";
+import "../styles/typography.css";
+---
+
+<nav class="nav-container">
+    <div class="logo">
+        <span class="H6 link-item">Mitchell Zeller</span>
+    </div>
+    <div class="nav-links">
+        <span class="H6 link-item">Work</span>
+        <span class="H6 link-item">About</span>
+        <span class="H6 link-item">Fun</span>
+        <a class="H6 link-item">Resume</a>
+    </div>
+    <div class="social-links">
+        <a class="H6 link-item">Li</a>
+        <a class="H6 link-item">Gi</a>
+        <a class="H6 link-item">☀</a>
+    </div>
+</nav>
+
+<style lang="scss">
+    .nav-container {
+        display: flex;
+        position: sticky;
+        top: 0;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--bg-page);
+        padding: var(--space-12) 64px;
+        z-index: 100;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: var(--space-4);
+    }
+
+    .social-links {
+        display: flex;
+        gap: var(--space-4);
+    }
+
+    .link-item {
+        background: none;
+        padding: var(--space-8);
+        color: var(--text-subtle);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        border-radius: var(--radius-8);
+
+        &:hover {
+            background-color: var(--bg-default);
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+    }
+
+    .material-symbols-outlined {
+        font-family: "Material Symbols Outlined";
+        font-weight: bold;
+        font-style: normal;
+        font-size: 28px;
+        /* Preferred icon size */
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+    }
+</style>

@@ -58,3 +58,9 @@ Work in progress
 - Updated card info on index.astro
 - Added variables to primitives.css & colors.css
 - Added GitHub logo & placeholder linkedin logo
+
+---
+
+19/01/2026 v0.7
+
+- Started to create the navigation bar, and import/add it to index
