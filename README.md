@@ -67,7 +67,7 @@ Work in progress
 
 ---
 
-20/01/2026 v0.8
+20/01/2026 v0.8 - Navigation update
 
 - Added image assets for the MediumCards
 - Setup navigation from SmallCards & Navigation to new (currently placeholder) pages
