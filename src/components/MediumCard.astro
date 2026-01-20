@@ -14,9 +14,12 @@ export interface Props {
     tags?: string[];
 
     desktopImage?: string;
-    mobileImages?: string[];
     showDesktopImage?: boolean;
+    desktopImageAlt?: string;
+
+    mobileImages?: string[];
     showMobileImages?: boolean;
+    mobileImageAlt?: string;
 
     cardBackgroundHover?: string;
     tagBackgroundHover?: string;
@@ -33,9 +36,12 @@ const {
     tags = [],
 
     desktopImage,
-    mobileImages = [],
     showDesktopImage = true,
+    desktopImageAlt,
+
+    mobileImages = [],
     showMobileImages = true,
+    mobileImageAlt,
 
     cardBackgroundHover = "var(--bg-default-hover)",
     tagBackgroundHover = "var(--bg-secondary-hover)",
@@ -80,18 +86,29 @@ const {
         }
     </div>
     {
-        showMobileImages && (
+        showMobileImages && mobileImages.length > 0 && (
             <div class="image-group">
-                <div class="image" />
-                <div class="image" />
+                {mobileImages.map((src, index) => (
+                    <img
+                        src={src}
+                        alt={`${mobileImageAlt || title} – mobile screen`}
+                        loading="lazy"
+                        class="image mobileImages"
+                    />
+                ))}
             </div>
         )
     }
 
     {
-        showDesktopImage && (
+        showDesktopImage && desktopImage && (
             <div class="image-group">
-                <div class="image" />
+                <img
+                    src={desktopImage}
+                    alt={`${desktopImageAlt || title} – desktop preview`}
+                    loading="lazy"
+                    class="image"
+                />
             </div>
         )
     }
@@ -127,7 +144,6 @@ const {
             --tag-text: var(--text-primary);
 
             .image {
-                background-color: var(--bg-secondary-hover);
                 border: 1px solid var(--border-hover);
                 transform: translateY(0);
             }
@@ -157,13 +173,21 @@ const {
         }
 
         .image {
-            background: var(--bg-secondary);
             width: 100%;
             height: 400px;
+            justify-content: start;
             border: 1px solid var(--border-subtle);
             border-radius: 8px;
             transform: translateY(var(--space-64));
             transition: transform 0.3s ease;
+
+            object-fit: cover;
+            object-position: top;
+            display: block;
+
+            &.mobileImages {
+                border: none;
+            }
         }
 
         .image-group {

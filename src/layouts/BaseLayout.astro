@@ -26,6 +26,15 @@ import "../styles/colors.css";
         body {
             display: flex; /* enable flex centering */
             justify-content: center; /* center horizontally */
+            scroll-behavior: smooth;
         }
     </style>
+
+    <script>
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            // Disable smooth scroll
+        } else {
+            document.documentElement.style.scrollBehavior = "smooth";
+        }
+    </script>
 </html>

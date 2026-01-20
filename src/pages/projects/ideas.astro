@@ -1,0 +1,29 @@
+---
+import Button from "../../components/Button.astro";
+import Navigation from "../../components/Navigation.astro";
+import MediumCard from "../../components/MediumCard.astro";
+import SmallCard from "../../components/SmallCard.astro";
+import Footer from "../../components/Footer.astro";
+import Tag from "../../components/Tag.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
+import "../../styles/typography.css";
+import "../../styles/colors.css";
+
+// Change position of this file possibly meaning I would need to update the imports as well
+---
+
+<BaseLayout>
+    <PageLayout>
+        <Navigation />
+        <div style="padding: 64px; height: 352px; display: flex;">
+            <div>
+                <a href="/"> Back</a>
+            </div>
+            <div style="padding: 64px; height: 352px; display: flex;">
+                <h1 class="H1">Ideas</h1>
+            </div>
+        </div>
+        <Footer />
+    </PageLayout>
+</BaseLayout>

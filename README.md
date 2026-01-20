@@ -64,3 +64,13 @@ Work in progress
 19/01/2026 v0.7
 
 - Started to create the navigation bar, and import/add it to index
+
+---
+
+20/01/2026 v0.8
+
+- Added image assets for the MediumCards
+- Setup navigation from SmallCards & Navigation to new (currently placeholder) pages
+- Adjusted MediumCard to handle the images correctly, and added new props to set the alt of the image/s
+- Set scroll behaviour in BaseLayout (in advance for project pages)
+- Working social links for navigation bar & footer

@@ -18,16 +18,32 @@ import "../styles/colors.css";
 	<PageLayout>
 		<Navigation />
 		<div
-			style="padding: 64px; height: 352px; align-items: center; display: flex; justify-content: center;"
+			style="padding: 64px; 
+			height: 352px; 
+			align-items: center; 
+			display: flex; 
+			justify-content: center; 
+			position: sticky; 
+			top: 69px;"
 		>
 			<h1 class="H1" style="text-align: center;">
 				Product designer and front-end developer with a focus on
 				consumer-facing apps & design systems
 			</h1>
 		</div>
-		<div>
+		<div
+			style="
+				z-index: 10;
+    			position: relative;
+				background: var(--white);
+				border: none;"
+		>
 			<grid
-				style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-16); padding: var(--space-32) var(--space-64) var(--space-16) var(--space-64);"
+				style="display: grid;
+				grid-template-columns:
+				repeat(2, 1fr);
+				gap: var(--space-16);
+				padding: var(--space-32) var(--space-64) var(--space-16) var(--space-64);"
 			>
 				<MediumCard
 					showMeasurableMetric={true}
@@ -43,16 +59,20 @@ import "../styles/colors.css";
 					]}
 					---
 					showDesktopImage={true}
+					desktopImage="/src/assets/images/disasterhub.png"
+					desktopImageAlt="DisasterHub homepage screenshot"
+					---
 					showMobileImages={false}
-					desktopImage="/images/desktop.png"
 					mobileImages={[
 						"/images/mobile-1.png",
 						"/images/mobile-2.png",
 					]}
+					mobileImageAlt=""
 					---
 					cardBackgroundHover="var(--bg-orange)"
 					tagBackgroundHover="var(--bg-orange-hover)"
 				/>
+
 				<MediumCard
 					measurableMetric="Saving time for 1000+ fieldworkers"
 					measurableMetricIcon="bolt"
@@ -66,16 +86,20 @@ import "../styles/colors.css";
 					]}
 					---
 					showDesktopImage={false}
+					desktopImage=""
+					desktopImageAlt=""
+					---
 					showMobileImages={true}
-					desktopImage="/images/desktop.png"
 					mobileImages={[
-						"/images/mobile-1.png",
-						"/images/mobile-2.png",
+						"/src/assets/images/nexus-1.png",
+						"/src/assets/images/nexus-2.png",
 					]}
+					mobileImageAlt=""
 					---
 					cardBackgroundHover="var(--bg-council-blue)"
 					tagBackgroundHover="var(--bg-council-blue-hover)"
 				/>
+
 				<MediumCard
 					showMeasurableMetric={false}
 					measurableMetric=""
@@ -89,16 +113,20 @@ import "../styles/colors.css";
 					]}
 					---
 					showDesktopImage={false}
+					desktopImage=""
+					desktopImageAlt=""
+					---
 					showMobileImages={true}
-					desktopImage="/images/desktop.png"
 					mobileImages={[
-						"/images/mobile-1.png",
-						"/images/mobile-2.png",
+						"/src/assets/images/culina-1.png",
+						"/src/assets/images/culina-2.png",
 					]}
+					mobileImageAlt=""
 					---
 					cardBackgroundHover="var(--bg-blue)"
 					tagBackgroundHover="var(--bg-blue-hover)"
 				/>
+
 				<MediumCard
 					measurableMetric="+97% user duration"
 					measurableMetricIcon="trending_up"
@@ -107,33 +135,44 @@ import "../styles/colors.css";
 					tags={["Website", "Portfolio", "Product Designer", "2025"]}
 					---
 					showDesktopImage={true}
+					desktopImage="/src/assets/images/about.png"
+					desktopImageAlt="About page screenshot"
+					---
 					showMobileImages={false}
-					desktopImage="/images/desktop.png"
 					mobileImages={[
 						"/images/mobile-1.png",
 						"/images/mobile-2.png",
 					]}
+					mobileImageAlt=""
 					---
 					cardBackgroundHover="var(--bg-indigo)"
 					tagBackgroundHover="var(--bg-indigo-hover)"
 				/>
+
 				<SmallCard
+					link="/fun/"
 					icon="celebration"
 					title="Fun"
 					tags={["Recently Added"]}
 					description="Stuff I enjoy working on that isn't related to being a product designer / front-end developer."
 				/>
+
 				<SmallCard
+					link="../projects/currently-working-on/"
 					icon="devices"
 					title="Currently Working on"
 					description="A timeline of all my projects I am working on, have worked on, and if they are still in progress, cancelled or paused."
 				/>
+
 				<SmallCard
+					link="../projects/ideas/"
 					icon="lightbulb"
 					title="Ideas"
 					description="Smaller UI/UX redesigns, experiments, motion etc. Basically my playground of random stuff."
 				/>
+
 				<SmallCard
+					link="../projects/archived/"
 					icon="inventory_2"
 					title="Archived Projects"
 					description="Older projects that no longer best represent my skills & just older versions of current projects in my portfolio."

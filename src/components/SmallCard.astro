@@ -11,34 +11,44 @@ export interface Props {
     tags?: string[];
     description: string;
     disabled?: boolean;
+    link?: string;
 }
 
-const { icon, title, tags = [], description, disabled = false } = Astro.props;
+const {
+    icon,
+    title,
+    tags = [],
+    description,
+    disabled = false,
+    link,
+} = Astro.props;
 ---
 
-<div class="medium-card" class:list={{ disabled }}>
-    <div class="head-content">
-        <div class="title">
-            <span class="material-symbols-outlined">{icon}</span>
-            <h4 class="card-title H4">{title}</h4>
+<a href={link} style="text-decoration: none; color: inherit;">
+    <div class="medium-card" class:list={{ disabled }}>
+        <div class="head-content">
+            <div class="title">
+                <span class="material-symbols-outlined">{icon}</span>
+                <h4 class="card-title H4">{title}</h4>
+            </div>
+            {
+                tags.length > 0 && (
+                    <div class="tag-group">
+                        {tags.map((tag) => (
+                            <Tag
+                                label={tag}
+                                bgColor="var(--tag-bg-default)"
+                                bgHoverColor="var(--tag-bg-hover)"
+                                tagTextColor="var(--tag-text)"
+                            />
+                        ))}
+                    </div>
+                )
+            }
         </div>
-        {
-            tags.length > 0 && (
-                <div class="tag-group">
-                    {tags.map((tag) => (
-                        <Tag
-                            label={tag}
-                            bgColor="var(--tag-bg-default)"
-                            bgHoverColor="var(--tag-bg-hover)"
-                            tagTextColor="var(--tag-text)"
-                        />
-                    ))}
-                </div>
-            )
-        }
+        <span class="Body">{description}</span>
     </div>
-    <span class="Body">{description}</span>
-</div>
+</a>
 
 <style lang="scss">
     .medium-card {
