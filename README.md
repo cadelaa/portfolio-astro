@@ -67,10 +67,19 @@ Work in progress
 
 ---
 
-20/01/2026 v0.8 - Navigation update
+20/01/2026 v0.8 - Navigation update 1
 
 - Added image assets for the MediumCards
 - Setup navigation from SmallCards & Navigation to new (currently placeholder) pages
 - Adjusted MediumCard to handle the images correctly, and added new props to set the alt of the image/s
 - Set scroll behaviour in BaseLayout (in advance for project pages)
 - Working social links for navigation bar & footer
+
+---
+
+21/01/2026 v0.9 - Navigation 2
+
+- Added placeholder project pages
+- added github and linkedin logos
+- Further refinements to the navigation & footer bars
+- Added navigation from project cards to the respective placeholder pages

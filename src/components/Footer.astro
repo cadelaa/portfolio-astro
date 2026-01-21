@@ -3,7 +3,8 @@ import "../styles/colors.css";
 import "../styles/spacing.css";
 import "../styles/radius.css";
 import "../styles/typography.css";
-import GitHub_Invertocat_Black from "../assets/GitHub_Invertocat_Black.svg?raw";
+import GitHub_Invertocat_Black from "../assets/logos/GitHub_Invertocat_Black.svg?raw";
+import linkedin_logo from "../assets/logos/linkedin_logo.svg?raw";
 ---
 
 <footer class="footer">
@@ -27,7 +28,7 @@ import GitHub_Invertocat_Black from "../assets/GitHub_Invertocat_Black.svg?raw";
             rel="noopener noreferrer"
             class="link"
         >
-            <div class="logo" set:html={GitHub_Invertocat_Black} />
+            <div class="logo github" set:html={GitHub_Invertocat_Black} />
             <span class="H6"> GitHub </span>
         </a>
         <a
@@ -36,7 +37,7 @@ import GitHub_Invertocat_Black from "../assets/GitHub_Invertocat_Black.svg?raw";
             rel="noopener noreferrer"
             class="link"
         >
-            <span class="material-symbols-outlined">person_add</span>
+            <div class="logo linkedin" set:html={linkedin_logo} />
             <span class="H6"> Connect </span>
         </a>
     </div>
@@ -56,7 +57,6 @@ import GitHub_Invertocat_Black from "../assets/GitHub_Invertocat_Black.svg?raw";
         display: flex;
         justify-content: center;
         gap: var(--space-16);
-        margin-top: var(--space-8);
     }
 
     .link {
@@ -75,6 +75,17 @@ import GitHub_Invertocat_Black from "../assets/GitHub_Invertocat_Black.svg?raw";
     .logo {
         display: flex;
         margin-right: var(--space-4);
+        align-items: center;
+    }
+
+    .github {
+        width: 24px;
+        height: 24px;
+    }
+
+    .linkedin {
+        width: 20px;
+        height: 20px;
     }
 
     .material-symbols-outlined {

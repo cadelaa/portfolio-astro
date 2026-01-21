@@ -3,12 +3,24 @@ import "../styles/colors.css";
 import "../styles/spacing.css";
 import "../styles/radius.css";
 import "../styles/typography.css";
-import GitHub_Invertocat_Black from "../assets/GitHub_Invertocat_Black.svg?raw";
+import GitHub_Invertocat_Black from "../assets/logos/GitHub_Invertocat_Black.svg?raw";
+import linkedin_logo from "../assets/logos/linkedin_logo.svg?raw";
+import mitchell_zeller from "../assets/logos/mitchell_zeller.png";
 ---
 
 <nav class="nav-container">
-    <div class="logo">
-        <span class="H6 link-item">Mitchell Zeller</span>
+    <div class="dynamic-link">
+        <a class="H6 link-item">
+            <img
+                src={mitchell_zeller.src}
+                width={mitchell_zeller.width}
+                height={mitchell_zeller.height}
+                alt="mitchell zeller logo"
+                loading="lazy"
+                class="mitchell-zeller"
+            />
+            Mitchell Zeller</a
+        >
     </div>
     <div class="nav-links">
         <a href="/work/" class="H6 link-item">Work</a>
@@ -22,14 +34,15 @@ import GitHub_Invertocat_Black from "../assets/GitHub_Invertocat_Black.svg?raw";
             target="_blank"
             rel="noopener noreferrer"
             class="H6 link-item logo"
-            set:html={GitHub_Invertocat_Black}
+            set:html={linkedin_logo}
         />
         <a
             href="https://github.com/cadelaa"
             target="_blank"
             rel="noopener noreferrer"
-            class="H6 link-item">Gi</a
-        >
+            class="H6 link-item logo"
+            set:html={GitHub_Invertocat_Black}
+        />
         <a class="H6 link-item">☀</a>
     </div>
 </nav>
@@ -62,9 +75,12 @@ import GitHub_Invertocat_Black from "../assets/GitHub_Invertocat_Black.svg?raw";
     }
 
     .link-item {
-        background: none;
+        display: flex;
+        align-items: center;
+        height: 16px;
         padding: var(--space-8);
         color: var(--text-subtle);
+        gap: var(--space-4);
         text-decoration: none;
         transition: color 0 ease;
         border-radius: var(--radius-8);
@@ -78,7 +94,15 @@ import GitHub_Invertocat_Black from "../assets/GitHub_Invertocat_Black.svg?raw";
 
     .logo {
         display: flex;
-        margin-right: var(--space-4);
+        margin: 0;
+        width: 20px;
+        height: 20px;
+    }
+
+    .mitchell-zeller {
+        display: flex;
+        height: 24px;
+        width: 24px;
         margin: 0;
     }
 
