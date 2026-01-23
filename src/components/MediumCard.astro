@@ -136,9 +136,7 @@ const {
         --tag-bg-default: var(--bg-secondary);
         --tag-text: var(--text-subtle);
 
-        transition:
-            background-color 0.3s ease,
-            border 0.3s ease;
+        transition: all 0.3s ease;
 
         &:hover {
             cursor: pointer;
@@ -152,6 +150,7 @@ const {
             .image {
                 border: 1px solid var(--border-hover);
                 transform: translateY(0);
+                filter: grayscale(0);
             }
 
             .measurable-metric {
@@ -186,6 +185,8 @@ const {
             border-radius: 8px;
             transform: translateY(var(--space-64));
             transition: transform 0.3s ease;
+
+            filter: grayscale(1);
 
             object-fit: cover;
             object-position: top;
