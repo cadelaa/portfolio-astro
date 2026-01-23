@@ -80,6 +80,14 @@ Work in progress
 21/01/2026 v0.9 - Navigation 2
 
 - Added placeholder project pages
-- added github and linkedin logos
+- Added github and linkedin logos
 - Further refinements to the navigation & footer bars
 - Added navigation from project cards to the respective placeholder pages
+
+---
+
+22/01/2026 v1.0
+
+- Updated card to have a grayscale effect on hover
+- Updated icon sizes in navigation bar
+- Removed unused photo placeholder text in index.astro
