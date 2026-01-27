@@ -91,3 +91,15 @@ Work in progress
 - Updated card to have a grayscale effect on hover
 - Updated icon sizes in navigation bar
 - Removed unused photo placeholder text in index.astro
+
+---
+
+27/01/2026 v1.1
+
+- Updated button component to add disabled to props, adjusted padding, and typography class
+- Added the ability to show and hide the logo and back button from the navigation for core pages and sub (project) pages
+- Updated navigation component props on all pages & updated classes styles
+- Added a spacing style
+- Updated typography H4 font size
+- Added heading to all project pages, and some placeholder titles to other pages
+- Added the ability to switch between the design & development page for Portfolio & Nexus

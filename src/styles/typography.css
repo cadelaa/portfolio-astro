@@ -62,9 +62,9 @@ h3 {
 h4 {
     font-family: var(--font-sans);
     font-weight: var(--fw-medium);
-    font-size: 1.75rem;
+    font-size: 1.6rem;
     /* 28px */
-    line-height: 1.4;
+    line-height: 1.5;
     letter-spacing: -0.02rem;
     margin: 0;
 }

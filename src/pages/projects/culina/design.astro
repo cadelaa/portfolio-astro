@@ -16,13 +16,32 @@ import "../../../styles/colors.css";
 
 <BaseLayout>
     <PageLayout>
-        <Navigation />
-        <div style="padding: 64px; height: 352px; display: flex;">
-            <div>
-                <a href="/"> Back</a>
+        <Navigation
+            hasLogo={false}
+            ---
+            hasBackLink={true}
+            backLabel="Back home"
+            backLink="/"
+        />
+        <div>
+            <div style="padding: var(--space-64); display: flex;">
+                <h1 class="H1">
+                    Culina is a concept app aiming to provide young adults the
+                    tools to better organise meal plans, save recipes in a
+                    personal journal, and manage grocery lists.
+                </h1>
             </div>
-            <div style="padding: 64px; height: 352px; display: flex;">
-                <h1 class="H1">Culina Project placeholder page</h1>
+            <div
+                style="padding: var(--space-16) var(--space-64); display: flex; gap: var(--space-8);"
+            >
+                <Button type="primary" label="Design" link="" />
+                <Button
+                    type="secondary"
+                    label="Development"
+                    link="../development/"
+                    disabled={true}
+                />
+                <div></div>
             </div>
         </div>
         <Footer />

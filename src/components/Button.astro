@@ -5,17 +5,27 @@ import "../styles/radius.css";
 import "../styles/typography.css";
 
 export interface Props {
-    label?: string;
-    disabled?: boolean;
     type?: "primary" | "secondary";
+    label?: string;
+    link?: string;
+    disabled?: boolean;
 }
 
-const { label = "Label", disabled = false, type = "primary" } = Astro.props;
+const {
+    label = "Label",
+    disabled = false,
+    link = "#",
+    type = "primary",
+} = Astro.props;
 ---
 
-<button class={`button ${type}`} disabled={disabled}>
-    {label && <h5>{label}</h5>}
-</button>
+<a
+    class={`button ${type} ${disabled ? "disabled" : ""}`}
+    href={disabled ? undefined : link}
+    aria-disabled={disabled}
+>
+    {label && <span class="H6">{label}</span>}
+</a>
 
 <style lang="scss">
     .button {
@@ -25,20 +35,26 @@ const { label = "Label", disabled = false, type = "primary" } = Astro.props;
 
         border-radius: var(--radius-4);
         padding: var(--space-8);
+        text-decoration: none;
 
         transition: background-color 0.3s ease;
 
-        &:hover:not(:disabled) {
-            background-color: var(--accent-primary-hover);
+        &:hover {
+            cursor: pointer;
+        }
+
+        &.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none; // 🚨 this actually disables clicks
         }
     }
 
     .primary {
         background-color: var(--accent-primary);
         color: var(--text-alt);
-        border: none;
 
-        &:hover:not(:disabled) {
+        &:hover:not(.disabled) {
             background-color: var(--accent-primary-hover);
         }
     }
@@ -48,14 +64,9 @@ const { label = "Label", disabled = false, type = "primary" } = Astro.props;
         color: var(--text-primary);
         border: var(--border-subtle) 1px solid;
 
-        &:hover:not(:disabled) {
+        &:hover:not(.disabled) {
             background-color: var(--bg-default-hover);
         }
-    }
-
-    .disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
     }
 
     /* 

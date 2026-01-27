@@ -16,13 +16,31 @@ import "../../../styles/colors.css";
 
 <BaseLayout>
     <PageLayout>
-        <Navigation />
-        <div style="padding: 64px; height: 352px; display: flex;">
-            <div>
-                <a href="/"> Back</a>
+        <Navigation
+            hasLogo={false}
+            ---
+            hasBackLink={true}
+            backLabel="Back home"
+            backLink="/"
+        />
+        <div>
+            <div style="padding: var(--space-64); display: flex;">
+                <h1 class="H1">
+                    I led the design of an internal staff app for Council field
+                    workers to streamline their experience when creating and
+                    submitting their timesheets.
+                </h1>
             </div>
-            <div style="padding: 64px; height: 352px; display: flex;">
-                <h1 class="H1">Nexus Project placeholder page</h1>
+            <div
+                style="padding: var(--space-16) var(--space-64); display: flex; gap: var(--space-8);"
+            >
+                <Button type="primary" label="Design" link="" />
+                <Button
+                    type="secondary"
+                    label="Development"
+                    link="../development/"
+                />
+                <div></div>
             </div>
         </div>
         <Footer />

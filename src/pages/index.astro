@@ -16,7 +16,13 @@ import "../styles/colors.css";
 
 <BaseLayout>
 	<PageLayout>
-		<Navigation />
+		<Navigation
+			hasLogo={true}
+			---
+			hasBackLink={false}
+			backLabel="Back"
+			backLink="/"
+		/>
 		<div
 			style="padding: 64px; 
 			height: 352px; 
@@ -137,7 +143,12 @@ import "../styles/colors.css";
 					measurableMetricIcon="trending_up"
 					---
 					title="Building a clearer Portfolio to showcase design & dev skills"
-					tags={["Website", "Portfolio", "Product Designer", "2025"]}
+					tags={[
+						"Website",
+						"Portfolio",
+						"Product Designer & Developer",
+						"2025",
+					]}
 					---
 					showDesktopImage={true}
 					desktopImage="/src/assets/images/about.png"

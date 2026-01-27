@@ -6,44 +6,72 @@ import "../styles/typography.css";
 import GitHub_Invertocat_Black from "../assets/logos/GitHub_Invertocat_Black.svg?raw";
 import linkedin_logo from "../assets/logos/linkedin_logo.svg?raw";
 import mitchell_zeller from "../assets/logos/mitchell_zeller.png";
+
+export interface Props {
+    hasLogo?: boolean;
+    hasBackLink?: boolean;
+
+    backLink?: string;
+    backLabel?: string;
+}
+
+const { hasLogo, hasBackLink, backLink, backLabel } = Astro.props;
 ---
 
 <nav class="nav-container">
     <div class="dynamic-link">
-        <a class="H6 link-item">
-            <img
-                src={mitchell_zeller.src}
-                width={mitchell_zeller.width}
-                height={mitchell_zeller.height}
-                alt="mitchell zeller logo"
-                loading="lazy"
-                class="mitchell-zeller"
-            />
-            Mitchell Zeller</a
-        >
+        {
+            hasBackLink && (
+                <a class="H6 link-item" href={backLink}>
+                    <span class="material-symbols-outlined"> arrow_back </span>
+                    <span class="label"> {backLabel} </span>
+                </a>
+            )
+        }
+
+        {
+            hasLogo && (
+                <a class="H6 link-item">
+                    <img
+                        src={mitchell_zeller.src}
+                        width={mitchell_zeller.width}
+                        height={mitchell_zeller.height}
+                        alt="mitchell zeller logo"
+                        loading="lazy"
+                        class="mitchell-zeller"
+                    />
+                    <span class="label"> Mitchell Zeller </span>
+                </a>
+            )
+        }
     </div>
     <div class="nav-links">
         <a href="/work/" class="H6 link-item">Work</a>
         <a href="/about/" class="H6 link-item">About</a>
         <a href="/fun/" class="H6 link-item">Fun</a>
-        <a href="/resume/" class="H6 link-item">Resume</a>
+        <a
+            href="https://drive.google.com/file/d/1nCjSYx6c7nbBBu6GfO34sLEu3xaOe-7R/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="H6 link-item">Resume</a
+        >
     </div>
     <div class="social-links">
         <a
             href="https://www.linkedin.com/in/mitchell-zeller"
             target="_blank"
             rel="noopener noreferrer"
-            class="H6 link-item logo"
+            class="H6 link-item social-link-item logo"
             set:html={linkedin_logo}
         />
         <a
             href="https://github.com/cadelaa"
             target="_blank"
             rel="noopener noreferrer"
-            class="H6 link-item logo"
+            class="H6 link-item social-link-item logo"
             set:html={GitHub_Invertocat_Black}
         />
-        <a class="H6 link-item">☀</a>
+        <a class="H6 link-item social-link-item">☀</a>
     </div>
 </nav>
 
@@ -78,9 +106,8 @@ import mitchell_zeller from "../assets/logos/mitchell_zeller.png";
         display: flex;
         align-items: center;
         height: 16px;
-        padding: var(--space-8);
+        padding: var(--space-8) var(--space-6);
         color: var(--text-subtle);
-        gap: var(--space-4);
         text-decoration: none;
         transition: color 0 ease;
         border-radius: var(--radius-8);
@@ -90,6 +117,18 @@ import mitchell_zeller from "../assets/logos/mitchell_zeller.png";
             cursor: pointer;
             color: var(--text-primary);
         }
+    }
+
+    .social-link-item {
+        padding: var(--space-8);
+    }
+
+    .label {
+        padding: 0 var(--space-2);
+    }
+
+    .dynamic-link {
+        display: flex;
     }
 
     .logo {
@@ -108,7 +147,7 @@ import mitchell_zeller from "../assets/logos/mitchell_zeller.png";
 
     .material-symbols-outlined {
         font-family: "Material Symbols Outlined";
-        font-weight: bold;
+        font-weight: 1000;
         font-style: normal;
         font-size: 28px;
         display: inline-block;

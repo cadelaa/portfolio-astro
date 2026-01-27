@@ -15,11 +15,14 @@ import "../../styles/colors.css";
 
 <BaseLayout>
     <PageLayout>
-        <Navigation />
-        <div style="padding: 64px; height: 352px; display: flex;">
-            <div>
-                <a href="/"> Back</a>
-            </div>
+        <Navigation
+            hasLogo={false}
+            ---
+            hasBackLink={true}
+            backLabel="Back home"
+            backLink="/"
+        />
+        <div>
             <div style="padding: 64px; height: 352px; display: flex;">
                 <h1 class="H1">Ideas</h1>
             </div>
