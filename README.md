@@ -86,7 +86,7 @@ Work in progress
 
 ---
 
-22/01/2026 v1.0
+23/01/2026 v1.0
 
 - Updated card to have a grayscale effect on hover
 - Updated icon sizes in navigation bar
@@ -103,3 +103,9 @@ Work in progress
 - Updated typography H4 font size
 - Added heading to all project pages, and some placeholder titles to other pages
 - Added the ability to switch between the design & development page for Portfolio & Nexus
+
+---
+
+28/01/2026 v1.2
+
+- Starting to build the project page layouts, probably going to make them components for reused ones across projects

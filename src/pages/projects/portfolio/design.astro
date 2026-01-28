@@ -40,9 +40,106 @@ import "../../../styles/colors.css";
                     label="Development"
                     link="../development/"
                 />
-                <div></div>
+            </div>
+
+            <div
+                style="padding: var(--space-16) var(--space-64); display: flex; gap: var(--space-16);"
+            >
+                <span>Jump links</span>
+                <span>Label</span>
+                <span>Label</span>
+                <span>Label</span>
+                <span>Label</span>
+                <span>Label</span>
+                <span>Label</span>
+            </div>
+
+            <div style="padding: var(--space-64);">
+                <div
+                    style="padding: var(--space-64); display: flex; gap: var(--space-8); background: var(--bg-default); height: 700px; border: 1px solid var(--border-subtle); border-radius: var(--radius-8);"
+                >
+                    <span>Image here</span>
+                </div>
+            </div>
+
+            <div
+                style="padding: var(--space-64); display: flex; gap: var(--space-8);"
+            >
+                <div class="project-overview">
+                    <div class="head-content">
+                        <div class="Tag subtle-label">Overview</div>
+                    </div>
+                    <div class="main-content">
+                        <div class="title">
+                            <span class="H4">Title</span>
+                        </div>
+                        <div class="body-paragraph">
+                            <span class="Body subtle-label"
+                                >Description here</span
+                            >
+                        </div>
+                    </div>
+                    <div class="footer-content">
+                        <div class="list-item">
+                            <span class="H5">Role</span>
+                            <span class="Body subtle-label"
+                                >Description here</span
+                            >
+                        </div>
+                        <div class="list-item">
+                            <span class="H5">Timeframe</span>
+                            <span class="Body subtle-label"
+                                >Description here</span
+                            >
+                        </div>
+                        <div class="list-item">
+                            <span class="H5">Team</span>
+                            <span class="Body subtle-label"
+                                >Description here</span
+                            >
+                        </div>
+                        <div class="list-item">
+                            <span class="H5">Tools</span>
+                            <div class="logo-group">
+                                <span>Lo</span>
+                                <span>Lo</span>
+                                <span>Lo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <Footer />
     </PageLayout>
 </BaseLayout>
+
+<style lang="scss">
+    .project-overview {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-16);
+        width: 100%;
+    }
+    .header-content {
+    }
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .list-item {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    .subtle-label {
+        color: var(--text-subtle);
+    }
+</style>
