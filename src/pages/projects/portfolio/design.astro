@@ -5,6 +5,7 @@ import MediumCard from "../../../components/MediumCard.astro";
 import SmallCard from "../../../components/SmallCard.astro";
 import Footer from "../../../components/Footer.astro";
 import Tag from "../../../components/Tag.astro";
+import Default from "../../../layouts/ProjectLayouts/default.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageLayout from "../../../layouts/PageLayout.astro";
 import "../../../styles/typography.css";
@@ -54,20 +55,27 @@ import "../../../styles/colors.css";
                 <span>Label</span>
             </div>
 
-            <div style="padding: var(--space-64);">
+            <div class="hero-container" style="padding: var(--space-64);">
                 <div
+                    class="hero-image"
                     style="padding: var(--space-64); display: flex; gap: var(--space-8); background: var(--bg-default); height: 700px; border: 1px solid var(--border-subtle); border-radius: var(--radius-8);"
                 >
-                    <span>Image here</span>
+                    <span>Main/hero image here</span>
                 </div>
             </div>
+
+            <Default
+                sectionLabel="Default"
+                title="Title"
+                description="Description here.."
+            />
 
             <div
                 style="padding: var(--space-64); display: flex; gap: var(--space-8);"
             >
                 <div class="project-overview">
                     <div class="head-content">
-                        <div class="Tag subtle-label">Overview</div>
+                        <div class="Body subtle-label">Overview</div>
                     </div>
                     <div class="main-content">
                         <div class="title">
@@ -109,6 +117,50 @@ import "../../../styles/colors.css";
                     </div>
                 </div>
             </div>
+
+            <div
+                style="padding: var(--space-64); display: flex; gap: var(--space-8);"
+            >
+                <div class="project-overview">
+                    <div class="head-content">
+                        <div class="Body subtle-label">One Image</div>
+                    </div>
+                    <div class="main-content">
+                        <div class="title">
+                            <span class="H4">Title</span>
+                        </div>
+                        <div class="body-paragraph">
+                            <span class="Body subtle-label"
+                                >Description here</span
+                            >
+                        </div>
+                    </div>
+                    <div class="footer-content">
+                        <div class="image-container">
+                            <div class="image-placeholder">Image/Gif/Video</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            style="padding: var(--space-64); display: flex; gap: var(--space-8);"
+        >
+            <div class="project-overview">
+                <div class="head-content">
+                    <div class="Body subtle-label">Showcase</div>
+                    <Tag label="Hello" bgColor="var(--bg-default)" />
+                </div>
+                <div class="main-content">
+                    <div class="title">
+                        <span class="H4">Title</span>
+                    </div>
+                    <div class="body-paragraph">
+                        <span class="Body subtle-label">Description here</span>
+                    </div>
+                </div>
+            </div>
         </div>
         <Footer />
     </PageLayout>
@@ -121,22 +173,54 @@ import "../../../styles/colors.css";
         gap: var(--space-16);
         width: 100%;
     }
-    .header-content {
+
+    .head-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--space-8);
     }
+
     .main-content {
         display: flex;
         flex-direction: column;
         gap: var(--space-4);
+        margin-bottom: var(--space-4);
     }
+
     .footer-content {
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
-        width: 100%;
+        gap: var(--space-16);
     }
+
     .list-item {
         display: flex;
         flex-direction: column;
         gap: var(--space-4);
+    }
+
+    .image-container {
+        display: flex;
+        flex-direction: row;
+        max-height: 700px;
+        overflow: hidden;
+        padding: var(--space-32);
+        background: var(--bg-default);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-8);
+        gap: var(--space-16);
+    }
+
+    .image-placeholder {
+        background: var(--bg-default-hover);
+        min-height: 900px;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .subtle-label {

@@ -1,0 +1,61 @@
+---
+import "../../styles/colors.css";
+import "../../styles/spacing.css";
+import "../../styles/radius.css";
+import "../../styles/typography.css";
+import Tag from "../../components/Tag.astro";
+
+export interface Props {
+    sectionLabel: string;
+
+    title: string;
+    description: string;
+}
+
+const { sectionLabel, title, description } = Astro.props;
+---
+
+<div class="default">
+    <div class="head-content">
+        <span class="body subtle">{sectionLabel}</span>
+    </div>
+    <div class="main-content">
+        <span class="H4">{title}</span>
+        <span class="body subtle">{description}</span>
+    </div>
+    <div class="footer-content">
+        <span>Images/Gifs/Videos</span>
+    </div>
+</div>
+
+<style lang="scss">
+    .default {
+        display: flex;
+        flex-direction: column;
+        padding: var(--space-64);
+        gap: var(--space-16);
+    }
+
+    .head-content {
+        display: flex;
+        width: 100%;
+        gap: var(--space-4);
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: var(--space-8);
+    }
+
+    .footer-content {
+        display: flex;
+        width: 100%;
+        gap: var(--space-16);
+    }
+
+    .subtle {
+        color: var(--text-subtle);
+    }
+</style>

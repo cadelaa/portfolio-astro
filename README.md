@@ -109,3 +109,9 @@ Work in progress
 28/01/2026 v1.2
 
 - Starting to build the project page layouts, probably going to make them components for reused ones across projects
+
+---
+
+30/01/2026 v1.3
+
+- created folder for project page layouts, which I think at the moment will be effectively components because they get reused acroos project pages
