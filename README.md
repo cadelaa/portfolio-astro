@@ -115,3 +115,11 @@ Work in progress
 30/01/2026 v1.3
 
 - created folder for project page layouts, which I think at the moment will be effectively components because they get reused acroos project pages
+
+---
+
+31/01/2026 v1.4
+
+- Minor change to default.astro
+- Cleaned up the tag.astro component
+- Built out the next project page layout, showcase, just needs the ability to set images

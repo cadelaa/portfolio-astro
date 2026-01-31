@@ -1,0 +1,186 @@
+---
+import "../../styles/colors.css";
+import "../../styles/spacing.css";
+import "../../styles/radius.css";
+import "../../styles/typography.css";
+import Tag from "../../components/Tag.astro";
+
+export interface Props {
+    sectionLabel: string;
+    tagLabel: string;
+
+    title: string;
+    description: string;
+
+    mainTags?: string[];
+    mainShowcaseTitle?: string;
+    mainImage?: string[];
+
+    secondTags?: string[];
+    secondShowcaseTitle?: string;
+    secondImage?: string[];
+
+    thirdTags?: string[];
+    thirdShowcaseTitle?: string;
+    thirdImage?: string[];
+}
+
+const {
+    sectionLabel,
+    tagLabel,
+
+    title,
+    description,
+
+    mainTags = [],
+    mainShowcaseTitle,
+    mainImage,
+
+    secondTags = [],
+    secondShowcaseTitle,
+    secondImage,
+
+    thirdTags = [],
+    thirdShowcaseTitle,
+    thirdImage,
+} = Astro.props;
+---
+
+<div class="showcase">
+    <div class="head-content">
+        <span class="body subtle">{sectionLabel}</span>
+        <Tag label={tagLabel} bgColor="var(--bg-default)" />
+    </div>
+    <div class="main-content">
+        <span class="H4">{title}</span>
+        <span class="body subtle">{description}</span>
+    </div>
+    <div class="footer-content">
+        <div class="image-container primary-container">
+            <div class="image-title">
+                <span class="H5">{mainShowcaseTitle}</span>
+                <div class="tag-group">
+                    {
+                        mainTags.map((tag) => (
+                            <Tag
+                                label={tag}
+                                bgColor="var(--bg-default-hover)"
+                                tagTextColor="var(--text-primary)"
+                            />
+                        ))
+                    }
+                </div>
+            </div>
+            <div class="image">Images/Gifs/Videos</div>
+        </div>
+        <div class="container-group">
+            <div class="image-container secondary-container">
+                <div class="image-title">
+                    <span class="H5">{secondShowcaseTitle}</span>
+                    <div class="tag-group">
+                        {
+                            secondTags.map((tag) => (
+                                <Tag
+                                    label={tag}
+                                    bgColor="var(--bg-default-hover)"
+                                    tagTextColor="var(--text-primary)"
+                                />
+                            ))
+                        }
+                    </div>
+                </div>
+                <div class="image">Images/Gifs/Videos</div>
+            </div>
+            <div class="image-container secondary-container">
+                <div class="image-title">
+                    <span class="H5">{thirdShowcaseTitle}</span>
+                    <div class="tag-group">
+                        {
+                            secondTags.map((tag) => (
+                                <Tag
+                                    label={tag}
+                                    bgColor="var(--bg-default-hover)"
+                                    tagTextColor="var(--text-primary)"
+                                />
+                            ))
+                        }
+                    </div>
+                </div>
+                <div class="image">Images/Gifs/Videos</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style lang="scss">
+    .showcase {
+        display: flex;
+        flex-direction: column;
+        padding: var(--space-64);
+        gap: var(--space-16);
+    }
+
+    .head-content {
+        display: flex;
+        gap: var(--space-8);
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-16);
+    }
+
+    .container-group {
+        display: flex;
+        gap: var(--space-16);
+        flex: 1;
+    }
+
+    .image-title {
+        display: flex;
+        gap: var(--space-8);
+    }
+
+    .image-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        flex: 1;
+        min-height: 0;
+        align-items: center;
+
+        background: var(--bg-default);
+
+        gap: var(--space-8);
+        padding: var(--space-32);
+
+        border: solid 1px var(--border-subtle);
+        border-radius: var(--radius-8);
+
+        overflow: hidden;
+
+        &.primary-container {
+            min-height: 700px;
+        }
+
+        &.secondary-container {
+            min-height: 500px;
+        }
+    }
+
+    .image {
+        width: 100%;
+        background: var(--bg-default-hover);
+    }
+
+    .subtle {
+        color: var(--text-subtle);
+    }
+</style>

@@ -6,19 +6,23 @@ import "../styles/colors.css";
 export interface Props {
     label: string;
     bgColor?: string;
-    bgHoverColor?: string;
     tagTextColor?: string;
 }
 
 const {
     label,
     bgColor = "var(--tag-bg-default)",
-    bgHoverColor = "var(--tag-bg-hover)",
     tagTextColor = "var(--tag-text)",
 } = Astro.props;
 ---
 
-<div class="tag-container" style={`--tag-bg: ${bgColor};`}>
+<div
+    class="tag-container"
+    style={`
+    --tag-bg: ${bgColor};
+    --tag-text: ${tagTextColor};
+  `}
+>
     <span class="Tag">{label}</span>
 </div>
 
@@ -27,8 +31,11 @@ const {
         display: inline-block;
         padding: 0 var(--space-4);
         background-color: var(--tag-bg);
-        color: var(--tag-text);
         border-radius: var(--radius-4);
-        transition: background-color 0.3s ease;
+    }
+
+    /* IMPORTANT: apply color to the text element */
+    .tag-container .Tag {
+        color: var(--tag-text);
     }
 </style>
