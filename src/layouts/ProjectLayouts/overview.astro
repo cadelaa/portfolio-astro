@@ -1,0 +1,89 @@
+---
+import "../../styles/colors.css";
+import "../../styles/spacing.css";
+import "../../styles/radius.css";
+import "../../styles/typography.css";
+
+export interface Props {
+    sectionLabel: string;
+
+    title: string;
+    description: string;
+
+    role?: string;
+    timeframe?: string;
+    team?: string;
+    tools?: string[];
+}
+
+const { sectionLabel, title, description } = Astro.props;
+---
+
+<div class="overview">
+    <div class="head-content">
+        <span class="body subtle">{sectionLabel}</span>
+    </div>
+    <div class="main-content">
+        <span class="H4">{title}</span>
+        <span class="body subtle">{description}</span>
+    </div>
+    <div class="footer-content">
+        <div class="list-item">
+            <span class="H5">Role</span>
+            <span class="Body subtle">{Astro.props.role}</span>
+        </div>
+        <div class="list-item">
+            <span class="H5">Timeframe</span>
+            <span class="Body subtle">{Astro.props.timeframe}</span>
+        </div>
+        <div class="list-item">
+            <span class="H5">Team</span>
+            <span class="Body subtle">{Astro.props.team}</span>
+        </div>
+        <div class="list-item">
+            <span class="H5">Tools</span>
+            <div class="logo-group">
+                <span class="Body subtle">{Astro.props.tools?.join(", ")}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style lang="scss">
+    .overview {
+        display: flex;
+        flex-direction: column;
+        padding: var(--space-64);
+        gap: var(--space-16);
+    }
+
+    .head-content {
+        display: flex;
+        width: 100%;
+        gap: var(--space-8);
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: var(--space-8);
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: var(--space-16);
+    }
+
+    .list-item {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    .subtle {
+        color: var(--text-subtle);
+    }
+</style>

@@ -77,7 +77,7 @@ Work in progress
 
 ---
 
-21/01/2026 v0.9 - Navigation 2
+21/01/2026 v0.9 - Navigation update 2
 
 - Added placeholder project pages
 - Added github and linkedin logos
