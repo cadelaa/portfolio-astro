@@ -123,3 +123,9 @@ Work in progress
 - Minor change to default.astro
 - Cleaned up the tag.astro component
 - Built out the next project page layout, showcase, just needs the ability to set images
+
+---
+
+01/02/2026 v1.5
+
+- Built out the Overview project page layout
