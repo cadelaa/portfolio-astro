@@ -135,9 +135,3 @@ Work in progress
 02/02/2026 v1.6
 
 - Cleaned up some issues in MediumCard.astro and Tag.astro, when hovered the tags in the card were not transitioning smoothly as intended
-
-
-Need to work on below
-
-- Set up the ability to add images to the showcase layout component
-- Started to add layout components to projects/portfolio/design/ and added relevant content from framer portfolio.
