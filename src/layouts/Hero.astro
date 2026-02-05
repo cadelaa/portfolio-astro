@@ -1,0 +1,32 @@
+---
+import "../styles/colors.css";
+import "../styles/spacing.css";
+import "../styles/radius.css";
+import "../styles/typography.css";
+
+export interface Props {
+    title?: string;
+    sticky?: boolean; // <-- new boolean prop
+}
+
+const { title, sticky = false } = Astro.props;
+---
+
+<div
+    class="hero"
+    style={`position: ${sticky ? "sticky" : "relative"}; top: ${sticky ? "104px" : "auto"};`}
+>
+    <h1 class="H1">{title}</h1>
+</div>
+
+<style>
+    .hero {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: var(--space-64) 0;
+        margin: var(--space-32) 0;
+        border: none;
+    }
+</style>

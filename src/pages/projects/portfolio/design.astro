@@ -10,6 +10,7 @@ import Showcase from "../../../layouts/ProjectLayouts/showcase.astro";
 import Overview from "../../../layouts/ProjectLayouts/overview.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageLayout from "../../../layouts/PageLayout.astro";
+import Hero from "../../../layouts/Hero.astro";
 import "../../../styles/typography.css";
 import "../../../styles/colors.css";
 
@@ -26,8 +27,11 @@ import "../../../styles/colors.css";
             backLabel="Back home"
             backLink="/"
         />
+        <Hero
+            title="How I rebuilt my portfolio to make it clearer, more consistent, and better showcase both design and development work"
+        />
         <div>
-            <div style="padding: var(--space-64); display: flex;">
+            <div style="display: flex;">
                 <h1 class="H1">
                     How I rebuilt my portfolio to make it clearer, more
                     consistent, and better showcase both design and development
@@ -35,7 +39,7 @@ import "../../../styles/colors.css";
                 </h1>
             </div>
             <div
-                style="padding: var(--space-16) var(--space-64); display: flex; gap: var(--space-8);"
+                style="padding: var(--space-16) 0; display: flex; gap: var(--space-8);"
             >
                 <Button type="primary" label="Design" link="" />
                 <Button

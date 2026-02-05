@@ -135,3 +135,13 @@ Work in progress
 02/02/2026 v1.6
 
 - Cleaned up some issues in MediumCard.astro and Tag.astro, when hovered the tags in the card were not transitioning smoothly as intended
+
+---
+
+05/02/2026 v1.7
+
+- Started to add responsiveness, currently homepage resizes (partially) correctly, except navigation bar
+- MediumCard removes hover effects on mobile
+- SmallCard removes hover effects on mobile
+- Moved or simply removed most hard coded inline styling
+- Moved padding from components and layouts to PageLayout
