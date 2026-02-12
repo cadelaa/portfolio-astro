@@ -152,3 +152,4 @@ Work in progress
 
 - Moved images from assets to public
 - Starting to add relevant content to the portfolio/design/ page
+- Added a index.ts to the components folder to create one import for components on index.astro and all other pages
