@@ -10,7 +10,7 @@ export { default as SmallCard } from "./SmallCard.astro";
 // Layouts (go up one level first)
 export { default as Hero } from "../layouts/Hero.astro";
 export { default as PageLayout } from "../layouts/PageLayout.astro";
-export { default as BaseLayout } from "../Layouts/BaseLayout.astro";
+export { default as BaseLayout } from "../layouts/BaseLayout.astro";
 
 
 // ProjectLayouts (inside layouts)
