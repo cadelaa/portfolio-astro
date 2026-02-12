@@ -31,13 +31,6 @@ import "../../../styles/colors.css";
             title="How I rebuilt my portfolio to make it clearer, more consistent, and better showcase both design and development work"
         />
         <div>
-            <div style="display: flex;">
-                <h1 class="H1">
-                    How I rebuilt my portfolio to make it clearer, more
-                    consistent, and better showcase both design and development
-                    work.
-                </h1>
-            </div>
             <div
                 style="padding: var(--space-16) 0; display: flex; gap: var(--space-8);"
             >
@@ -50,7 +43,7 @@ import "../../../styles/colors.css";
             </div>
 
             <div
-                style="padding: var(--space-16) var(--space-64); display: flex; gap: var(--space-16);"
+                style="padding: var(--space-16) 0; display: flex; gap: var(--space-16);"
             >
                 <span>Jump links</span>
                 <span>Label</span>
@@ -61,7 +54,7 @@ import "../../../styles/colors.css";
                 <span>Label</span>
             </div>
 
-            <div class="hero-container" style="padding: var(--space-64);">
+            <div class="hero-container" style="padding: var(--space-16) 0;">
                 <div
                     class="hero-image"
                     style="padding: var(--space-64); display: flex; gap: var(--space-8); background: var(--bg-default); height: 700px; border: 1px solid var(--border-subtle); border-radius: var(--radius-8);"
@@ -72,28 +65,54 @@ import "../../../styles/colors.css";
 
             <Overview
                 sectionLabel="Overview"
-                title="Title"
-                description="Description here.."
-                role="Designer & Developer"
-                timeframe="Jan 2024 - May 2024"
-                team="Solo Project"
+                title="Designing my Portfolio"
+                description="This project showcases how I refreshed my portfolio, focusing on its structure, storytelling, and overall clarity. It builds on lessons from my previous two portfolios and continues my focus on refining how I design and build with Framer. It compared to my previous portfolios the first, a squarespace site, and second but first framer site, is much more narrow in the work being presented."
+                role="Product Designer"
+                timeframe="2-4 weeks"
+                team="Me"
                 tools={["Figma", "Astro", "VS Code"]}
             />
 
             <Default
-                sectionLabel="Default"
+                sectionLabel="Problem"
+                title="My previous portfolio wasn’t communicating my work or process effectively. From Google Analytics, I noticed that the average session duration was only ~30-40 seconds."
+                description="This meant visitors were skimming and leaving before exploring my projects. I realised that the site’s layout, navigation, and visual hierarchy didn’t invite deeper engagement. It also became bloated with content, requiring too many steps to find my work. Separate pages for design and development added unnecessary friction."
+            />
+
+            <Default
+                sectionLabel="Solution"
+                title="I rebuilt my portfolio from the ground up with a focus on clarity, consistency, and storytelling."
+                description="Throughout the process I validated layout choices with peers and small usability checks to ensure the information hierarchy felt intuitive for first-time visitors. I've also started reading and looking at portfolios that Florian reviews on his blog to get feedback from an experienced designer but also taking some inspiration from other portfolios."
+            />
+
+            <Default
+                sectionLabel="Project Management"
+                title="Utilizing Notion to organise my thoughts, create various tasks, and ideas to implement at some point."
+                description="I’ve used Notion before however somewhat briefly before organizing and understanding projects however I still have much more to learn. In this case I’ve simply used a single kanban board to organise ideas, fixes, refinements and all other changes I’ve considered. Sorted into four categories, Not started, In progress, Done, and Archived along with Low, Medium and High priorities for the tasks themselves."
+            />
+
+            <Default sectionLabel="Wireframing" title="" description="" />
+
+            <Default sectionLabel="Final Design" title="" description="" />
+
+            <Showcase
+                sectionLabel="Design & Development"
+                tagLabel="Core Feature"
                 title="Title"
                 description="Description here.."
+                mainShowcaseTitle="View the design or developer work seamlessly"
+                secondShowcaseTitle=""
+                thirdShowcaseTitle=""
             />
 
             <Showcase
-                sectionLabel="Showcase"
-                tagLabel="Tag Label"
+                sectionLabel="Light & Dark mode"
+                tagLabel="Feature & Accessibility"
                 title="Title"
                 description="Description here.."
-                mainShowcaseTitle="Main"
-                secondShowcaseTitle="Second"
-                thirdShowcaseTitle="Third"
+                mainShowcaseTitle="Easily swap between light and dark themes"
+                secondShowcaseTitle=""
+                thirdShowcaseTitle=""
             />
 
             <Footer />

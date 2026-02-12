@@ -145,3 +145,10 @@ Work in progress
 - SmallCard removes hover effects on mobile
 - Moved or simply removed most hard coded inline styling
 - Moved padding from components and layouts to PageLayout
+
+---
+
+12/02/2026 v1.8
+
+- Moved images from assets to public
+- Starting to add relevant content to the portfolio/design/ page
