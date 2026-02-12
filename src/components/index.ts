@@ -8,13 +8,13 @@ export { default as SmallCard } from "./SmallCard.astro";
 
 
 // Layouts (go up one level first)
-export { default as Hero } from "../Layouts/Hero.astro";
-export { default as PageLayout } from "../Layouts/PageLayout.astro";
+export { default as Hero } from "../layouts/Hero.astro";
+export { default as PageLayout } from "../layouts/PageLayout.astro";
 export { default as BaseLayout } from "../Layouts/BaseLayout.astro";
 
 
 // ProjectLayouts (inside layouts)
-export { default as ProjectGrid } from "../Layouts/ProjectLayouts/ProjectGrid.astro";
-export { default as Overview } from "../Layouts/ProjectLayouts/Overview.astro";
-export { default as Default } from "../Layouts/ProjectLayouts/Default.astro";
-export { default as Showcase } from "../Layouts/ProjectLayouts/Showcase.astro";
+export { default as ProjectGrid } from "../layouts/ProjectLayouts/ProjectGrid.astro";
+export { default as Overview } from "../layouts/ProjectLayouts/Overview.astro";
+export { default as Default } from "../layouts/ProjectLayouts/Default.astro";
+export { default as Showcase } from "../layouts/ProjectLayouts/Showcase.astro";
