@@ -5,6 +5,7 @@ export { default as Button } from "./Button.astro";
 export { default as Footer } from "./Footer.astro";
 export { default as Navigation } from "./Navigation.astro";
 export { default as SmallCard } from "./SmallCard.astro";
+export { default as PageNav } from "./PageNav.astro";
 
 
 // Layouts (go up one level first)

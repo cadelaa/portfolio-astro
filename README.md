@@ -153,3 +153,9 @@ Work in progress
 - Moved images from assets to public
 - Starting to add relevant content to the portfolio/design/ page
 - Added a index.ts to the components folder to create one import for components on index.astro and all other pages
+
+---
+
+18/02/2026 v1.9
+
+- Added pageNav component to give users the ability to navigate project pages sections

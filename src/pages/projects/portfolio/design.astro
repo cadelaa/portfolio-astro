@@ -12,6 +12,7 @@ import {
     Default,
     Showcase,
     Button,
+    PageNav,
 } from "../../../components";
 
 import "../../../styles/typography.css";
@@ -45,17 +46,16 @@ import "../../../styles/colors.css";
                 />
             </div>
 
-            <div
-                style="padding: var(--space-16) 0; display: flex; gap: var(--space-16);"
-            >
-                <span>Jump links</span>
-                <span>Label</span>
-                <span>Label</span>
-                <span>Label</span>
-                <span>Label</span>
-                <span>Label</span>
-                <span>Label</span>
-            </div>
+            <PageNav
+                links={[
+                    { label: "Overview", href: "#overview" },
+                    { label: "Problem", href: "#problem" },
+                    { label: "Solution", href: "#solution" },
+                    { label: "Process", href: "#process" },
+                    { label: "Conclusion", href: "#conclusion" },
+                    { label: "Hello", href: "#hello" },
+                ]}
+            />
 
             <div class="hero-container" style="padding: var(--space-16) 0;">
                 <div

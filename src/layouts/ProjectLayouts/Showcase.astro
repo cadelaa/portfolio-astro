@@ -23,6 +23,8 @@ export interface Props {
     thirdTags?: string[];
     thirdShowcaseTitle?: string;
     thirdImage?: string[];
+
+    ID?: string;
 }
 
 const {
@@ -46,7 +48,7 @@ const {
 } = Astro.props;
 ---
 
-<div class="showcase">
+<div class="showcase" id={Astro.props.ID}>
     <div class="head-content">
         <span class="body subtle">{sectionLabel}</span>
         <Tag label={tagLabel} bgColor="var(--bg-default)" />
