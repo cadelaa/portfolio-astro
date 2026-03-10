@@ -159,3 +159,11 @@ Work in progress
 18/02/2026 v1.9
 
 - Added pageNav component to give users the ability to navigate project pages sections
+
+---
+
+10/03/2026 v2.0
+
+- Added dark theme colors
+- Added dark light toggle button to Navigation.astro component
+- Updated select variables in color.css
