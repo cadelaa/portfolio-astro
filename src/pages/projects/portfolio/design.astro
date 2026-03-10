@@ -51,9 +51,13 @@ import "../../../styles/colors.css";
                     { label: "Overview", href: "#overview" },
                     { label: "Problem", href: "#problem" },
                     { label: "Solution", href: "#solution" },
-                    { label: "Process", href: "#process" },
-                    { label: "Conclusion", href: "#conclusion" },
-                    { label: "Hello", href: "#hello" },
+                    {
+                        label: "Project Management",
+                        href: "#project-management",
+                    },
+                    { label: "Wireframing", href: "#wireframing" },
+                    { label: "Final Design", href: "#final-design" },
+                    { label: "Outcome", href: "#outcome" },
                 ]}
             />
 
@@ -67,6 +71,7 @@ import "../../../styles/colors.css";
             </div>
 
             <Overview
+                ID="overview"
                 sectionLabel="Overview"
                 title="Designing my Portfolio"
                 description="This project showcases how I refreshed my portfolio, focusing on its structure, storytelling, and overall clarity. It builds on lessons from my previous two portfolios and continues my focus on refining how I design and build with Framer. It compared to my previous portfolios the first, a squarespace site, and second but first framer site, is much more narrow in the work being presented."
@@ -77,28 +82,42 @@ import "../../../styles/colors.css";
             />
 
             <Default
+                ID="problem"
                 sectionLabel="Problem"
                 title="My previous portfolio wasn’t communicating my work or process effectively. From Google Analytics, I noticed that the average session duration was only ~30-40 seconds."
                 description="This meant visitors were skimming and leaving before exploring my projects. I realised that the site’s layout, navigation, and visual hierarchy didn’t invite deeper engagement. It also became bloated with content, requiring too many steps to find my work. Separate pages for design and development added unnecessary friction."
             />
 
             <Default
+                ID="solution"
                 sectionLabel="Solution"
                 title="I rebuilt my portfolio from the ground up with a focus on clarity, consistency, and storytelling."
                 description="Throughout the process I validated layout choices with peers and small usability checks to ensure the information hierarchy felt intuitive for first-time visitors. I've also started reading and looking at portfolios that Florian reviews on his blog to get feedback from an experienced designer but also taking some inspiration from other portfolios."
             />
 
             <Default
+                ID="project-management"
                 sectionLabel="Project Management"
                 title="Utilizing Notion to organise my thoughts, create various tasks, and ideas to implement at some point."
                 description="I’ve used Notion before however somewhat briefly before organizing and understanding projects however I still have much more to learn. In this case I’ve simply used a single kanban board to organise ideas, fixes, refinements and all other changes I’ve considered. Sorted into four categories, Not started, In progress, Done, and Archived along with Low, Medium and High priorities for the tasks themselves."
             />
 
-            <Default sectionLabel="Wireframing" title="" description="" />
+            <Default
+                ID="wireframing"
+                sectionLabel="Wireframing"
+                title=""
+                description=""
+            />
 
-            <Default sectionLabel="Final Design" title="" description="" />
+            <Default
+                ID="final-design"
+                sectionLabel="Final Design"
+                title=""
+                description=""
+            />
 
             <Showcase
+                ID=""
                 sectionLabel="Design & Development"
                 tagLabel="Core Feature"
                 title="Title"
@@ -109,6 +128,7 @@ import "../../../styles/colors.css";
             />
 
             <Showcase
+                ID=""
                 sectionLabel="Light & Dark mode"
                 tagLabel="Feature & Accessibility"
                 title="Title"
@@ -116,6 +136,13 @@ import "../../../styles/colors.css";
                 mainShowcaseTitle="Easily swap between light and dark themes"
                 secondShowcaseTitle=""
                 thirdShowcaseTitle=""
+            />
+
+            <Default
+                ID="outcome"
+                sectionLabel="Outcome"
+                title="Comparing Google Analytics data year-over-year, average session duration increased from ~30–40 seconds to 1 minute 09 seconds — nearly doubling user attention."
+                description="Visitors now spend time exploring multiple projects and this suggests visitors are not only staying longer but engaging more deeply with key content. This project reminded me that good portfolio design is user experience design — treating recruiters and visitors like real users. Data, structure, and clarity matter just as much as visuals."
             />
 
             <Footer />

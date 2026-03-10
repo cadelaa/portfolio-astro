@@ -14,15 +14,17 @@ export interface Props {
 
     mainTags?: string[];
     mainShowcaseTitle?: string;
-    mainImage?: string[];
+    mainImage?: string;
+
+    showSecondary?: boolean;
 
     secondTags?: string[];
     secondShowcaseTitle?: string;
-    secondImage?: string[];
+    secondImage?: string;
 
     thirdTags?: string[];
     thirdShowcaseTitle?: string;
-    thirdImage?: string[];
+    thirdImage?: string;
 
     ID?: string;
 }
@@ -45,6 +47,8 @@ const {
     thirdTags = [],
     thirdShowcaseTitle,
     thirdImage,
+
+    showSecondary = true, // 👈 default to visible
 } = Astro.props;
 ---
 
@@ -73,44 +77,75 @@ const {
                     }
                 </div>
             </div>
-            <div class="image">Images/Gifs/Videos</div>
-        </div>
-        <div class="container-group">
-            <div class="image-container secondary-container">
-                <div class="image-title">
-                    <span class="H5">{secondShowcaseTitle}</span>
-                    <div class="tag-group">
-                        {
-                            secondTags.map((tag) => (
-                                <Tag
-                                    label={tag}
-                                    bgColor="var(--bg-default-hover)"
-                                    tagTextColor="var(--text-primary)"
-                                />
-                            ))
-                        }
-                    </div>
-                </div>
-                <div class="image">Images/Gifs/Videos</div>
-            </div>
-            <div class="image-container secondary-container">
-                <div class="image-title">
-                    <span class="H5">{thirdShowcaseTitle}</span>
-                    <div class="tag-group">
-                        {
-                            secondTags.map((tag) => (
-                                <Tag
-                                    label={tag}
-                                    bgColor="var(--bg-default-hover)"
-                                    tagTextColor="var(--text-primary)"
-                                />
-                            ))
-                        }
-                    </div>
-                </div>
-                <div class="image">Images/Gifs/Videos</div>
+            <div class="image">
+                {
+                    mainImage && (
+                        <img
+                            src={`/images/${mainImage}`}
+                            alt=""
+                            loading="lazy"
+                        />
+                    )
+                }
             </div>
         </div>
+        {
+            showSecondary && (
+                <div class="container-group">
+                    <div class="image-container secondary-container">
+                        <div class="image-title">
+                            <span class="H5">{secondShowcaseTitle}</span>
+                            <div class="tag-group">
+                                {secondTags.map((tag) => (
+                                    <Tag
+                                        label={tag}
+                                        bgColor="var(--bg-default-hover)"
+                                        tagTextColor="var(--text-primary)"
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                        <div class="image">
+                            {secondImage && (
+                                <img
+                                    src={`/images/${secondImage}`}
+                                    alt=""
+                                    loading="lazy"
+                                />
+                            )}
+                        </div>
+                    </div>
+
+                    <div class="image-container secondary-container">
+                        <div class="image-title">
+                            <span class="H5">{thirdShowcaseTitle}</span>
+                            <div class="tag-group">
+                                {thirdTags.map(
+                                    (
+                                        tag, // 👈 also fixed this bug
+                                    ) => (
+                                        <Tag
+                                            label={tag}
+                                            bgColor="var(--bg-default-hover)"
+                                            tagTextColor="var(--text-primary)"
+                                        />
+                                    ),
+                                )}
+                            </div>
+                        </div>
+                        <div class="image">
+                            {thirdImage && (
+                                <img
+                                    src={`/images/${thirdImage}`}
+                                    alt=""
+                                    loading="lazy"
+                                />
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )
+        }
     </div>
 </div>
 
@@ -178,8 +213,30 @@ const {
     }
 
     .image {
+        position: relative;
+
         width: 100%;
-        background: var(--bg-default-hover);
+        height: 500px; // 👈 fixed visual height (adjust as needed)
+
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-8);
+
+        overflow: hidden;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            position: absolute;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
     }
 
     .subtle {
