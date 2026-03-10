@@ -71,7 +71,13 @@ const { hasLogo, hasBackLink, backLink, backLabel } = Astro.props;
             class="H6 link-item social-link-item logo"
             set:html={GitHub_Invertocat_Black}
         />
-        <a class="H6 link-item social-link-item">☀</a>
+        <button
+            id="theme-toggle"
+            class="H6 link-item social-link-item theme-toggle"
+            aria-label="Toggle theme"
+        >
+            <span class="theme-icon material-symbols-outlined"></span>
+        </button>
     </div>
 </nav>
 
@@ -119,6 +125,18 @@ const { hasLogo, hasBackLink, backLink, backLabel } = Astro.props;
         }
     }
 
+    .theme-toggle {
+        background: none;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .social-link-item {
         padding: var(--space-8);
     }
@@ -159,3 +177,29 @@ const { hasLogo, hasBackLink, backLink, backLabel } = Astro.props;
         direction: ltr;
     }
 </style>
+
+<script>
+    const toggle = document.getElementById("theme-toggle");
+    const icon = toggle?.querySelector(".theme-icon");
+
+    // Apply saved theme immediately (also needs to run in <head> to avoid flash — see step 3)
+    const saved = localStorage.getItem("theme");
+    if (saved) document.documentElement.setAttribute("data-theme", saved);
+
+    function updateIcon() {
+        const isDark =
+            document.documentElement.getAttribute("data-theme") === "dark";
+        if (icon) icon.textContent = isDark ? "dark_mode" : "sunny";
+    }
+
+    updateIcon();
+
+    toggle?.addEventListener("click", () => {
+        const isDark =
+            document.documentElement.getAttribute("data-theme") === "dark";
+        const next = isDark ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+        updateIcon();
+    });
+</script>

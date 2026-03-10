@@ -43,7 +43,7 @@
 
 
     /* Council Blue */
-    --text-council-blue: var(--council-blue-90);
+    --text-council-blue: var(--council-blue-70);
 
     --bg-council-blue: var(--council-blue-10);
     --bg-council-blue-hover: var(--council-blue-20);
@@ -51,16 +51,48 @@
 
 /* dark mode overrides */
 [data-theme="dark"] {
-    --bg-page: ;
-    --bg-surface: ;
-    --bg-hover: ;
+    /* Base */
+    --bg-page: var(--neutral-115);
+    --bg-default: var(--neutral-100);
+    --bg-default-hover: var(--neutral-90);
+    --bg-secondary: var(--neutral-80);
+    --bg-secondary-hover: var(--neutral-60);
 
-    --text-primary: ;
-    --text-secondary: ;
-    --text-muted: ;
+    --text-primary: var(--neutral-5);
+    --text-subtle: var(--neutral-30);
+    --text-alt: var(--neutral-115);
 
-    --accent-primary: ;
-    --accent-primary-hover: ;
+    --accent-primary: var(--neutral-10);
+    --accent-primary-hover: var(--neutral-20);
 
-    --border-subtle: ;
+    --border-subtle: var(--neutral-70);
+    --border-hover: var(--neutral-40);
+
+
+    /* Blue */
+    --text-blue: var(--blue-30);
+
+    --bg-blue: var(--blue-110);
+    --bg-blue-hover: var(--blue-90);
+
+
+    /* Indigo - Needs Updating*/
+    --text-indigo: var(--indigo-30);
+
+    --bg-indigo: var(--indigo-110);
+    --bg-indigo-hover: var(--indigo-90);
+
+
+    /* Orange */
+    --text-orange: var(--orange-40);
+
+    --bg-orange: var(--orange-110);
+    --bg-orange-hover: var(--orange-100);
+
+
+    /* Council Blue */
+    --text-council-blue: var(--council-blue-30);
+
+    --bg-council-blue: var(--council-blue-100);
+    --bg-council-blue-hover: var(--council-blue-80);
 }

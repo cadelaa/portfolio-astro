@@ -24,6 +24,7 @@ import "../styles/colors.css";
 
     <style>
         body {
+            background-color: var(--bg-page);
             display: flex; /* enable flex centering */
             justify-content: center; /* center horizontally */
             scroll-behavior: smooth;
@@ -39,5 +40,8 @@ import "../styles/colors.css";
         } else {
             document.documentElement.style.scrollBehavior = "smooth";
         }
+
+        const saved = localStorage.getItem("theme");
+        if (saved) document.documentElement.setAttribute("data-theme", saved);
     </script>
 </html>
