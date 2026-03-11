@@ -1,0 +1,39 @@
+name: 📊 Update Repository Stats
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch: # allows manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    name: Recompute and commit stats
+
+    steps:
+      - name: Checkout repository (full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # IMPORTANT: fetch all history so git log works fully
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run stats script
+        run: python .github/scripts/compute_stats.py
+
+      - name: Commit updated STATS.md
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add STATS.md
+          # Only commit if something actually changed
+          git diff --cached --quiet || git commit -m "chore: update repository stats [skip ci]"
+          git push

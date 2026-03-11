@@ -1,6 +1,27 @@
-# Rebuilding my Framer portfolio, [Mitchell Zeller,](https://mitchellzeller.framer.website/) in Astro
-
 Work in progress
+
+Rebuilding my Framer portfolio, [Mitchell Zeller,](https://mitchellzeller.framer.website/) in Astro
+
+---
+
+# Portfolio
+
+![Commits](https://img.shields.io/github/commit-activity/t/cadelaa/portfolio-astro?label=Total%20Commits&style=flat-square&color=blue)
+![Last Commit](https://img.shields.io/github/last-commit/cadelaa/portfolio-astro?style=flat-square&color=green)
+![Contributors](https://img.shields.io/github/contributors/cadelaa/portfolio-astro?style=flat-square&color=orange)
+![Repo Size](https://img.shields.io/github/repo-size/cadelaa/portfolio-astro?style=flat-square&color=purple)
+[![📊 Stats](https://img.shields.io/badge/📊-View%20Full%20Stats-informational?style=flat-square)](./STATS.md)
+
+> Portfolio site to showcase my design and dev skills.
+
+---
+
+## 📊 Repository Stats
+
+> Detailed line-change stats (added / removed / net) are tracked automatically.
+> View the full breakdown → **[STATS.md](./STATS.md)**
+
+---
 
 # Changelog
 
