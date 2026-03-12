@@ -1,6 +1,6 @@
 # 📊 Repository Stats
 
-> Auto-generated on every push via GitHub Actions. Last updated: **2026-03-11 04:54 UTC**
+> Auto-generated on every push via GitHub Actions. Last updated: **2026-03-11 04:58 UTC**
 
 ---
 
@@ -8,7 +8,7 @@
 
 | Metric | Value |
 |--------|-------|
-| 🔁 Total commits | **40** |
+| 🔁 Total commits | **43** |
 | 👥 Contributors | **0** |
 | 📅 First commit | `2026-01-12` |
 | 🕐 Latest commit | `2026-03-11` |
@@ -19,19 +19,17 @@
 
 | Metric | Value |
 |--------|-------|
-| ✅ Lines added | **+10,155** |
-| ❌ Lines removed | **-1,262** |
-| 📐 Net lines | **+8,893** |
-| ⌀ Avg added per commit | **+253.9** |
-| ⌀ Avg removed per commit | **-31.6** |
+| ✅ Lines added | **+10,211** |
+| ❌ Lines removed | **-1,269** |
+| 📐 Net lines | **+8,942** |
+| ⌀ Avg added per commit | **+237.5** |
+| ⌀ Avg removed per commit | **-29.5** |
 
 ---
 
 ## 📂 Last Commit — Files Changed
 
-- `.github/scripts/compute_stats.py`
-- `.github/workflows/update-stats.yml`
-- `README.md`
+- *(no files)*
 
 ---
 
@@ -39,7 +37,7 @@
 
 | File | Commits touched |
 |------|----------------|
-| `README.md` | 30 |
+| `README.md` | 31 |
 | `src/pages/index.astro` | 14 |
 | `src/pages/projects/portfolio/design.astro` | 11 |
 | `src/styles/typography.css` | 9 |
