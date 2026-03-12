@@ -65,9 +65,7 @@ const {
         --tag-bg-default: var(--bg-secondary);
         --tag-text: var(--text-subtle);
 
-        transition:
-            background-color 0.3s ease,
-            border 0.3s ease;
+        transition: none;
 
         .head-content {
             display: flex;
@@ -146,8 +144,9 @@ const {
             --tag-text: var(--text-subtle);
 
             transition:
+                color 0.3s ease,
                 background-color 0.3s ease,
-                border 0.3s ease;
+                border-color 0.3s ease;
 
             .head-content {
                 display: flex;

@@ -185,8 +185,8 @@ Work in progress
 
 ---
 
-11/03/2026
+12/03/2026
 
 - Removed transitions from multiple components & layouts
 - Added transition rule, which now only affects the theme toggle, rather then before when simply changing pages triggered the transitions
-- 
+- re-added color transitions to the mediumcard.astro and smallcard.astro components
