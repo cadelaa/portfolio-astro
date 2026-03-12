@@ -47,12 +47,6 @@
 
     --bg-council-blue: var(--council-blue-10);
     --bg-council-blue-hover: var(--council-blue-20);
-
-    /* Custom overrides for light mode */
-    transition:
-        background-color 0.3s ease,
-        color 0.3s ease,
-        border-color 0.3s ease;
 }
 
 /* dark mode overrides */
@@ -101,11 +95,14 @@
 
     --bg-council-blue: var(--council-blue-100);
     --bg-council-blue-hover: var(--council-blue-80);
+}
 
 
-    /* Custom overrides for dark mode */
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
     transition:
         background-color 0.3s ease,
         color 0.3s ease,
-        border-color 0.3s ease;
+        border-color 0.3s ease !important;
 }

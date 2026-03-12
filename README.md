@@ -182,3 +182,11 @@ Work in progress
 - Added dark theme colors
 - Added dark light toggle button to Navigation.astro component
 - Updated select variables in color.css
+
+---
+
+11/03/2026
+
+- Removed transitions from multiple components & layouts
+- Added transition rule, which now only affects the theme toggle, rather then before when simply changing pages triggered the transitions
+- 
