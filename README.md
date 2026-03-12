@@ -190,3 +190,4 @@ Work in progress
 - Removed transitions from multiple components & layouts
 - Added transition rule, which now only affects the theme toggle, rather then before when simply changing pages triggered the transitions
 - re-added color transitions to the mediumcard.astro and smallcard.astro components
+- Updated PageNav dark mode hover text color
