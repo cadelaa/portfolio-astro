@@ -1,6 +1,6 @@
 # 📊 Repository Stats
 
-> Auto-generated on every push via GitHub Actions. Last updated: **2026-03-12 12:45 UTC**
+> Auto-generated on every push via GitHub Actions. Last updated: **2026-03-12 13:16 UTC**
 
 ---
 
@@ -8,7 +8,7 @@
 
 | Metric | Value |
 |--------|-------|
-| 🔁 Total commits | **51** |
+| 🔁 Total commits | **53** |
 | 👥 Contributors | **0** |
 | 📅 First commit | `2026-01-12` |
 | 🕐 Latest commit | `2026-03-12` |
@@ -19,17 +19,18 @@
 
 | Metric | Value |
 |--------|-------|
-| ✅ Lines added | **+10,345** |
-| ❌ Lines removed | **-1,378** |
-| 📐 Net lines | **+8,967** |
-| ⌀ Avg added per commit | **+202.8** |
-| ⌀ Avg removed per commit | **-27.0** |
+| ✅ Lines added | **+10,360** |
+| ❌ Lines removed | **-1,399** |
+| 📐 Net lines | **+8,961** |
+| ⌀ Avg added per commit | **+195.5** |
+| ⌀ Avg removed per commit | **-26.4** |
 
 ---
 
 ## 📂 Last Commit — Files Changed
 
-- *(no files)*
+- `README.md`
+- `src/components/PageNav.astro`
 
 ---
 
@@ -37,7 +38,7 @@
 
 | File | Commits touched |
 |------|----------------|
-| `README.md` | 33 |
+| `README.md` | 34 |
 | `src/pages/index.astro` | 15 |
 | `src/pages/projects/portfolio/design.astro` | 12 |
 | `src/components/MediumCard.astro` | 11 |
