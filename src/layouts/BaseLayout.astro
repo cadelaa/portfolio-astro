@@ -1,6 +1,7 @@
 ---
-const { title = "Mitchell Zeller" } = Astro.props;
 import "../styles/colors.css";
+
+const { title = "Mitchell Zeller", fullViewport = false } = Astro.props;
 ---
 
 <!-- BaseLayout.astro --><!doctype html>
@@ -14,24 +15,30 @@ import "../styles/colors.css";
         <link rel="preconnect" href="https://rsms.me/" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         <link
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,100,1,200"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0..200"
+            rel="stylesheet"
             rel="stylesheet"
         />
     </head>
-    <body>
+    <body class:list={["page", { "full-viewport": fullViewport }]}>
         <slot />
     </body>
 
     <style>
         body {
             background-color: var(--bg-page);
-            display: flex; /* enable flex centering */
-            justify-content: center; /* center horizontally */
+            display: flex;
+            justify-content: center;
             scroll-behavior: smooth;
             min-height: 100svh;
             width: 100%;
             overflow-x: hidden;
             transition: none;
+        }
+        body.full-viewport {
+            height: 100svh;
+            overflow: hidden;
+            flex-direction: column;
         }
     </style>
 

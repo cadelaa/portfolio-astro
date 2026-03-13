@@ -185,7 +185,7 @@ Work in progress
 
 ---
 
-12/03/2026
+12/03/2026 v2.1
 
 - Removed transitions from multiple components & layouts
 - Added transition rule, which now only affects the theme toggle, rather then before when simply changing pages triggered the transitions
@@ -194,7 +194,20 @@ Work in progress
 
 ---
 
-13/03/2026
+13/03/2026 v2.2
 
 - Updated Resume link
 - Removed stats for now
+- Updated how the site uses Material Icons, universal styling in typography.css with options to override in components
+- Icons not fill on hover, unless overrided
+- Added fullViewport prop to PageLayout & BaseLayout
+
+## About changes/additions
+- Built out the About page with an interactive canvas — draggable image cards arranged on an inner oval, 
+  tag pills on an outer oval to filter by category, and an animated center label that updates on tag switch
+- Cards animate in from below on tag switch and fade out on leave
+- Fully responsive — oval layout on desktop/tablet, grid of pills with canvas below on mobile
+- Tag and card data lives in `src/data/about.ts` — add new categories or cards without touching component code
+
+---
+

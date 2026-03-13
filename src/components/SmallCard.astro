@@ -28,7 +28,7 @@ const {
     <div class="medium-card" class:list={{ disabled }}>
         <div class="head-content">
             <div class="title">
-                <span class="material-symbols-outlined">{icon}</span>
+                <span class="material-symbols-outlined icon-hover">{icon}</span>
                 <span class="card-title H4">{title}</span>
             </div>
             {
@@ -111,21 +111,6 @@ const {
 
     .card-title {
         margin: 0;
-    }
-
-    .material-symbols-outlined {
-        font-family: "Material Symbols Outlined";
-        font-weight: bold;
-        font-style: normal;
-        font-size: 36px;
-        /* Preferred icon size */
-        display: inline-block;
-        line-height: 1;
-        text-transform: none;
-        letter-spacing: normal;
-        word-wrap: normal;
-        white-space: nowrap;
-        direction: ltr;
     }
 
     @media (min-width: 1120px) {
@@ -211,18 +196,7 @@ const {
         }
 
         .material-symbols-outlined {
-            font-family: "Material Symbols Outlined";
-            font-weight: bold;
-            font-style: normal;
-            font-size: 36px;
-            /* Preferred icon size */
-            display: inline-block;
-            line-height: 1;
-            text-transform: none;
-            letter-spacing: normal;
-            word-wrap: normal;
-            white-space: nowrap;
-            direction: ltr;
+            font-size: 2rem;
         }
     }
 </style>

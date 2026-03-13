@@ -70,6 +70,7 @@ const { hasLogo, hasBackLink, backLink } = Astro.props;
             class="H6 link-item social-link-item logo"
             set:html={GitHub_Invertocat_Black}
         />
+
         <button
             id="theme-toggle"
             class="H6 link-item social-link-item theme-toggle"
@@ -164,17 +165,7 @@ const { hasLogo, hasBackLink, backLink } = Astro.props;
     }
 
     .material-symbols-outlined {
-        font-family: "Material Symbols Outlined";
-        font-weight: 1000;
-        font-style: normal;
-        font-size: 28px;
-        display: inline-block;
-        line-height: 1;
-        text-transform: none;
-        letter-spacing: normal;
-        word-wrap: normal;
-        white-space: nowrap;
-        direction: ltr;
+        font-variation-settings: "FILL" 1;
     }
 </style>
 
@@ -195,16 +186,12 @@ const { hasLogo, hasBackLink, backLink } = Astro.props;
     updateIcon();
 
     function toggleTheme() {
-        // Add transition class just before the change
         document.documentElement.classList.add("theme-transitioning");
-
-        // Do the theme change
         const current = document.documentElement.getAttribute("data-theme");
         const next = current === "dark" ? "light" : "dark";
         document.documentElement.setAttribute("data-theme", next);
         localStorage.setItem("theme", next);
-
-        // Remove it after the transition completes
+        updateIcon(); // ← add this
         setTimeout(() => {
             document.documentElement.classList.remove("theme-transitioning");
         }, 300);

@@ -4,22 +4,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 // import Footer from "../components/navigation/Footer.astro";
 import "../styles/colors.css";
 
-const { title } = Astro.props;
+// PageLayout.astro
+const { title, fullViewport = false } = Astro.props;
 ---
 
-<BaseLayout title={title}>
-    <main class="page">
-        <slot />
-    </main>
-</BaseLayout>
+<main class:list={["page", { "full-viewport": fullViewport }]}>
+    <slot />
+</main>
 
 <style>
-    /* PageLayout.css or layouts.css */
-    /* layouts.css */
     .page {
         width: 100%;
         max-width: 1440px;
-
         padding-inline: clamp(var(--space-16), 5vw, var(--space-64));
+        margin-inline: auto;
+    }
+    .page.full-viewport {
+        height: 100%;
+        padding-inline: 0;
+        display: flex;
+        flex-direction: column;
     }
 </style>

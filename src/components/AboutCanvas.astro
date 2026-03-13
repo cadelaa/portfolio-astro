@@ -1,0 +1,665 @@
+---
+// src/components/AboutCanvas.astro
+
+import "../styles/typography.css";
+import "../styles/colors.css";
+
+interface TagData {
+    id: string;
+    label: string;
+    icon: string;
+    description: string;
+    cardSize?: { w: number; h: number };
+    cards: { title: string; tilt: number; image?: string }[];
+}
+
+interface Props {
+    tags: TagData[];
+}
+
+const { tags } = Astro.props;
+
+const TAG_RX = 500;
+const TAG_RY = 275;
+const pillPositions = tags.map((tag, i) => {
+    const angle = (i / tags.length) * 2 * Math.PI - Math.PI / 2;
+    return {
+        tag,
+        x: TAG_RX * Math.cos(angle),
+        y: TAG_RY * Math.sin(angle),
+    };
+});
+---
+
+<div id="about-stage">
+    <canvas id="card-canvas"></canvas>
+
+    <div id="overlay">
+        <!-- Mobile: pill grid sits above the canvas -->
+        <div id="pill-grid">
+            {
+                tags.map((tag, i) => (
+                    <div
+                        class:list={["pill-wrap", { active: i === 0 }]}
+                        id={`tag-${tag.id}`}
+                        data-tag-id={tag.id}
+                    >
+                        <button class="pill Tag">
+                            {tag.icon && (
+                                <span class="material-symbols-outlined">
+                                    {tag.icon}
+                                </span>
+                            )}
+                            {tag.label}
+                        </button>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div id="center-box">
+            <span id="center-text" class="H1">{tags[0].description}</span>
+        </div>
+
+        <!-- Desktop: oval arena -->
+        <div id="arena">
+            {
+                pillPositions.map(({ tag, x, y }, i) => (
+                    <div
+                        class:list={[
+                            "pill-wrap",
+                            "oval-pill",
+                            { active: i === 0 },
+                        ]}
+                        id={`oval-tag-${tag.id}`}
+                        data-tag-id={tag.id}
+                        style={`transform: translate(calc(${x}px - 50%), calc(${y}px - 50%))`}
+                    >
+                        <button class="pill Tag">
+                            {tag.icon && (
+                                <span class="material-symbols-outlined">
+                                    {tag.icon}
+                                </span>
+                            )}
+                            {tag.label}
+                        </button>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</div>
+
+<script
+    type="application/json"
+    id="about-data"
+    set:html={JSON.stringify(tags)}
+/>
+
+<style>
+    #about-stage {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #card-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    #overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 10;
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* ── Desktop: oval arena ── */
+    #arena {
+        position: relative;
+        width: 720px;
+        height: 420px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .oval-pill {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        pointer-events: all;
+        cursor: pointer;
+    }
+
+    /* ── Mobile pill grid — hidden on desktop ── */
+    #pill-grid {
+        display: none;
+    }
+
+    /* ── Shared pill styles ── */
+    .pill-wrap {
+        pointer-events: all;
+        cursor: pointer;
+    }
+
+    .pill {
+        background: var(--bg-default);
+        color: var(--text-primary);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-4);
+        padding: var(--space-2) var(--space-4);
+        cursor: pointer;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+    }
+
+    .pill:hover {
+        background: var(--bg-default-hover);
+    }
+
+    .pill-wrap.active .pill {
+        background: var(--accent-primary);
+        color: var(--text-alt);
+        border-color: var(--accent-primary);
+    }
+
+    .pill-wrap.active .material-symbols-outlined {
+        font-variation-settings:
+            "FILL" 1,
+            "wght" 300,
+            "GRAD" 0,
+            "opsz" 20;
+    }
+
+    .material-symbols-outlined {
+        font-size: 1.25rem;
+    }
+
+    #center-box {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: #111;
+        color: #fff;
+        padding: 13px 28px;
+        border-radius: 7px;
+        white-space: nowrap;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    /* ── Tablet ── */
+    @media (max-width: 1024px) {
+        #arena {
+            width: 560px;
+            height: 340px;
+        }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 767px) {
+        #overlay {
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            padding: 12px;
+            gap: 12px;
+        }
+
+        /* Show pill grid, hide oval arena */
+        #pill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            pointer-events: all;
+            z-index: 11;
+            flex-shrink: 0;
+        }
+
+        #arena {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            /* ... existing rules ... */
+
+            #center-box {
+                display: block;
+                position: static;
+                transform: none;
+                white-space: normal;
+                text-align: center;
+                padding: 8px 16px;
+                border-radius: 7px;
+            }
+
+            #center-text {
+                font-size: 1.6rem; /* matches your H5 */
+                font-weight: 600;
+            }
+        }
+    }
+</style>
+
+<script>
+    interface CardData {
+        title: string;
+        tilt: number;
+        image?: string;
+    }
+    interface TagData {
+        id: string;
+        label: string;
+        icon: string;
+        description: string;
+        cardSize?: { w: number; h: number };
+        cards: CardData[];
+    }
+
+    interface LiveCard {
+        x: number;
+        y: number;
+        targetY: number;
+        tilt: number;
+        title: string;
+        image?: string;
+        alpha: number;
+        targetAlpha: number;
+        hovered: boolean;
+        entering: boolean;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Breakpoints
+    // ---------------------------------------------------------------------------
+    const BP_TABLET = 1024;
+    const BP_MOBILE = 767;
+
+    // ---------------------------------------------------------------------------
+    // Default (desktop) constants
+    // ---------------------------------------------------------------------------
+    const CARD_W_DEFAULT = 280;
+    const CARD_H_DEFAULT = 360;
+    const CARD_RX_DEFAULT = 500;
+    const CARD_RY_DEFAULT = 350;
+
+    const RADIUS = 8;
+    const ENTER_DY = 70;
+
+    // ---------------------------------------------------------------------------
+    // Responsive card sizing
+    // ---------------------------------------------------------------------------
+    function getResponsiveDefaults() {
+        const w = window.innerWidth;
+        if (w <= BP_MOBILE) {
+            return { cardW: 140, cardH: 180, cardRx: 120, cardRy: 80 };
+        } else if (w <= BP_TABLET) {
+            return { cardW: 200, cardH: 260, cardRx: 320, cardRy: 220 };
+        }
+        return {
+            cardW: CARD_W_DEFAULT,
+            cardH: CARD_H_DEFAULT,
+            cardRx: CARD_RX_DEFAULT,
+            cardRy: CARD_RY_DEFAULT,
+        };
+    }
+
+    let {
+        cardW: activeCardW,
+        cardH: activeCardH,
+        cardRx: CARD_RX,
+        cardRy: CARD_RY,
+    } = getResponsiveDefaults();
+
+    // ---------------------------------------------------------------------------
+    // Bootstrap
+    // ---------------------------------------------------------------------------
+    const rawData = document.getElementById("about-data")!.textContent!;
+    const TAGS: TagData[] = JSON.parse(rawData);
+
+    const canvas = document.getElementById("card-canvas") as HTMLCanvasElement;
+    const ctx = canvas.getContext("2d")!;
+    const centerText = document.getElementById("center-text")!;
+
+    let activeTagId = TAGS[0].id;
+    let cards: LiveCard[] = [];
+    let dragIdx = -1;
+    let dragOffX = 0;
+    let dragOffY = 0;
+    let checkerPat: CanvasPattern | null = null;
+
+    // ---------------------------------------------------------------------------
+    // Checker pattern
+    // ---------------------------------------------------------------------------
+    function makeChecker(): CanvasPattern {
+        const pat = document.createElement("canvas");
+        pat.width = 20;
+        pat.height = 20;
+        const p = pat.getContext("2d")!;
+        p.fillStyle = "#e4e4e4";
+        p.fillRect(0, 0, 20, 20);
+        p.fillStyle = "#c8c8c8";
+        p.fillRect(0, 0, 10, 10);
+        p.fillStyle = "#c8c8c8";
+        p.fillRect(10, 10, 10, 10);
+        return ctx.createPattern(pat, "repeat")!;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Resize
+    // ---------------------------------------------------------------------------
+    function resize() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        checkerPat = makeChecker();
+
+        // Update responsive values on resize
+        const defaults = getResponsiveDefaults();
+        CARD_RX = defaults.cardRx;
+        CARD_RY = defaults.cardRy;
+
+        // Only update card size if no tag override
+        const activeTag = TAGS.find((t) => t.id === activeTagId);
+        activeCardW = activeTag?.cardSize?.w ?? defaults.cardW;
+        activeCardH = activeTag?.cardSize?.h ?? defaults.cardH;
+    }
+    window.addEventListener("resize", resize);
+
+    // ---------------------------------------------------------------------------
+    // Oval position
+    // ---------------------------------------------------------------------------
+    function ovalPos(i: number, total: number, rx: number, ry: number) {
+        const angle = (i / total) * 2 * Math.PI - Math.PI / 2;
+        return {
+            x: canvas.width / 2 + rx * Math.cos(angle),
+            y: canvas.height / 2 + ry * Math.sin(angle),
+        };
+    }
+
+    // ---------------------------------------------------------------------------
+    // Drawing
+    // ---------------------------------------------------------------------------
+    function roundedRect(
+        x: number,
+        y: number,
+        w: number,
+        h: number,
+        r: number,
+    ) {
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.lineTo(x + w - r, y);
+        ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+        ctx.lineTo(x + w, y + h - r);
+        ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+        ctx.lineTo(x + r, y + h);
+        ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+        ctx.lineTo(x, y + r);
+        ctx.quadraticCurveTo(x, y, x + r, y);
+        ctx.closePath();
+    }
+
+    function drawCard(card: LiveCard, onTop: boolean) {
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, Math.min(1, card.alpha));
+        ctx.translate(card.x, card.y);
+        ctx.rotate((card.tilt * Math.PI) / 180);
+
+        const x = -activeCardW / 2;
+        const y = -activeCardH / 2;
+
+        ctx.shadowColor = "rgba(0,0,0,0.18)";
+        ctx.shadowBlur = onTop ? 40 : 20;
+        ctx.shadowOffsetY = onTop ? 14 : 6;
+
+        roundedRect(x, y, activeCardW, activeCardH, RADIUS);
+        ctx.fillStyle = checkerPat ?? "#ddd";
+        ctx.fill();
+
+        ctx.shadowColor = "transparent";
+        ctx.shadowBlur = 0;
+        ctx.shadowOffsetY = 0;
+
+        roundedRect(x, y, activeCardW, activeCardH, RADIUS);
+        ctx.clip();
+
+        if (card.hovered || onTop) {
+            ctx.fillStyle = "rgba(0,0,0,0.50)";
+            ctx.fillRect(x, y, activeCardW, activeCardH);
+
+            const lines = card.title.split("\n");
+            ctx.fillStyle = "#fff";
+            ctx.font = "600 16px Inter, sans-serif";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            const lineH = 16;
+            const totalH = lines.length * lineH;
+            lines.forEach((line, li) => {
+                ctx.fillText(line, 0, -totalH / 2 + li * lineH + lineH / 2);
+            });
+        }
+
+        ctx.restore();
+    }
+
+    // ---------------------------------------------------------------------------
+    // Render loop
+    // ---------------------------------------------------------------------------
+    function render() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        cards.forEach((card) => {
+            card.alpha += (card.targetAlpha - card.alpha) * 0.1;
+            if (card.entering) {
+                card.y += (card.targetY - card.y) * 0.1;
+                if (Math.abs(card.y - card.targetY) < 0.5) {
+                    card.y = card.targetY;
+                    card.entering = false;
+                }
+            }
+        });
+
+        cards.forEach((card, i) => {
+            if (i !== dragIdx) drawCard(card, false);
+        });
+        if (dragIdx >= 0) drawCard(cards[dragIdx], true);
+
+        requestAnimationFrame(render);
+    }
+
+    // ---------------------------------------------------------------------------
+    // Hit testing
+    // ---------------------------------------------------------------------------
+    function hitTest(mx: number, my: number): number {
+        for (let i = cards.length - 1; i >= 0; i--) {
+            const c = cards[i];
+            const dx = mx - c.x;
+            const dy = my - c.y;
+            const rad = -(c.tilt * Math.PI) / 180;
+            const lx = dx * Math.cos(rad) - dy * Math.sin(rad);
+            const ly = dx * Math.sin(rad) + dy * Math.cos(rad);
+            if (
+                lx >= -activeCardW / 2 &&
+                lx <= activeCardW / 2 &&
+                ly >= -activeCardH / 2 &&
+                ly <= activeCardH / 2
+            )
+                return i;
+        }
+        return -1;
+    }
+
+    function getXY(e: MouseEvent | TouchEvent) {
+        const r = canvas.getBoundingClientRect();
+        const s = "touches" in e ? e.touches[0] : e;
+        return { x: s.clientX - r.left, y: s.clientY - r.top };
+    }
+
+    // ---------------------------------------------------------------------------
+    // Mouse / touch events
+    // ---------------------------------------------------------------------------
+    canvas.addEventListener("mousedown", (e) => {
+        const { x, y } = getXY(e);
+        const idx = hitTest(x, y);
+        if (idx < 0) return;
+        dragIdx = idx;
+        dragOffX = x - cards[idx].x;
+        dragOffY = y - cards[idx].y;
+        canvas.style.cursor = "grabbing";
+        canvas.style.zIndex = "20";
+    });
+
+    canvas.addEventListener("mousemove", (e) => {
+        const { x, y } = getXY(e);
+        if (dragIdx >= 0) {
+            cards[dragIdx].x = x - dragOffX;
+            cards[dragIdx].y = y - dragOffY;
+        } else {
+            const idx = hitTest(x, y);
+            cards.forEach((c, i) => (c.hovered = i === idx));
+            canvas.style.cursor = idx >= 0 ? "grab" : "default";
+        }
+    });
+
+    canvas.addEventListener("mouseup", () => {
+        dragIdx = -1;
+        canvas.style.cursor = "default";
+        canvas.style.zIndex = "1";
+    });
+
+    canvas.addEventListener("mouseleave", () => {
+        dragIdx = -1;
+        cards.forEach((c) => (c.hovered = false));
+        canvas.style.cursor = "default";
+        canvas.style.zIndex = "1";
+    });
+
+    canvas.addEventListener(
+        "touchstart",
+        (e) => {
+            e.preventDefault();
+            const { x, y } = getXY(e);
+            const idx = hitTest(x, y);
+            if (idx < 0) return;
+            dragIdx = idx;
+            dragOffX = x - cards[idx].x;
+            dragOffY = y - cards[idx].y;
+            canvas.style.zIndex = "20";
+        },
+        { passive: false },
+    );
+
+    canvas.addEventListener(
+        "touchmove",
+        (e) => {
+            e.preventDefault();
+            if (dragIdx < 0) return;
+            const { x, y } = getXY(e);
+            cards[dragIdx].x = x - dragOffX;
+            cards[dragIdx].y = y - dragOffY;
+        },
+        { passive: false },
+    );
+
+    canvas.addEventListener("touchend", () => {
+        dragIdx = -1;
+        canvas.style.zIndex = "1";
+    });
+
+    // ---------------------------------------------------------------------------
+    // Build cards
+    // ---------------------------------------------------------------------------
+    function buildCards(tagId: string) {
+        const tag = TAGS.find((t) => t.id === tagId)!;
+
+        // Apply tag-specific card size or fall back to responsive defaults
+        const defaults = getResponsiveDefaults();
+        activeCardW = tag.cardSize?.w ?? defaults.cardW;
+        activeCardH = tag.cardSize?.h ?? defaults.cardH;
+
+        cards.forEach((c) => {
+            if (!tag.cards.find((nc) => nc.title === c.title))
+                c.targetAlpha = 0;
+        });
+
+        const incoming: LiveCard[] = tag.cards
+            .map((cd, i) => {
+                const pos = ovalPos(i, tag.cards.length, CARD_RX, CARD_RY);
+                const existing = cards.find((c) => c.title === cd.title);
+                if (existing) {
+                    existing.targetAlpha = 1;
+                    return null;
+                }
+                const card: LiveCard = {
+                    x: pos.x,
+                    y: pos.y + ENTER_DY,
+                    targetY: pos.y,
+                    tilt: cd.tilt,
+                    title: cd.title,
+                    alpha: 0,
+                    targetAlpha: 1,
+                    hovered: false,
+                    entering: true,
+                };
+                if (cd.image) card.image = cd.image;
+                return card;
+            })
+            .filter((c): c is NonNullable<typeof c> => c !== null);
+
+        setTimeout(() => {
+            cards = cards.filter((c) => c.targetAlpha > 0);
+            cards.push(...incoming);
+        }, 280);
+    }
+
+    // ---------------------------------------------------------------------------
+    // Wire up pill clicks — both mobile grid and desktop oval
+    // ---------------------------------------------------------------------------
+    function setActiveTag(tagId: string) {
+        if (tagId === activeTagId) return;
+
+        // Desktop oval pills
+        document
+            .getElementById(`oval-tag-${activeTagId}`)
+            ?.classList.remove("active");
+        document.getElementById(`oval-tag-${tagId}`)?.classList.add("active");
+
+        // Mobile grid pills
+        document
+            .getElementById(`tag-${activeTagId}`)
+            ?.classList.remove("active");
+        document.getElementById(`tag-${tagId}`)?.classList.add("active");
+
+        const tag = TAGS.find((t) => t.id === tagId)!;
+        centerText.textContent = tag.description;
+        activeTagId = tagId;
+        buildCards(tagId);
+    }
+
+    document.querySelectorAll<HTMLElement>(".pill-wrap").forEach((el) => {
+        el.addEventListener("click", () => {
+            setActiveTag(el.dataset.tagId!);
+        });
+    });
+
+    // ---------------------------------------------------------------------------
+    // Init
+    // ---------------------------------------------------------------------------
+    resize();
+    buildCards(activeTagId);
+    render();
+</script>
