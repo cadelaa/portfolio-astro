@@ -202,6 +202,7 @@ Work in progress
 - Icons fill on hover, unless overrided
 - Added fullViewport prop to PageLayout & BaseLayout
 - Fixed .disabled styles not applying to Medium & Small card components
+- Updated image structure, to better sort and reflect main navigation
 
 ## About Page changes/additions
 - Built out the About page with an interactive canvas — draggable image cards arranged on an inner oval, 
@@ -210,6 +211,9 @@ Work in progress
 - Fully responsive — oval layout on desktop/tablet, grid of pills with canvas below on mobile
 - Tag and card data lives in `src/data/about.ts` — add new categories or cards without touching component code
 - Placeholder text and image/s
+- Added new prop, stats, mainly for games, but all other types can use it
+- Utilizing correct content and images for Games section, so far
+- Added border to image cards
 
 ---
 

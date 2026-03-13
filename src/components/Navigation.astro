@@ -191,7 +191,8 @@ const { hasLogo, hasBackLink, backLink } = Astro.props;
         const next = current === "dark" ? "light" : "dark";
         document.documentElement.setAttribute("data-theme", next);
         localStorage.setItem("theme", next);
-        updateIcon(); // ← add this
+        updateIcon();
+        document.documentElement.dispatchEvent(new Event("themechange"));
         setTimeout(() => {
             document.documentElement.classList.remove("theme-transitioning");
         }, 300);

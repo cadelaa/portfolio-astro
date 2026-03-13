@@ -10,7 +10,7 @@ interface TagData {
     icon: string;
     description: string;
     cardSize?: { w: number; h: number };
-    cards: { title: string; tilt: number; image?: string }[];
+    cards: { title: string; tilt: number; image?: string; stats?: string[] }[];
 }
 
 interface Props {
@@ -99,7 +99,8 @@ const pillPositions = tags.map((tag, i) => {
 <style>
     #about-stage {
         position: relative;
-        width: 100%;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
         height: 100%;
         display: flex;
         align-items: center;
@@ -193,11 +194,12 @@ const pillPositions = tags.map((tag, i) => {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        background: #111;
-        color: #fff;
+        background: var(--accent-primary);
+        color: var(--text-alt);
         padding: 13px 28px;
         border-radius: 7px;
-        white-space: nowrap;
+        max-width: 35%;
+        text-align: center;
         pointer-events: none;
         user-select: none;
     }
@@ -238,13 +240,10 @@ const pillPositions = tags.map((tag, i) => {
             /* ... existing rules ... */
 
             #center-box {
-                display: block;
                 position: static;
                 transform: none;
-                white-space: normal;
-                text-align: center;
-                padding: 8px 16px;
-                border-radius: 7px;
+                width: 100%;
+                box-sizing: border-box;
             }
 
             #center-text {
@@ -256,18 +255,12 @@ const pillPositions = tags.map((tag, i) => {
 </style>
 
 <script>
+    // AboutCanvas.astro script block
     interface CardData {
         title: string;
         tilt: number;
         image?: string;
-    }
-    interface TagData {
-        id: string;
-        label: string;
-        icon: string;
-        description: string;
-        cardSize?: { w: number; h: number };
-        cards: CardData[];
+        stats?: string[];
     }
 
     interface LiveCard {
@@ -277,10 +270,22 @@ const pillPositions = tags.map((tag, i) => {
         tilt: number;
         title: string;
         image?: string;
+        stats?: string[];
         alpha: number;
         targetAlpha: number;
         hovered: boolean;
         entering: boolean;
+        scale: number;
+        targetScale: number;
+    }
+
+    interface TagData {
+        id: string;
+        label: string;
+        icon: string;
+        description: string;
+        cardSize?: { w: number; h: number };
+        cards: CardData[];
     }
 
     // ---------------------------------------------------------------------------
@@ -334,13 +339,22 @@ const pillPositions = tags.map((tag, i) => {
     const canvas = document.getElementById("card-canvas") as HTMLCanvasElement;
     const ctx = canvas.getContext("2d")!;
     const centerText = document.getElementById("center-text")!;
-
     let activeTagId = TAGS[0].id;
     let cards: LiveCard[] = [];
     let dragIdx = -1;
     let dragOffX = 0;
     let dragOffY = 0;
     let checkerPat: CanvasPattern | null = null;
+
+    let borderHover = getComputedStyle(document.documentElement)
+        .getPropertyValue("--border-hover")
+        .trim();
+
+    document.documentElement.addEventListener("themechange", () => {
+        borderHover = getComputedStyle(document.documentElement)
+            .getPropertyValue("--border-hover")
+            .trim();
+    });
 
     // ---------------------------------------------------------------------------
     // Checker pattern
@@ -357,6 +371,20 @@ const pillPositions = tags.map((tag, i) => {
         p.fillStyle = "#c8c8c8";
         p.fillRect(10, 10, 10, 10);
         return ctx.createPattern(pat, "repeat")!;
+    }
+
+    const imageCache = new Map<
+        string,
+        HTMLImageElement | "loading" | "error"
+    >();
+
+    function loadImage(src: string): void {
+        if (imageCache.has(src)) return;
+        imageCache.set(src, "loading");
+        const img = new Image();
+        img.onload = () => imageCache.set(src, img);
+        img.onerror = () => imageCache.set(src, "error");
+        img.src = src;
     }
 
     // ---------------------------------------------------------------------------
@@ -413,11 +441,29 @@ const pillPositions = tags.map((tag, i) => {
         ctx.closePath();
     }
 
+    function wrapText(text: string, maxWidth: number): string[] {
+        const words = text.split(" ");
+        const lines: string[] = [];
+        let current = "";
+        words.forEach((word) => {
+            const test = current ? `${current} ${word}` : word;
+            if (ctx.measureText(test).width > maxWidth) {
+                if (current) lines.push(current);
+                current = word;
+            } else {
+                current = test;
+            }
+        });
+        if (current) lines.push(current);
+        return lines;
+    }
+
     function drawCard(card: LiveCard, onTop: boolean) {
         ctx.save();
         ctx.globalAlpha = Math.max(0, Math.min(1, card.alpha));
         ctx.translate(card.x, card.y);
         ctx.rotate((card.tilt * Math.PI) / 180);
+        ctx.scale(card.scale, card.scale);
 
         const x = -activeCardW / 2;
         const y = -activeCardH / 2;
@@ -427,7 +473,7 @@ const pillPositions = tags.map((tag, i) => {
         ctx.shadowOffsetY = onTop ? 14 : 6;
 
         roundedRect(x, y, activeCardW, activeCardH, RADIUS);
-        ctx.fillStyle = checkerPat ?? "#ddd";
+        ctx.fillStyle = "#e0e0e0";
         ctx.fill();
 
         ctx.shadowColor = "transparent";
@@ -437,20 +483,81 @@ const pillPositions = tags.map((tag, i) => {
         roundedRect(x, y, activeCardW, activeCardH, RADIUS);
         ctx.clip();
 
+        const cached = card.image ? imageCache.get(card.image) : undefined;
+
+        if (!card.image) {
+            ctx.fillStyle = checkerPat ?? "#ddd";
+            ctx.fillRect(x, y, activeCardW, activeCardH);
+        } else if (cached === "loading" || cached === undefined) {
+            const shimmer = ctx.createLinearGradient(x, y, x + activeCardW, y);
+            shimmer.addColorStop(0, "#e0e0e0");
+            shimmer.addColorStop(0.5, "#f0f0f0");
+            shimmer.addColorStop(1, "#e0e0e0");
+            ctx.fillStyle = shimmer;
+            ctx.fillRect(x, y, activeCardW, activeCardH);
+        } else if (cached === "error") {
+            ctx.fillStyle = checkerPat ?? "#ddd";
+            ctx.fillRect(x, y, activeCardW, activeCardH);
+        } else {
+            const img = cached;
+            const cardAspect = activeCardW / activeCardH;
+            const imgAspect = img.naturalWidth / img.naturalHeight;
+            let sx = 0,
+                sy = 0,
+                sw = img.naturalWidth,
+                sh = img.naturalHeight;
+            if (imgAspect > cardAspect) {
+                sw = img.naturalHeight * cardAspect;
+                sx = (img.naturalWidth - sw) / 2;
+            } else {
+                sh = img.naturalWidth / cardAspect;
+                sy = (img.naturalHeight - sh) / 2;
+            }
+            ctx.drawImage(img, sx, sy, sw, sh, x, y, activeCardW, activeCardH);
+            roundedRect(x, y, activeCardW, activeCardH, RADIUS);
+            ctx.strokeStyle = borderHover;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
         if (card.hovered || onTop) {
-            ctx.fillStyle = "rgba(0,0,0,0.50)";
+            ctx.fillStyle = "rgba(0,0,0,0.55)";
             ctx.fillRect(x, y, activeCardW, activeCardH);
 
-            const lines = card.title.split("\n");
+            const padding = 16;
+            let currentY = y + padding;
+
             ctx.fillStyle = "#fff";
-            ctx.font = "600 16px Inter, sans-serif";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            const lineH = 16;
-            const totalH = lines.length * lineH;
-            lines.forEach((line, li) => {
-                ctx.fillText(line, 0, -totalH / 2 + li * lineH + lineH / 2);
+            ctx.font = "600 18px Inter, sans-serif";
+            ctx.textAlign = "left";
+            ctx.textBaseline = "top";
+            const titleLines = card.title.split("\n");
+            titleLines.forEach((line) => {
+                ctx.fillText(line, x + padding, currentY);
+                currentY += 22;
             });
+
+            if (card.stats?.length) {
+                currentY += 8;
+                ctx.strokeStyle = "rgba(255,255,255,0.3)";
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(x + padding, currentY);
+                ctx.lineTo(x + activeCardW - padding, currentY);
+                ctx.stroke();
+                currentY += 12;
+
+                ctx.font = "400 13px Inter, sans-serif";
+                card.stats.forEach((stat) => {
+                    ctx.fillStyle = "rgba(255,255,255,0.7)";
+                    ctx.textAlign = "left";
+                    const lines = wrapText(stat, activeCardW - padding * 2);
+                    lines.forEach((line) => {
+                        ctx.fillText(line, x + padding, currentY);
+                        currentY += 18;
+                    });
+                });
+            }
         }
 
         ctx.restore();
@@ -464,6 +571,7 @@ const pillPositions = tags.map((tag, i) => {
 
         cards.forEach((card) => {
             card.alpha += (card.targetAlpha - card.alpha) * 0.1;
+            card.scale += (card.targetScale - card.scale) * 0.15;
             if (card.entering) {
                 card.y += (card.targetY - card.y) * 0.1;
                 if (Math.abs(card.y - card.targetY) < 0.5) {
@@ -492,13 +600,9 @@ const pillPositions = tags.map((tag, i) => {
             const rad = -(c.tilt * Math.PI) / 180;
             const lx = dx * Math.cos(rad) - dy * Math.sin(rad);
             const ly = dx * Math.sin(rad) + dy * Math.cos(rad);
-            if (
-                lx >= -activeCardW / 2 &&
-                lx <= activeCardW / 2 &&
-                ly >= -activeCardH / 2 &&
-                ly <= activeCardH / 2
-            )
-                return i;
+            const hw = (activeCardW / 2) * c.scale;
+            const hh = (activeCardH / 2) * c.scale;
+            if (lx >= -hw && lx <= hw && ly >= -hh && ly <= hh) return i;
         }
         return -1;
     }
@@ -521,6 +625,7 @@ const pillPositions = tags.map((tag, i) => {
         dragOffY = y - cards[idx].y;
         canvas.style.cursor = "grabbing";
         canvas.style.zIndex = "20";
+        cards[idx].targetScale = 1.2;
     });
 
     canvas.addEventListener("mousemove", (e) => {
@@ -536,14 +641,15 @@ const pillPositions = tags.map((tag, i) => {
     });
 
     canvas.addEventListener("mouseup", () => {
+        if (dragIdx >= 0) cards[dragIdx].targetScale = 1;
         dragIdx = -1;
         canvas.style.cursor = "default";
         canvas.style.zIndex = "1";
     });
 
     canvas.addEventListener("mouseleave", () => {
+        if (dragIdx >= 0) cards[dragIdx].targetScale = 1;
         dragIdx = -1;
-        cards.forEach((c) => (c.hovered = false));
         canvas.style.cursor = "default";
         canvas.style.zIndex = "1";
     });
@@ -554,10 +660,11 @@ const pillPositions = tags.map((tag, i) => {
             e.preventDefault();
             const { x, y } = getXY(e);
             const idx = hitTest(x, y);
-            if (idx < 0) return;
+            if (idx < 0) return; // ← check first
             dragIdx = idx;
             dragOffX = x - cards[idx].x;
             dragOffY = y - cards[idx].y;
+            cards[idx].targetScale = 1.2; // ← then set scale
             canvas.style.zIndex = "20";
         },
         { passive: false },
@@ -576,7 +683,9 @@ const pillPositions = tags.map((tag, i) => {
     );
 
     canvas.addEventListener("touchend", () => {
+        if (dragIdx >= 0) cards[dragIdx].targetScale = 1;
         dragIdx = -1;
+        canvas.style.cursor = "default";
         canvas.style.zIndex = "1";
     });
 
@@ -594,6 +703,10 @@ const pillPositions = tags.map((tag, i) => {
         cards.forEach((c) => {
             if (!tag.cards.find((nc) => nc.title === c.title))
                 c.targetAlpha = 0;
+        });
+
+        tag.cards.forEach((cd) => {
+            if (cd.image) loadImage(cd.image);
         });
 
         const incoming: LiveCard[] = tag.cards
@@ -614,8 +727,11 @@ const pillPositions = tags.map((tag, i) => {
                     targetAlpha: 1,
                     hovered: false,
                     entering: true,
+                    scale: 1,
+                    targetScale: 1,
                 };
                 if (cd.image) card.image = cd.image;
+                if (cd.stats) card.stats = cd.stats;
                 return card;
             })
             .filter((c): c is NonNullable<typeof c> => c !== null);
