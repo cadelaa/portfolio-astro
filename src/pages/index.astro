@@ -53,6 +53,8 @@ import "../styles/colors.css";
 				---
 				cardBackgroundHover="var(--bg-orange)"
 				tagBackgroundHover="var(--bg-orange-hover)"
+				---
+				disabled={false}
 			/>
 
 			<MediumCard
@@ -79,6 +81,8 @@ import "../styles/colors.css";
 				---
 				cardBackgroundHover="var(--bg-council-blue)"
 				tagBackgroundHover="var(--bg-council-blue-hover)"
+				---
+				disabled={false}
 			/>
 
 			<MediumCard
@@ -105,6 +109,8 @@ import "../styles/colors.css";
 				---
 				cardBackgroundHover="var(--bg-blue)"
 				tagBackgroundHover="var(--bg-blue-hover)"
+				---
+				disabled={false}
 			/>
 
 			<MediumCard
@@ -131,35 +137,44 @@ import "../styles/colors.css";
 				---
 				cardBackgroundHover="var(--bg-indigo)"
 				tagBackgroundHover="var(--bg-indigo-hover)"
+				---
+				disabled={false}
 			/>
 
 			<SmallCard
 				link="/fun/"
 				icon="celebration"
 				title="Fun"
-				tags={["Recently Added"]}
+				tags={[]}
 				description="Stuff I enjoy working on that isn't related to being a product designer / front-end developer."
+				disabled={false}
 			/>
 
 			<SmallCard
 				link="../projects/currently-working-on/"
 				icon="devices"
 				title="Currently Working on"
+				tags={[]}
 				description="A timeline of all my projects I am working on, have worked on, and if they are still in progress, cancelled or paused."
+				disabled={true}
 			/>
 
 			<SmallCard
 				link="../projects/ideas/"
 				icon="lightbulb"
 				title="Ideas"
+				tags={[]}
 				description="Smaller UI/UX redesigns, experiments, motion etc. Basically my playground of random stuff."
+				disabled={false}
 			/>
 
 			<SmallCard
 				link="../projects/archived/"
 				icon="inventory_2"
 				title="Archived Projects"
+				tags={[]}
 				description="Older projects that no longer best represent my skills & just older versions of current projects in my portfolio."
+				disabled={false}
 			/>
 		</ProjectGrid>
 		<Footer />

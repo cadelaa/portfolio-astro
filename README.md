@@ -201,6 +201,7 @@ Work in progress
 - Updated how the site uses Material Icons, universal styling in typography.css with options to override in components
 - Icons fill on hover, unless overrided
 - Added fullViewport prop to PageLayout & BaseLayout
+- Fixed .disabled styles not applying to Medium & Small card components
 
 ## About changes/additions
 - Built out the About page with an interactive canvas — draggable image cards arranged on an inner oval, 

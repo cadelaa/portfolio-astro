@@ -24,8 +24,12 @@ const {
 } = Astro.props;
 ---
 
-<a href={link} style="text-decoration: none; color: inherit;">
-    <div class="medium-card" class:list={{ disabled }}>
+<a
+    href={disabled ? undefined : link}
+    style="text-decoration: none; color: inherit;"
+    class:list={["card-link", { disabled }]}
+>
+    <div class="small-card">
         <div class="head-content">
             <div class="title">
                 <span class="material-symbols-outlined icon-hover">{icon}</span>
@@ -51,7 +55,17 @@ const {
 </a>
 
 <style lang="scss">
-    .medium-card {
+    .card-link {
+        display: block;
+
+        &.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+            cursor: default;
+        }
+    }
+
+    .small-card {
         display: flex;
         flex-direction: column;
         gap: var(--space-8);
@@ -88,24 +102,9 @@ const {
             align-items: center;
         }
 
-        .image {
-            background: var(--bg-secondary);
-            width: 100%;
-            height: 400px;
-            border: 1px solid var(--border-subtle);
-            border-radius: 8px;
-            transform: translateY(var(--space-64));
-            transition: transform 0.3s ease;
-        }
-
         .image-group {
             display: flex;
             gap: var(--space-16);
-        }
-
-        &.disabled {
-            opacity: 0.5;
-            pointer-events: none;
         }
     }
 
@@ -114,85 +113,21 @@ const {
     }
 
     @media (min-width: 1120px) {
-        .medium-card {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-8);
+        .small-card {
             padding: var(--space-32);
-            overflow: hidden;
-            background: var(--bg-default);
-            color: var(--text-subtle);
-            border-radius: var(--radius-8);
-            border: 1px solid var(--border-subtle);
-
-            --tag-bg-default: var(--bg-secondary);
-            --tag-text: var(--text-subtle);
 
             transition:
                 color 0.3s ease,
                 background-color 0.3s ease,
                 border-color 0.3s ease;
 
-            .head-content {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                gap: var(--space-8);
-
-                .title {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    gap: var(--space-4);
-                }
-            }
-
-            .tag-group {
-                display: flex;
-                gap: var(--space-2);
-                flex-wrap: wrap;
-                align-items: center;
-            }
-
-            .image {
-                background: var(--bg-secondary);
-                width: 100%;
-                height: 400px;
-                border: 1px solid var(--border-subtle);
-                border-radius: 8px;
-                transform: translateY(var(--space-64));
-                transition: transform 0.3s ease;
-            }
-
             &:hover {
                 cursor: pointer;
-
                 background-color: var(--bg-default-hover);
                 border: 1px solid var(--border-hover);
                 color: var(--text-primary);
-
                 --tag-bg-default: var(--bg-secondary-hover);
-
-                .image {
-                    background-color: var(--bg-secondary-hover);
-                    border: 1px solid var(--border-hover);
-                    transform: translateY(0);
-                }
             }
-
-            .image-group {
-                display: flex;
-                gap: var(--space-16);
-            }
-
-            &.disabled {
-                opacity: 0.5;
-                pointer-events: none;
-            }
-        }
-
-        .card-title {
-            margin: 0;
         }
 
         .material-symbols-outlined {
