@@ -203,7 +203,7 @@ Work in progress
 - Added fullViewport prop to PageLayout & BaseLayout
 - Fixed .disabled styles not applying to Medium & Small card components
 
-## About changes/additions
+## About Page changes/additions
 - Built out the About page with an interactive canvas — draggable image cards arranged on an inner oval, 
   tag pills on an outer oval to filter by category, and an animated center label that updates on tag switch
 - Cards animate in from below on tag switch and fade out on leave
