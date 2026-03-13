@@ -197,3 +197,4 @@ Work in progress
 13/03/2026
 
 - Updated Resume link
+- Removed stats for now
