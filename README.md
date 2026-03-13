@@ -199,7 +199,7 @@ Work in progress
 - Updated Resume link
 - Removed stats for now
 - Updated how the site uses Material Icons, universal styling in typography.css with options to override in components
-- Icons not fill on hover, unless overrided
+- Icons fill on hover, unless overrided
 - Added fullViewport prop to PageLayout & BaseLayout
 
 ## About changes/additions
@@ -208,6 +208,7 @@ Work in progress
 - Cards animate in from below on tag switch and fade out on leave
 - Fully responsive — oval layout on desktop/tablet, grid of pills with canvas below on mobile
 - Tag and card data lives in `src/data/about.ts` — add new categories or cards without touching component code
+- Placeholder text and image/s
 
 ---
 
