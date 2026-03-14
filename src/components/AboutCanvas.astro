@@ -527,11 +527,14 @@ const pillPositions = tags.map((tag, i) => {
             const padding = 16;
             let currentY = y + padding;
 
+            // Title
             ctx.fillStyle = "#fff";
             ctx.font = "600 18px Inter, sans-serif";
             ctx.textAlign = "left";
             ctx.textBaseline = "top";
-            const titleLines = card.title.split("\n");
+            const titleLines = card.title
+                .split("\n")
+                .flatMap((line) => wrapText(line, activeCardW - padding * 2));
             titleLines.forEach((line) => {
                 ctx.fillText(line, x + padding, currentY);
                 currentY += 22;
@@ -569,6 +572,8 @@ const pillPositions = tags.map((tag, i) => {
     function render() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+        const hoveredIdx = cards.findIndex((c) => c.hovered);
+
         cards.forEach((card) => {
             card.alpha += (card.targetAlpha - card.alpha) * 0.1;
             card.scale += (card.targetScale - card.scale) * 0.15;
@@ -582,8 +587,10 @@ const pillPositions = tags.map((tag, i) => {
         });
 
         cards.forEach((card, i) => {
-            if (i !== dragIdx) drawCard(card, false);
+            if (i !== dragIdx && i !== hoveredIdx) drawCard(card, false);
         });
+        if (hoveredIdx >= 0 && hoveredIdx !== dragIdx)
+            drawCard(cards[hoveredIdx], true);
         if (dragIdx >= 0) drawCard(cards[dragIdx], true);
 
         requestAnimationFrame(render);

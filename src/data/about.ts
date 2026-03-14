@@ -22,6 +22,26 @@ export interface Tag {
 
 export const tags: Tag[] = [
     {
+        id: 'music',
+        icon: 'headphones',
+        label: 'Music',
+        description: 'I have listened to over 1.2 million minutes of music on Spotify alone',
+        cardSize: { w: 240, h: 240 },
+        cards: [
+            { title: "Eden - isohel", tilt: 7, image: "/images/about/music/isohel.jpg", stats: ['Favourite song', 'Aa'] },
+            { title: "The Stranglers - Golden Brown", tilt: -9, image: "/images/about/music/golden-brown.jpg", stats: ['Aa', 'Aa'] },
+            { title: "Françoise Hardy - Le temps de l'amour", tilt: 4, image: "/images/about/music/le-temps-de-l'amour.jpg", stats: ['Aa', 'Aa'] },
+            { title: "Tame Impala - Let it happen", tilt: -6, image: "/images/about/music/let-it-happen.jpg", stats: ['Aa', 'Aa'] },
+            { title: "Arctic Monkeys - No. 1 Party Anthem", tilt: 4, image: "/images/about/music/no1-party-anthem.jpg", stats: ['Aa', 'Aa'] },
+            { title: "Mr.Kitty - After Dark", tilt: -6, image: "/images/about/music/after-dark.jpg", stats: ['Aa', 'Aa'] },
+            { title: "Ghost - Mary On A Cross", tilt: -6, image: "/images/about/music/mary-on-a-cross.jpg", stats: ['Aa', 'Aa'] },
+            { title: "yung kai - blue", tilt: -6, image: "/images/about/music/blue.jpg", stats: ['Aa', 'Aa'] },
+            { title: "Iliona - Si tu m'aimes demain", tilt: 4, image: "/images/about/music/si-tu-m\'aimes-demain.jpg", stats: ['Aa', 'Aa'] },
+            { title: "VIDEOCLUB - Amour plastique", tilt: -6, image: "/images/about/music/amour-plastique.jpg", stats: ['Aa', 'Aa'] },
+            { title: "Molchat Doma - Судно (Борис Рыжий)", tilt: -6, image: "/images/about/music/Судно-(Борис-Рыжий).jpg", stats: ['Aa', 'Aa'] },
+        ],
+    },
+    {
         id: 'games',
         icon: 'stadia_controller',
         label: 'Games',
@@ -35,7 +55,7 @@ export const tags: Tag[] = [
                     '3 playthrough',
                     'Completed',
                 ],
-                image: '/images/about/kingdom-come-2.jpg',
+                image: '/images/about/games/kingdom-come-2.jpg',
             },
             {
                 title: 'Stardew Valley',
@@ -45,17 +65,17 @@ export const tags: Tag[] = [
                     '1 playthrough',
                     'Unfinished',
                 ],
-                image: '/images/about/stardew-valley.jpg',
+                image: '/images/about/games/stardew-valley.jpg',
             },
             {
                 title: 'Factorio',
                 tilt: -15,
                 stats: [
                     '98 hours',
-                    '5 playthrough',
+                    '5 playthroughs',
                     'Unfinished',
                 ],
-                image: '/images/about/factorio.jpg',
+                image: '/images/about/games/factorio.jpg',
             },
             {
                 title: 'Valheim',
@@ -65,12 +85,12 @@ export const tags: Tag[] = [
                     '1 playthrough',
                     'Unfinished',
                 ],
-                image: '/images/about/valheim.png',
+                image: '/images/about/games/valheim.png',
             },
             {
                 title: 'Red Dead\nRedemption 2',
                 tilt: -4,
-                image: '/images/about/red-dead-2.jpg',
+                image: '/images/about/games/red-dead-2.jpg',
                 stats: [
                     '60.8 hours',
                     '1 playthrough',
@@ -80,7 +100,7 @@ export const tags: Tag[] = [
             {
                 title: 'Elden Ring',
                 tilt: 5,
-                image: '/images/about/elden-ring.jpg',
+                image: '/images/about/games/elden-ring.jpg',
                 stats: [
                     '84.6 hours',
                     '1 playthrough',
@@ -90,7 +110,7 @@ export const tags: Tag[] = [
             {
                 title: 'Hollow Knight',
                 tilt: -9,
-                image: '/images/about/hollow-knight.jpg',
+                image: '/images/about/games/hollow-knight.jpg',
                 stats: [
                     '34.2 hours',
                     '1 playthrough',
@@ -100,7 +120,7 @@ export const tags: Tag[] = [
             {
                 title: 'Hollow Knight Silksong',
                 tilt: 9,
-                image: '/images/about/hollow-knight-silksong.jpg',
+                image: '/images/about/games/hollow-knight-silksong.jpg',
                 stats: [
                     '57.3 hours',
                     '1 playthrough',
@@ -110,38 +130,21 @@ export const tags: Tag[] = [
             {
                 title: 'Project Zomboid',
                 tilt: -3,
-                image: '/images/about/project-zomboid.jpg',
+                image: '/images/about/games/project-zomboid.jpg',
                 stats: [
                     '537.4 hours',
-                    '1 playthrough',
                     'This is how you died',
                 ]
             },
             {
                 title: 'Helldivers 2',
                 tilt: 6,
-                image: '/images/about/helldivers-2.jpg',
+                image: '/images/about/games/helldivers-2.jpg',
                 stats: [
                     '507.6 hours',
-                    '1 playthrough',
                     'Spreading managed democracy',
                 ]
             },
-        ],
-    },
-    {
-        id: 'music',
-        icon: 'headphones',
-        label: 'Music',
-        description: 'I have listened to over 1.2 million minutes of music on Spotify alone',
-        cardSize: { w: 240, h: 240 },
-        cards: [
-            { title: 'Burial', tilt: 7 },
-            { title: 'Boards of Canada', tilt: -9 },
-            { title: 'Four Tet', tilt: 4 },
-            { title: 'Grouper', tilt: -6 },
-            { title: 'Four Tet', tilt: 4 },
-            { title: 'Grouper', tilt: -6 },
         ],
     },
     {
@@ -150,9 +153,13 @@ export const tags: Tag[] = [
         label: 'Pixel Art',
         description: 'I spent about two weeks creating some pixel art everyday',
         cards: [
-            { title: 'Landscapes', tilt: -6 },
-            { title: 'Characters', tilt: 4 },
-            { title: 'Icons', tilt: -2 },
+            { title: 'Mitchell Zeller', tilt: -6, image: '/images/about/pixel-art/mitchell-zeller.png' },
+            { title: 'First Sword', tilt: 4, image: '/images/about/pixel-art/first-sword.png' },
+            { title: 'Zombie Guy', tilt: -2, image: '/images/about/pixel-art/zombie-guy.png' },
+            { title: 'Tree', tilt: 4, image: '/images/about/pixel-art/tree.png' },
+            { title: 'Second Sword', tilt: -2, image: '/images/about/pixel-art/second-sword.png' },
+            { title: 'food', tilt: -2, image: '/images/about/pixel-art/food.png' },
+            { title: 'Slime', tilt: -2, image: '/images/about/pixel-art/slime.png' },
         ],
     },
     {
@@ -162,6 +169,8 @@ export const tags: Tag[] = [
         description: 'In my free time, I like to make posters and album covers for fun.',
         cards: [
             { title: 'Posters', tilt: 5 },
+            { title: 'Branding', tilt: -7 },
+            { title: 'Typography', tilt: 3 },
             { title: 'Branding', tilt: -7 },
             { title: 'Typography', tilt: 3 },
         ],
@@ -174,7 +183,12 @@ export const tags: Tag[] = [
         cards: [
             { title: 'Urban', tilt: -8 },
             { title: 'Nature', tilt: 5 },
-            { title: 'Architecture', tilt: -3 },
+            { title: 'Architecture', tilt: -13 },
+            { title: 'Nature', tilt: 3 },
+            { title: 'Architecture', tilt: -7 },
+            { title: 'Architecture', tilt: 15 },
+            { title: 'Nature', tilt: -6 },
+            { title: 'Architecture', tilt: -9 },
         ],
     },
     // {
@@ -198,6 +212,12 @@ export const tags: Tag[] = [
             { title: 'Pizzzzzzzaaaa', tilt: -4, },
             { title: 'Burger', tilt: 7 },
             { title: 'Poached Eggs', tilt: -9 },
+            { title: 'Nature', tilt: 5 },
+            { title: 'Architecture', tilt: -3 },
+            { title: 'Nature', tilt: 5 },
+            { title: 'Architecture', tilt: -3 },
+            { title: 'Nature', tilt: 5 },
+            { title: 'Architecture', tilt: -3 },
         ],
     },
     // {
