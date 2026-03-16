@@ -15,6 +15,8 @@ export interface Props {
 }
 
 const { hasLogo, hasBackLink, backLink } = Astro.props;
+
+const currentPath = Astro.url.pathname;
 ---
 
 <nav class="nav-container">
@@ -45,9 +47,16 @@ const { hasLogo, hasBackLink, backLink } = Astro.props;
         }
     </div>
     <div class="nav-links">
-        <a href="/work/" class="H6 link-item">Work</a>
-        <a href="/about/" class="H6 link-item">About</a>
-        <a href="/fun/" class="H6 link-item">Fun</a>
+        <a
+            href="/about/"
+            class={`H6 link-item ${currentPath === "/about/" ? "active" : ""}`}
+            >About</a
+        >
+        <a
+            href="/fun/"
+            class={`H6 link-item ${currentPath === "/fun/" ? "active" : ""}`}
+            >Fun</a
+        >
         <a
             href="https://drive.google.com/file/d/15mY_T3Rp1-_Z5XYOSLWzO3FgcqKUoA4d/view?usp=sharing"
             target="_blank"
@@ -123,6 +132,11 @@ const { hasLogo, hasBackLink, backLink } = Astro.props;
             background-color: var(--bg-default);
             cursor: pointer;
             color: var(--text-primary);
+        }
+
+        &.active {
+            color: var(--text-primary);
+            background-color: var(--bg-default);
         }
     }
 

@@ -217,3 +217,10 @@ Work in progress
 
 ---
 
+16/03/2026
+
+- Added photography images,
+- Added some photography street photography images
+- Added active states for navigation
+
+---
