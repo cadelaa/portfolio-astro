@@ -1,0 +1,28 @@
+/* src/styles/global.css */
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    margin: 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-secondary);
+    border-radius: 999px;
+}
+
+* {
+    scrollbar-width: default;
+    scrollbar-color: var(--bg-secondary-hover) transparent;
+}

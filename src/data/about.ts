@@ -168,11 +168,11 @@ export const tags: Tag[] = [
         label: 'Graphic Design',
         description: 'In my free time, I like to make posters and album covers for fun.',
         cards: [
-            { title: 'Posters', tilt: 5 },
-            { title: 'Branding', tilt: -7 },
-            { title: 'Typography', tilt: 3 },
-            { title: 'Branding', tilt: -7 },
-            { title: 'Typography', tilt: 3 },
+            { title: 'Oscar Piastri Race Winner #1', tilt: 5, image: '/images/about/graphic-design/oscar-piastri.png' },
+            { title: 'Charles Leclerc Race Winner #1', tilt: -7, image: '/images/about/graphic-design/charles-leclerc.png' },
+            { title: 'Charles Leclerc Race Winner #2', tilt: 3, image: '/images/about/graphic-design/charles-leclerc-2.png' },
+            { title: 'Oscar Piastri Race Winner #2', tilt: -7, image: '/images/about/graphic-design/oscar-piastri-2.png' },
+            { title: 'Oscar Piastri Race Winner #3', tilt: 3, image: '/images/about/graphic-design/oscar-piastri-3.png' },
         ],
     },
     {
@@ -210,14 +210,38 @@ export const tags: Tag[] = [
         id: 'food',
         icon: 'fastfood',
         label: 'Fooood',
-        description: "These are some of my favourite foods.",
+        description: "The sustenance keeping me alive.",
         cards: [
-            { title: 'Pizzzzzzzaaaa', tilt: -4, },
-            { title: 'Burger', tilt: 7 },
-            { title: 'Poached Eggs', tilt: -9 },
-            { title: 'Teriyaki Beef Bowls', tilt: 5 },
-            { title: 'Cherry Smoothie', tilt: 14 },
-            { title: 'Foooood', tilt: -3 },
+            {
+                title: 'Burger',
+                tilt: 7,
+                image: '/images/about/food/burger.jpg',
+                stats: ['Brioche Bun', '2x Peppered Beef Patties', 'Lettuce', 'Bacon', '2x Slices of Cheese', 'Garlic Aioli']
+            },
+            {
+                title: 'Poached Eggs',
+                tilt: -9,
+                image: '/images/about/food/poached-eggs.jpg',
+                stats: ['Wholegrain toast', '4 Eggs', 'Spinach', 'Pepper', 'Bacon', 'Hollandaise Sauce']
+            },
+            {
+                title: 'Teriyaki Beef Bowls',
+                tilt: 5,
+                image: '/images/about/food/teriyaki-beef-bowls.jpg',
+                stats: ['Beef Mince', 'Teriyaki Sauce', 'Rice', 'Garlic', 'Sesame Seeds', 'Teriyaki Sauce', 'Grated Carrot / Zucchini']
+            },
+            {
+                title: 'Cherry Smoothie',
+                tilt: 14,
+                image: '/images/about/food/cherry-smoothie.jpg',
+                stats: ['Frozen Cherries', 'Milk', 'Honey', 'Greek Yogurt', 'Vanilla Protein Powder', 'Ice Cubes', 'Oats']
+            },
+            {
+                title: 'Pizzzzzzzaaaa',
+                tilt: -4,
+                image: '/images/about/food/pizza.jpg',
+                stats: ['Bread Dough Base', 'Mozzarella Cheese', 'Pepperoni', 'Beef Mince', 'Bacon', 'Spinach', 'BBQ Sauce', 'Garlic Aioli']
+            },
         ],
     },
     // {

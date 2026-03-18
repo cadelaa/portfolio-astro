@@ -48,14 +48,14 @@ const currentPath = Astro.url.pathname;
     </div>
     <div class="nav-links">
         <a
+            href="/"
+            class={`H6 link-item ${currentPath === "/" ? "active" : ""}`}
+            >Work</a
+        >
+        <a
             href="/about/"
             class={`H6 link-item ${currentPath === "/about/" ? "active" : ""}`}
             >About</a
-        >
-        <a
-            href="/fun/"
-            class={`H6 link-item ${currentPath === "/fun/" ? "active" : ""}`}
-            >Fun</a
         >
         <a
             href="https://drive.google.com/file/d/15mY_T3Rp1-_Z5XYOSLWzO3FgcqKUoA4d/view?usp=sharing"

@@ -217,10 +217,17 @@ Work in progress
 
 ---
 
-16/03/2026
+16/03/2026 v2.3
 
 - Added photography images,
 - Added some photography street photography images
 - Added active states for navigation
+
+---
+
+18/03/2026 v2.4
+
+- Updated about.ts content, just need images of certain foods
+- Added Work back to navigation with working active state
 
 ---
