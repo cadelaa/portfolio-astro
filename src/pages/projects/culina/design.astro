@@ -1,12 +1,21 @@
 ---
-import Button from "../../../components/Button.astro";
-import Navigation from "../../../components/Navigation.astro";
-import MediumCard from "../../../components/MediumCard.astro";
-import SmallCard from "../../../components/SmallCard.astro";
-import Footer from "../../../components/Footer.astro";
-import Tag from "../../../components/Tag.astro";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import PageLayout from "../../../layouts/PageLayout.astro";
+import {
+    Hero,
+    ProjectGrid,
+    MediumCard,
+    SmallCard,
+    Footer,
+    Navigation,
+    BaseLayout,
+    PageLayout,
+    Overview,
+    Default,
+    Showcase,
+    Button,
+    PageNav,
+    FeatureShowcase,
+} from "../../../components";
+
 import "../../../styles/typography.css";
 import "../../../styles/colors.css";
 
@@ -16,23 +25,13 @@ import "../../../styles/colors.css";
 
 <BaseLayout>
     <PageLayout>
-        <Navigation
-            hasLogo={false}
-            ---
-            hasBackLink={true}
-            backLabel="Back home"
-            backLink="/"
-        />
+        <Navigation hasLogo={false} hasBackLink={true} backLink="/" />
         <div>
-            <div style="padding: var(--space-64); display: flex;">
-                <h1 class="H1">
-                    Culina is a concept app aiming to provide young adults the
-                    tools to better organise meal plans, save recipes in a
-                    personal journal, and manage grocery lists.
-                </h1>
-            </div>
+            <Hero
+                title="Culina is a concept app aiming to provide young adults the tools to better organise meal plans, save recipes in a personal journal, and manage grocery lists."
+            />
             <div
-                style="padding: var(--space-16) var(--space-64); display: flex; gap: var(--space-8);"
+                style="padding: var(--space-16) 0; display: flex; gap: var(--space-8);"
             >
                 <Button type="primary" label="Design" link="" />
                 <Button
@@ -41,8 +40,60 @@ import "../../../styles/colors.css";
                     link="../development/"
                     disabled={true}
                 />
-                <div></div>
             </div>
+
+            <PageNav
+                links={[
+                    { label: "Overview", href: "#overview" },
+                    { label: "Problem", href: "#problem" },
+                    { label: "Solution", href: "#solution" },
+                    { label: "Wireframing", href: "#wireframing" },
+                    { label: "Final Design", href: "#final-design" },
+                    { label: "Outcome", href: "#outcome" },
+                ]}
+            />
+
+            <div class="hero-container" style="padding: var(--space-16) 0;">
+                <div
+                    class="hero-image"
+                    style="padding: var(--space-64); display: flex; gap: var(--space-8); background: var(--bg-default); height: 700px; border: 1px solid var(--border-subtle); border-radius: var(--radius-8);"
+                >
+                    <span>Main/hero image here</span>
+                </div>
+            </div>
+
+            <Overview
+                ID="overview"
+                sectionLabel="Overview"
+                title="Designing my Portfolio"
+                description="Aa"
+                role="Product Designer"
+                timeframe="2-4 weeks"
+                team="Me"
+                tools={["Figma"]}
+            />
+
+            <FeatureShowcase
+                sectionLabel="Recipe Journal"
+                tagLabel="Core Feature"
+                gifs={[
+                    {
+                        src: "culina/create-meal.gif",
+                        variant: "mobile",
+                        title: "Create a Meal",
+                    },
+                    {
+                        src: "culina/add-block.gif",
+                        variant: "mobile",
+                        title: "Add a Block",
+                    },
+                    {
+                        src: "culina/add-block.gif",
+                        variant: "mobile",
+                        title: "Add a Block",
+                    },
+                ]}
+            />
         </div>
         <Footer />
     </PageLayout>

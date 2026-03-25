@@ -1,0 +1,286 @@
+---
+import "../../styles/colors.css";
+import "../../styles/spacing.css";
+import "../../styles/radius.css";
+import "../../styles/typography.css";
+import Tag from "../../components/Tag.astro";
+
+export interface GifItem {
+    src: string; // path relative to /images/
+    variant?: "mobile" | "desktop"; // controls frame shape — defaults to "desktop"
+    title?: string; // optional label
+    tags?: string[]; // optional tags
+}
+
+export interface Props {
+    sectionLabel?: string;
+    tagLabel?: string;
+    title?: string;
+    description?: string;
+
+    // Up to 4 GIFs. First one is "primary" and drives layout weight.
+    gifs: [GifItem, GifItem?, GifItem?, GifItem?];
+
+    ID?: string;
+}
+
+const { sectionLabel, tagLabel, title, description, gifs } = Astro.props;
+
+const [primary, ...rest] = gifs;
+const secondaries = rest.filter(Boolean) as GifItem[];
+
+function variant(item: GifItem) {
+    return item.variant ?? "desktop";
+}
+---
+
+<div class="feature-showcase" id={Astro.props.ID}>
+    {
+        (sectionLabel || tagLabel || title || description) && (
+            <div class="showcase-header">
+                {(sectionLabel || tagLabel) && (
+                    <div class="head-content">
+                        {sectionLabel && (
+                            <span class="body subtle">{sectionLabel}</span>
+                        )}
+                        {tagLabel && (
+                            <Tag label={tagLabel} bgColor="var(--bg-default)" />
+                        )}
+                    </div>
+                )}
+                {(title || description) && (
+                    <div class="main-content">
+                        {title && <span class="H4">{title}</span>}
+                        {description && (
+                            <span class="body subtle">{description}</span>
+                        )}
+                    </div>
+                )}
+            </div>
+        )
+    }
+
+    <div class="gif-grid" data-count={secondaries.length}>
+        <!-- Primary — always full row -->
+        <div class={`gif-item primary variant-${variant(primary)}`}>
+            <div class={`gif-frame frame-${variant(primary)}`}>
+                <img
+                    src={`/images/${primary.src}`}
+                    alt={primary.title ?? ""}
+                    loading="lazy"
+                />
+            </div>
+            {
+                (primary.title ||
+                    (primary.tags && primary.tags.length > 0)) && (
+                    <div class="gif-meta">
+                        {primary.title && (
+                            <span class="H5">{primary.title}</span>
+                        )}
+                        {primary.tags && primary.tags.length > 0 && (
+                            <div class="tag-group">
+                                {primary.tags.map((tag) => (
+                                    <Tag
+                                        label={tag}
+                                        bgColor="var(--bg-default-hover)"
+                                        tagTextColor="var(--text-primary)"
+                                    />
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                )
+            }
+        </div>
+
+        <!-- Secondaries — equal-width row, each with its own variant -->
+        {
+            secondaries.length > 0 && (
+                <div class="secondary-row">
+                    {secondaries.map((gif) => (
+                        <div
+                            class={`gif-item secondary variant-${variant(gif)}`}
+                        >
+                            <div class={`gif-frame frame-${variant(gif)}`}>
+                                <img
+                                    src={`/images/${gif.src}`}
+                                    alt={gif.title ?? ""}
+                                    loading="lazy"
+                                />
+                            </div>
+                            {(gif.title ||
+                                (gif.tags && gif.tags.length > 0)) && (
+                                <div class="gif-meta">
+                                    {gif.title && (
+                                        <span class="H5">{gif.title}</span>
+                                    )}
+                                    {gif.tags && gif.tags.length > 0 && (
+                                        <div class="tag-group">
+                                            {gif.tags.map((tag) => (
+                                                <Tag
+                                                    label={tag}
+                                                    bgColor="var(--bg-default-hover)"
+                                                    tagTextColor="var(--text-primary)"
+                                                />
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            )
+        }
+    </div>
+</div>
+
+<style lang="scss">
+    .feature-showcase {
+        display: flex;
+        flex-direction: column;
+        padding: var(--space-64) 0;
+        gap: var(--space-24);
+        background-color: var(--bg-page);
+    }
+
+    /* ── Header ── */
+    .showcase-header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-16);
+    }
+
+    .head-content {
+        display: flex;
+        gap: var(--space-8);
+        align-items: center;
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+
+    /* ── Grid ── */
+    .gif-grid {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-16);
+    }
+
+    /* ── GIF items ── */
+    .gif-item {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-12);
+        background: var(--bg-default);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-8);
+        padding: var(--space-32);
+        overflow: hidden;
+        flex: 1;
+
+        /*
+         * Mobile variant: no width constraint — let flex fill the row.
+         * The frame-mobile cap keeps the image itself portrait-proportioned
+         * while the card background fills available space naturally.
+         */
+        &.variant-mobile {
+            align-items: center; // centre the capped-width frame within the card
+        }
+    }
+
+    /* ── GIF frames — shared base ── */
+    .gif-frame {
+        border-radius: var(--radius-8);
+        overflow: hidden;
+        background: var(--bg-secondary);
+    }
+
+    /* ─────────────────────────────────────────
+     * MOBILE frame
+     * Width is relative to the card (% based)
+     * so it scales as the card resizes, capped
+     * with a max-width to stay portrait-shaped.
+     * Height follows the image's natural ratio.
+     * ───────────────────────────────────────── */
+    .frame-mobile {
+        width: 60%; // relative to card — tweak this to taste
+        max-width: 320px; // hard ceiling so it never gets too wide
+        min-width: 140px; // floor so it doesn't get unusably small
+        margin: 0 auto; // centre within the card
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto; // respects the gif's natural aspect ratio
+        }
+    }
+
+    /* ─────────────────────────────────────────
+     * DESKTOP frame
+     * Fills the full card width. Height is
+     * currently driven by min-height — swap to
+     * aspect-ratio or a fixed height when ready.
+     * ───────────────────────────────────────── */
+    .frame-desktop {
+        width: 100%;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    // Primary desktop: taller floor so it reads as the hero
+    .gif-item.primary .frame-desktop {
+        min-height: 480px;
+
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    // Secondary desktop: shorter floor, still fills width
+    .gif-item.secondary .frame-desktop {
+        min-height: 280px;
+
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    /* ── Secondary row ── */
+    .secondary-row {
+        display: flex;
+        gap: var(--space-16);
+        flex-wrap: wrap;
+
+        .gif-item.secondary {
+            flex: 1 1 calc(33% - var(--space-16));
+            min-width: 200px;
+        }
+    }
+
+    /* ── Meta ── */
+    .gif-meta {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+
+    .tag-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-4);
+    }
+
+    .subtle {
+        color: var(--text-subtle);
+    }
+</style>

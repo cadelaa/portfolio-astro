@@ -231,3 +231,17 @@ Work in progress
 - Added Work back to navigation with working active state
 
 ---
+
+25/03/2026 v2.5
+
+- Updated hero so its positioned at, start, rather then center
+- Updated tag.astro component styles, bit cleaner
+- Added new project layout, FeatureShowcase, still a work in progress, meant to only showcase mobile or desktop images/gifs of interactions for projects
+- Added base color styling to overview.astro component layout, to ensure the colors change with light and dark mode toggling
+- Added blank cards to the ideas page, to be updated
+- Moved ideas.astro page from projects folder, to pages folder, will create an accompanying ideas folder in the future, same with currently working on and archived
+- Updated the links for ideas, currently working on, and archived pages
+- Updated component imports for ideas.astro page, now using a hero layout instead of hardcoded values
+- Started to build out the Culina page, just the top head content, working on how I want to present the main body content
+
+---

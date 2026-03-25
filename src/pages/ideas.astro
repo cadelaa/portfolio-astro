@@ -1,0 +1,76 @@
+---
+import {
+    Hero,
+    ProjectGrid,
+    MediumCard,
+    SmallCard,
+    Footer,
+    Navigation,
+    BaseLayout,
+    PageLayout,
+    Overview,
+    Default,
+    Showcase,
+    Button,
+    PageNav,
+    FeatureShowcase,
+} from "../components";
+
+// Change position of this file possibly meaning I would need to update the imports as well
+---
+
+<BaseLayout>
+    <PageLayout>
+        <Navigation hasLogo={false} --- hasBackLink={true} backLink="/" />
+        <Hero title="Ideas" />
+        <ProjectGrid>
+            <MediumCard
+                link="../ideas/notion/featureName/"
+                ---
+                showMeasurableMetric={false}
+                measurableMetricIcon=""
+                measurableMetric=""
+                ---
+                title="Title label"
+                tags={["Type", "Area", "Role", "Year"]}
+                ---
+                showDesktopImage={true}
+                desktopImage="/images/ideas/notion/Notion-Example1.png"
+                desktopImageAlt="Notion feature example screenshot"
+                ---
+                showMobileImages={false}
+                mobileImages={[]}
+                mobileImageAlt=""
+                ---
+                cardBackgroundHover="var(--bg-default-hover)"
+                tagBackgroundHover="var(--bg-secondary-hover)"
+                ---
+                disabled={false}
+            />
+            <MediumCard
+                link="../ideas/notion/featureName/"
+                ---
+                showMeasurableMetric={false}
+                measurableMetricIcon=""
+                measurableMetric=""
+                ---
+                title="Title label"
+                tags={["Type", "Area", "Role", "Year"]}
+                ---
+                showDesktopImage={true}
+                desktopImage="/images/ideas/notion/Notion-Example1.png"
+                desktopImageAlt="Notion feature example screenshot"
+                ---
+                showMobileImages={false}
+                mobileImages={[]}
+                mobileImageAlt=""
+                ---
+                cardBackgroundHover="var(--bg-default-hover)"
+                tagBackgroundHover="var(--bg-secondary-hover)"
+                ---
+                disabled={false}
+            />
+        </ProjectGrid>
+        <Footer />
+    </PageLayout>
+</BaseLayout>
