@@ -194,18 +194,18 @@ export const tags: Tag[] = [
             { title: 'Clouds II', tilt: -9, image: '/images/about/photography/clouds-II.jpg', stats: ['f/2.8', '1/8000', 'ISO-100', '200mm'] },
         ],
     },
-    // {
-    //     id: 'movies',
-    //     icon: 'movie',
-    //     label: 'Movies',
-    //     description: "My favourite movies, and TV shows, so far.",
-    //     cards: [
-    //         { title: 'Stalker', tilt: -7 },
-    //         { title: 'Mulholland Drive', tilt: 5 },
-    //         { title: 'There Will Be Blood', tilt: -3 },
-    //         { title: 'The Lighthouse', tilt: 8 },
-    //     ],
-    // },
+    {
+        id: 'movies',
+        icon: 'movie',
+        label: 'Movies',
+        description: "My favourite movies, and TV shows, so far.",
+        cards: [
+            { title: 'Project Hail Mary (2026)', tilt: -7, image: '/images/about/movies/project-hail-mary.jpg', stats: ['Favourite Movie in 2026 (so far)',] },
+            { title: 'The Walking Dead (2010-2022)', tilt: 5, image: '/images/about/movies/the-walking-dead.jpg', stats: ['Watched over the years, one of my favourites',] },
+            { title: 'A Knight of the Seven Kingdoms (2025)', tilt: -3, image: '/images/about/movies/akotsk.jpg', stats: ['Favourite Show in 2025',] },
+            { title: 'Severance (2022)', tilt: 8, image: '/images/about/movies/severance.jpg', stats: ['Watched in 2026',] },
+        ],
+    },
     {
         id: 'food',
         icon: 'fastfood',

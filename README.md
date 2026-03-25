@@ -243,5 +243,6 @@ Work in progress
 - Updated the links for ideas, currently working on, and archived pages
 - Updated component imports for ideas.astro page, now using a hero layout instead of hardcoded values
 - Started to build out the Culina page, just the top head content, working on how I want to present the main body content
+- Added Movies & TV Shows to the about section
 
 ---
