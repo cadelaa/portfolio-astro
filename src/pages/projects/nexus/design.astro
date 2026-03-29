@@ -17,6 +17,12 @@ import {
 } from "../../../components";
 import "../../../styles/typography.css";
 import "../../../styles/colors.css";
+import {
+    timesheetBadgePhone,
+    adminPhone,
+    jobPreparePhone,
+    homepagePhone,
+} from "../../../assets/images/projects/nexus/nexus.ts";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -66,7 +72,9 @@ import "../../../styles/colors.css";
             sectionLabel="Problem"
             title="Problem label"
             description="Description label here..."
-        />
+        >
+            <p>Slot here</p>
+        </Default>
 
         <Default
             ID="constraints"
@@ -106,22 +114,22 @@ import "../../../styles/colors.css";
                 {
                     description:
                         "We decided users didnt need both a successful and negative submission icon and opted just for informing them when there was an issue.",
-                    mobileImage: "projects/nexus/timesheet-badge-phone.png",
+                    mobileImage: timesheetBadgePhone,
                 },
                 {
                     description:
                         "Feedback from standups revealed users only need to see the past two months, mainly managers when reviewing timesheets.",
-                    mobileImage: "projects/nexus/admin-phone.png",
+                    mobileImage: adminPhone,
                 },
                 {
                     description:
                         "After talking with Fieldworkers it was mentioned they could work together on jobs, and so I needed to implement how this would function in app.",
-                    mobileImage: "projects/nexus/job-prepare-phone.png",
+                    mobileImage: jobPreparePhone,
                 },
                 {
                     description:
                         "Fieldworkers would plan their day based on weather conditions, meaning they needed to see current and future weather conditions.",
-                    mobileImage: "projects/nexus/homepage-phone.png",
+                    mobileImage: homepagePhone,
                 },
             ]}
         />

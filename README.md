@@ -256,13 +256,15 @@ Work in progress
 - Cleaned up main navigation.astro component css styles
 - Started to build out the project pages, for Nexus and DisasterHub
 - Cleaned up, main naivgation.astro imports on most pages
-+ Many more small edits/changes
-
 - Added sticky on navigation, fallback styles for iOS
 - Removed sticky hero on index.astro for mobile
 - Started to add, tyopgraphy breakpoints in the .css file, for mobile
 - Added early version of mobile navigation bar, including a dropdown/modal
 - Repositioning the mobile menu
 - Updated pagenav.astro component to utilize a new text style, variable which is roboto flex, makes for an interesting but simple animation with font variation settings
+- Starting to move images to /assets/ folder, updating image strings etc 
+- Added a image layout component to be used within astro slots
+- Added slot to default layout component
+- Many more small edits/changes
 
 ---

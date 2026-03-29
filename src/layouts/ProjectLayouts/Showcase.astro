@@ -1,4 +1,5 @@
 ---
+import { Image as AstroImage } from "astro:assets";
 import "../../styles/colors.css";
 import "../../styles/spacing.css";
 import "../../styles/radius.css";
@@ -7,19 +8,9 @@ import Tag from "../../components/Tag.astro";
 
 export interface ShowcaseItem {
     description: string;
-    mobileImage?: string;
-    desktopImage?: string;
-    span?: number; // 1 (default), 2, or 3
-}
-
-export interface Props {
-    sectionLabel: string;
-    tagLabel: string;
-    title: string;
-    description?: string;
-    columns?: 2 | 3;
-    items: ShowcaseItem[];
-    ID?: string;
+    mobileImage?: ImageMetadata;
+    desktopImage?: ImageMetadata;
+    span?: number;
 }
 
 const {
@@ -44,13 +35,13 @@ const {
     </div>
     <div class="items-grid">
         {
-            items.map((item) => (
+            items.map((item: ShowcaseItem) => (
                 <div class="showcase-card" data-span={item.span ?? 1}>
                     <p class="H5 card-description">{item.description}</p>
                     {item.mobileImage && (
                         <div class="card-image card-image--mobile">
-                            <img
-                                src={`/images/${item.mobileImage}`}
+                            <AstroImage
+                                src={item.mobileImage}
                                 alt=""
                                 loading="lazy"
                             />
@@ -58,8 +49,8 @@ const {
                     )}
                     {item.desktopImage && (
                         <div class="card-image card-image--desktop">
-                            <img
-                                src={`/images/${item.desktopImage}`}
+                            <AstroImage
+                                src={item.desktopImage}
                                 alt=""
                                 loading="lazy"
                             />

@@ -25,6 +25,7 @@ const { sectionLabel, title, description } = Astro.props;
         <span class="H4">{title}</span>
         <span class="body subtle">{description}</span>
     </div>
+    <slot />
 </div>
 
 <style lang="scss">
