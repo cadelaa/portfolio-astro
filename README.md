@@ -259,4 +259,6 @@ Work in progress
 
 + Many more small edits/changes
 
+- Added sticky on navigation, fallback styles for iOS
+
 ---

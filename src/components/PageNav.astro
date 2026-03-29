@@ -30,7 +30,8 @@ const { links } = Astro.props;
 
 <style>
     .jump-nav {
-        display: none; /* hidden on mobile */
+        display: none;
+        position: -webkit-sticky; /* iOS Safari fallback */
         position: sticky;
         top: 65px;
         gap: var(--space-16);
@@ -38,6 +39,8 @@ const { links } = Astro.props;
         border-bottom: 1px solid var(--border-default);
         background-color: var(--bg-page);
         z-index: 100;
+        transform: translateZ(0); /* same fix */
+        will-change: transform;
     }
 
     .jump-link {

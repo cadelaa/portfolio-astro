@@ -93,6 +93,7 @@ const currentPath = Astro.url.pathname;
 <style lang="scss">
     .nav-container {
         display: flex;
+        position: -webkit-sticky; /* iOS Safari fallback */
         position: sticky;
         top: 0;
         align-items: center;
@@ -101,6 +102,8 @@ const currentPath = Astro.url.pathname;
         padding: var(--space-12) 0;
         z-index: 100;
         transition: none;
+        transform: translateZ(0); /* forces GPU layer, fixes iOS repaint bug */
+        will-change: transform; /* tells Safari to keep this on its own layer */
     }
 
     .nav-links {
