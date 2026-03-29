@@ -244,5 +244,19 @@ Work in progress
 - Updated component imports for ideas.astro page, now using a hero layout instead of hardcoded values
 - Started to build out the Culina page, just the top head content, working on how I want to present the main body content
 - Added Movies & TV Shows to the about section
+- Fixed position: sticky, to work on project pages
+
+---
+
+29/03/2026
+
+- Removed clamp, replaced with media queries, fixed responsiveness of the site. (need to adjust responsiveness on components)
+- Fixed the light/dark toggle quickly changing when exiting a project page - homepage for example, not as jarring
+- Removed FeatureShowcase, for and because of a updated, Showcase.astro layout now filling that role
+- Cleaned up main navigation.astro component css styles
+- Started to build out the project pages, for Nexus and DisasterHub
+- Cleaned up, main naivgation.astro imports on most pages
+
++ Many more small edits/changes
 
 ---

@@ -1,12 +1,19 @@
 ---
-import Button from "../../../components/Button.astro";
-import Navigation from "../../../components/Navigation.astro";
-import MediumCard from "../../../components/MediumCard.astro";
-import SmallCard from "../../../components/SmallCard.astro";
-import Footer from "../../../components/Footer.astro";
-import Tag from "../../../components/Tag.astro";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import PageLayout from "../../../layouts/PageLayout.astro";
+import {
+    Hero,
+    ProjectGrid,
+    MediumCard,
+    SmallCard,
+    Footer,
+    Navigation,
+    BaseLayout,
+    PageLayout,
+    Button,
+    Tag,
+    Overview,
+    Default,
+    PageNav,
+} from "../../../components";
 import "../../../styles/typography.css";
 import "../../../styles/colors.css";
 
@@ -16,22 +23,11 @@ import "../../../styles/colors.css";
 
 <BaseLayout>
     <PageLayout>
-        <Navigation
-            hasLogo={false}
-            ---
-            hasBackLink={true}
-            backLabel="Back home"
-            backLink="/"
-        />
+        <Navigation hasLogo={false} --- hasBackLink={true} backLink="/" />
         <div>
-            <div style="padding: var(--space-64); display: flex;">
-                <h1 class="H1">
-                    Redesigning how Sunshine Coast Council communicates public
-                    warnings, incidents, and disaster information.
-                </h1>
-            </div>
+            <Hero title="DisasterHub Design page" />
             <div
-                style="padding: var(--space-16) var(--space-64); display: flex; gap: var(--space-8);"
+                style="padding: var(--space-16) 0; display: flex; gap: var(--space-8);"
             >
                 <Button type="primary" label="Design" link="" />
                 <Button
@@ -40,9 +36,38 @@ import "../../../styles/colors.css";
                     link="../development/"
                     disabled={true}
                 />
-                <div></div>
             </div>
+            <PageNav
+                links={[
+                    { label: "Overview", href: "#overview" },
+                    { label: "Problem", href: "#problem" },
+                    { label: "Constraints", href: "#constraints" },
+                    { label: "Approach", href: "#approach" },
+                    { label: "Insights", href: "#insights" },
+                    { label: "Design System", href: "#designsystem" },
+                    { label: "Design Decisions", href: "#designdecisions" },
+                    { label: "Outcome", href: "#outcome" },
+                    { label: "Reflections", href: "#reflections" },
+                ]}
+            />
         </div>
+        <Overview
+            ID="overview"
+            sectionLabel="Overview"
+            title="Improving communication to the public during disaster events"
+            description="A redesign of DisasterHub, a disaster management tool used by the public during disaster events to find resources, get updates and communicate with others. The goal of this redesign is to reduce cognitive load for users during high-stress situations and make it easier for them to find the information they need quickly."
+            role="Product Designer"
+            timeframe="2-4 weeks"
+            team="Me"
+            tools={["Figma", "Jitter"]}
+        />
+
+        <Default
+            ID="problem"
+            sectionLabel="Problem"
+            title="Problem label"
+            description="Description label here..."
+        />
         <Footer />
     </PageLayout>
 </BaseLayout>

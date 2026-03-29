@@ -1,12 +1,16 @@
 ---
-import Button from "../../../components/Button.astro";
-import Navigation from "../../../components/Navigation.astro";
-import MediumCard from "../../../components/MediumCard.astro";
-import SmallCard from "../../../components/SmallCard.astro";
-import Footer from "../../../components/Footer.astro";
-import Tag from "../../../components/Tag.astro";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import PageLayout from "../../../layouts/PageLayout.astro";
+import {
+    Hero,
+    ProjectGrid,
+    MediumCard,
+    SmallCard,
+    Footer,
+    Navigation,
+    BaseLayout,
+    PageLayout,
+    Button,
+    Tag,
+} from "../../../components";
 import "../../../styles/typography.css";
 import "../../../styles/colors.css";
 
@@ -16,25 +20,14 @@ import "../../../styles/colors.css";
 
 <BaseLayout>
     <PageLayout>
-        <Navigation
-            hasLogo={false}
-            ---
-            hasBackLink={true}
-            backLabel="Back home"
-            backLink="/"
-        />
+        <Navigation hasLogo={false} --- hasBackLink={true} backLink="/" />
         <div>
-            <div style="padding: var(--space-64); display: flex;">
-                <h1 class="H1">
-                    Work in progress, DisasterHub placeholder page
-                </h1>
-            </div>
+            <Hero title="DisasterHub Development page" />
             <div
-                style="padding: var(--space-16) var(--space-64); display: flex; gap: var(--space-8);"
+                style="padding: var(--space-16) 0; display: flex; gap: var(--space-8);"
             >
                 <Button type="secondary" label="Design" link="../design/" />
                 <Button type="primary" label="Development" link="" />
-                <div></div>
             </div>
         </div>
         <Footer />

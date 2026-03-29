@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import "../styles/colors.css";
+import "../styles/spacing.css";
 
 const { title = "Mitchell Zeller", fullViewport = false } = Astro.props;
 ---
@@ -8,6 +9,12 @@ const { title = "Mitchell Zeller", fullViewport = false } = Astro.props;
 <!-- BaseLayout.astro --><!doctype html>
 <html lang="en">
     <head>
+        <script is:inline>
+            const theme = localStorage.getItem("theme") ?? "dark";
+            document.documentElement.setAttribute("data-theme", theme);
+            // or if you use a class:
+            // document.documentElement.classList.toggle('dark', theme === 'dark');
+        </script>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{Astro.props.title}</title>
@@ -26,20 +33,25 @@ const { title = "Mitchell Zeller", fullViewport = false } = Astro.props;
     </body>
 
     <style>
+        html,
+        body {
+            overflow-x: clip; /* clip is more reliable than hidden for this */
+            width: 100%;
+        }
+
         body {
             background-color: var(--bg-page);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             scroll-behavior: smooth;
             min-height: 100svh;
-            width: 100%;
-            overflow-x: hidden;
             transition: none;
         }
+
         body.full-viewport {
             height: 100svh;
             overflow: hidden;
-            flex-direction: column;
         }
     </style>
 

@@ -148,18 +148,9 @@ import "../styles/colors.css";
 			/>
 
 			<SmallCard
-				link="/fun/"
-				icon="celebration"
-				title="Fun"
-				tags={[]}
-				description="Stuff I enjoy working on that isn't related to being a product designer / front-end developer."
-				disabled={false}
-			/>
-
-			<SmallCard
-				link="/currently-working-on/"
+				link="/timeline/"
 				icon="devices"
-				title="Currently Working on"
+				title="Timeline of Work"
 				tags={[]}
 				description="A timeline of all my projects I am working on, have worked on, and if they are still in progress, cancelled or paused."
 				disabled={false}
@@ -169,9 +160,9 @@ import "../styles/colors.css";
 				link="/ideas/"
 				icon="lightbulb"
 				title="Ideas"
-				tags={[]}
+				tags={["Work in Progress"]}
 				description="Smaller UI/UX redesigns, experiments, motion etc. Basically my playground of random stuff."
-				disabled={false}
+				disabled={true}
 			/>
 
 			<SmallCard
@@ -180,6 +171,15 @@ import "../styles/colors.css";
 				title="Archived Projects"
 				tags={[]}
 				description="Older projects that no longer best represent my skills & just older versions of current projects in my portfolio."
+				disabled={true}
+			/>
+
+			<SmallCard
+				link="/Other/"
+				icon="Person"
+				title="Other"
+				tags={[]}
+				description="Stuff I enjoy working on that isn't related to being a product designer / front-end developer."
 				disabled={true}
 			/>
 		</ProjectGrid>

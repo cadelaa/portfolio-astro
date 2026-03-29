@@ -26,3 +26,9 @@ body {
     scrollbar-width: default;
     scrollbar-color: var(--bg-secondary-hover) transparent;
 }
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}

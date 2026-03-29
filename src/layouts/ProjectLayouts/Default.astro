@@ -25,9 +25,6 @@ const { sectionLabel, title, description } = Astro.props;
         <span class="H4">{title}</span>
         <span class="body subtle">{description}</span>
     </div>
-    <div class="footer-content">
-        <span>Images/Gifs/Videos</span>
-    </div>
 </div>
 
 <style lang="scss">
@@ -37,6 +34,7 @@ const { sectionLabel, title, description } = Astro.props;
         flex-direction: column;
         padding: var(--space-64) 0;
         gap: var(--space-16);
+        color: var(--text-primary);
     }
 
     .head-content {

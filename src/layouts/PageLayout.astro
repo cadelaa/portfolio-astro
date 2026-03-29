@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 // import Header from "../components/navigation/Header.astro";
 // import Footer from "../components/navigation/Footer.astro";
 import "../styles/colors.css";
+import "../styles/spacing.css";
 
 // PageLayout.astro
 const { title, fullViewport = false } = Astro.props;
@@ -16,8 +17,14 @@ const { title, fullViewport = false } = Astro.props;
     .page {
         width: 100%;
         max-width: 1440px;
-        padding-inline: clamp(var(--space-16), 5vw, var(--space-64));
+        padding-inline: var(--space-16);
         margin-inline: auto;
+    }
+
+    @media (min-width: 1120px) {
+        .page {
+            padding-inline: var(--space-64);
+        }
     }
     .page.full-viewport {
         height: 100%;

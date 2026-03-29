@@ -1,12 +1,20 @@
 ---
-import Button from "../../../components/Button.astro";
-import Navigation from "../../../components/Navigation.astro";
-import MediumCard from "../../../components/MediumCard.astro";
-import SmallCard from "../../../components/SmallCard.astro";
-import Footer from "../../../components/Footer.astro";
-import Tag from "../../../components/Tag.astro";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import PageLayout from "../../../layouts/PageLayout.astro";
+import {
+    Hero,
+    ProjectGrid,
+    MediumCard,
+    SmallCard,
+    Footer,
+    Navigation,
+    BaseLayout,
+    PageLayout,
+    Button,
+    Tag,
+    Overview,
+    Default,
+    PageNav,
+    Showcase,
+} from "../../../components";
 import "../../../styles/typography.css";
 import "../../../styles/colors.css";
 
@@ -16,33 +24,90 @@ import "../../../styles/colors.css";
 
 <BaseLayout>
     <PageLayout>
-        <Navigation
-            hasLogo={false}
-            ---
-            hasBackLink={true}
-            backLabel="Back home"
-            backLink="/"
-        />
-        <div>
-            <div style="padding: var(--space-64); display: flex;">
-                <h1 class="H1">
-                    I led the design of an internal staff app for Council field
-                    workers to streamline their experience when creating and
-                    submitting their timesheets.
-                </h1>
-            </div>
-            <div
-                style="padding: var(--space-16) var(--space-64); display: flex; gap: var(--space-8);"
-            >
-                <Button type="primary" label="Design" link="" />
-                <Button
-                    type="secondary"
-                    label="Development"
-                    link="../development/"
-                />
-                <div></div>
-            </div>
+        <Navigation hasLogo={false} --- hasBackLink={true} backLink="/" />
+        <Hero title="Nexus Design page" />
+        <div
+            style="padding: var(--space-16) 0; display: flex; gap: var(--space-8);"
+        >
+            <Button type="primary" label="Design" link="" />
+            <Button
+                type="secondary"
+                label="Development"
+                link="../development/"
+                disabled={true}
+            />
         </div>
+        <PageNav
+            links={[
+                { label: "Overview", href: "#overview" },
+                { label: "Problem", href: "#problem" },
+                { label: "Constraints", href: "#constraints" },
+                { label: "Approach", href: "#approach" },
+                { label: "Insights", href: "#insights" },
+                { label: "Design System", href: "#designsystem" },
+                { label: "Design Decisions", href: "#designdecisions" },
+                { label: "Outcome", href: "#outcome" },
+                { label: "Reflections", href: "#reflections" },
+            ]}
+        />
+        <Overview
+            ID="overview"
+            sectionLabel="Overview"
+            title="Title label"
+            description="Description label here..."
+            role="Product Designer"
+            timeframe="2-4 weeks"
+            team="Me"
+            tools={["Figma", "Jitter"]}
+        />
+
+        <Default
+            ID="problem"
+            sectionLabel="Problem"
+            title="Problem label"
+            description="Description label here..."
+        />
+
+        <Default
+            ID="constraints"
+            sectionLabel="Constraints"
+            title="Constraints label"
+            description="Description label here..."
+        />
+
+        <Default
+            ID="approach"
+            sectionLabel="Approach"
+            title="Approach label"
+            description="Description label here..."
+        />
+
+        <Showcase
+            sectionLabel="Design Decisions"
+            tagLabel="Process"
+            title="Why we made these choices"
+            columns={2}
+            items={[
+                {
+                    description: "We decided users didn't need...",
+                    mobileImage: "foo.png",
+                    span: 1,
+                },
+                {
+                    description: "We decided users didn't need...",
+                    mobileImage: "foo.png",
+                    span: 1,
+                },
+                {
+                    description: "I was told that users only...",
+                    mobileImage: "bar.png",
+                },
+                {
+                    description: "After talking with fieldworkers...",
+                    mobileImage: "baz.png",
+                },
+            ]}
+        />
         <Footer />
     </PageLayout>
 </BaseLayout>

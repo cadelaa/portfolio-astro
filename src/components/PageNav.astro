@@ -30,24 +30,33 @@ const { links } = Astro.props;
 
 <style>
     .jump-nav {
-        display: flex;
+        display: none; /* hidden on mobile */
         position: sticky;
         top: 65px;
         gap: var(--space-16);
         padding: var(--space-8) 0;
         border-bottom: 1px solid var(--border-default);
         background-color: var(--bg-page);
+        z-index: 100;
     }
 
     .jump-link {
         color: var(--text-subtle);
         text-decoration: none;
         padding-bottom: var(--space-4);
+        white-space: nowrap;
         border-bottom: 2px solid transparent;
         transition: border-color 0.3s ease;
+        flex-shrink: 0;
     }
 
     .jump-link:hover {
         color: var(--text-primary);
+    }
+
+    @media (min-width: 1120px) {
+        .jump-nav {
+            display: flex;
+        }
     }
 </style>
