@@ -20,7 +20,7 @@ const { links } = Astro.props;
     links.length > 0 && (
         <nav class="jump-nav">
             {links.map((link) => (
-                <a href={link.href} class="jump-link Body">
+                <a href={link.href} class="jump-link variable" data-jump-link>
                     {link.label}
                 </a>
             ))}
@@ -28,18 +28,50 @@ const { links } = Astro.props;
     )
 }
 
+<script>
+    const links =
+        document.querySelectorAll<HTMLAnchorElement>("[data-jump-link]");
+
+    const sectionIds = Array.from(links).map((link) =>
+        link.getAttribute("href")?.replace("#", ""),
+    );
+
+    const sections = sectionIds
+        .map((id) => document.getElementById(id ?? ""))
+        .filter(Boolean) as HTMLElement[];
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    links.forEach((link) => link.classList.remove("active"));
+                    const active = document.querySelector<HTMLAnchorElement>(
+                        `[data-jump-link][href="#${entry.target.id}"]`,
+                    );
+                    active?.classList.add("active");
+                }
+            });
+        },
+        {
+            rootMargin: "-10% 0px -80% 0px", // ← looser top trigger
+            threshold: 0,
+        },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+</script>
+
 <style>
     .jump-nav {
         display: none;
-        position: -webkit-sticky; /* iOS Safari fallback */
+        position: -webkit-sticky;
         position: sticky;
-        top: 65px;
+        top: 63px;
         gap: var(--space-16);
         padding: var(--space-8) 0;
-        border-bottom: 1px solid var(--border-default);
         background-color: var(--bg-page);
         z-index: 100;
-        transform: translateZ(0); /* same fix */
+        transform: translateZ(0);
         will-change: transform;
     }
 
@@ -48,13 +80,30 @@ const { links } = Astro.props;
         text-decoration: none;
         padding-bottom: var(--space-4);
         white-space: nowrap;
-        border-bottom: 2px solid transparent;
-        transition: border-color 0.3s ease;
+        font-variation-settings:
+            "wght" 400,
+            "wdth" 100,
+            "XTRA" 400;
+        transition:
+            color 0.3s ease,
+            font-variation-settings 0.3s ease;
         flex-shrink: 0;
     }
 
     .jump-link:hover {
         color: var(--text-primary);
+        font-variation-settings:
+            "wght" 700,
+            "wdth" 100,
+            "XTRA" 500;
+    }
+
+    .jump-link.active {
+        color: var(--text-primary);
+        font-variation-settings:
+            "wght" 700,
+            "wdth" 100,
+            "XTRA" 550;
     }
 
     @media (min-width: 1120px) {

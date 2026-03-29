@@ -263,5 +263,6 @@ Work in progress
 - Started to add, tyopgraphy breakpoints in the .css file, for mobile
 - Added early version of mobile navigation bar, including a dropdown/modal
 - Repositioning the mobile menu
+- Updated pagenav.astro component to utilize a new text style, variable which is roboto flex, makes for an interesting but simple animation with font variation settings
 
 ---

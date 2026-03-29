@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Instrument+Serif:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght,XTRA@8..144,25..151,100..900,323..603&display=swap');
 
 :root {
     --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --font-robotoflex: "Roboto Flex", system-ui, sans-serif;
 
     --fw-regular: 400;
     --fw-medium: 500;
@@ -17,6 +19,18 @@ body,
 .Body {
     font-family: var(--font-sans);
     font-size: 1.0625rem;
+    /* 17px */
+    line-height: 1.6;
+    color: var(--color-text);
+    margin: 0;
+    letter-spacing: -0.02rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.variable {
+    font-family: var(--font-robotoflex);
+    font-size: 1.2rem;
     /* 17px */
     line-height: 1.6;
     color: var(--color-text);

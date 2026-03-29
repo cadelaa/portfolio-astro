@@ -82,32 +82,64 @@ import "../../../styles/colors.css";
             description="Description label here..."
         />
 
+        <Default
+            ID="insights"
+            sectionLabel="Insights"
+            title="Insights label"
+            description="Description label here..."
+        />
+
+        <Default
+            ID="designsystem"
+            sectionLabel="Design System"
+            title="Design System label"
+            description="Description label here..."
+        />
+
         <Showcase
+            ID="designdecisions"
             sectionLabel="Design Decisions"
             tagLabel="Process"
-            title="Why we made these choices"
+            title="Here are some of the design decisions I made throughout the design process of the app"
             columns={2}
             items={[
                 {
-                    description: "We decided users didn't need...",
-                    mobileImage: "foo.png",
-                    span: 1,
+                    description:
+                        "We decided users didnt need both a successful and negative submission icon and opted just for informing them when there was an issue.",
+                    mobileImage: "projects/nexus/timesheet-badge-phone.png",
                 },
                 {
-                    description: "We decided users didn't need...",
-                    mobileImage: "foo.png",
-                    span: 1,
+                    description:
+                        "Feedback from standups revealed users only need to see the past two months, mainly managers when reviewing timesheets.",
+                    mobileImage: "projects/nexus/admin-phone.png",
                 },
                 {
-                    description: "I was told that users only...",
-                    mobileImage: "bar.png",
+                    description:
+                        "After talking with Fieldworkers it was mentioned they could work together on jobs, and so I needed to implement how this would function in app.",
+                    mobileImage: "projects/nexus/job-prepare-phone.png",
                 },
                 {
-                    description: "After talking with fieldworkers...",
-                    mobileImage: "baz.png",
+                    description:
+                        "Fieldworkers would plan their day based on weather conditions, meaning they needed to see current and future weather conditions.",
+                    mobileImage: "projects/nexus/homepage-phone.png",
                 },
             ]}
         />
+
+        <Default
+            ID="outcome"
+            sectionLabel="Outcome"
+            title="Outcome label"
+            description="Description label here..."
+        />
+
+        <Default
+            ID="reflections"
+            sectionLabel="Reflections"
+            title="Reflections label"
+            description="Description label here..."
+        />
+
         <Footer />
     </PageLayout>
 </BaseLayout>
