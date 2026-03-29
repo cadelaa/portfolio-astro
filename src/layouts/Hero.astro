@@ -6,16 +6,13 @@ import "../styles/typography.css";
 
 export interface Props {
     title?: string;
-    sticky?: boolean; // <-- new boolean prop
+    sticky?: boolean;
 }
 
 const { title, sticky = false } = Astro.props;
 ---
 
-<div
-    class="hero"
-    style={`position: ${sticky ? "sticky" : "relative"}; top: ${sticky ? "104px" : "auto"};`}
->
+<div class={`hero ${sticky ? "hero--sticky" : ""}`}>
     <h1 class="H1">{title}</h1>
 </div>
 
@@ -25,9 +22,21 @@ const { title, sticky = false } = Astro.props;
         display: flex;
         align-items: start;
         justify-content: start;
-
         padding: var(--space-64) 0;
         margin: var(--space-32) 0;
         border: none;
+        position: relative;
+    }
+
+    .hero--sticky {
+        position: sticky;
+        top: 104px;
+    }
+
+    @media (max-width: 768px) {
+        .hero--sticky {
+            position: relative;
+            top: auto;
+        }
     }
 </style>

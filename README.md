@@ -256,9 +256,9 @@ Work in progress
 - Cleaned up main navigation.astro component css styles
 - Started to build out the project pages, for Nexus and DisasterHub
 - Cleaned up, main naivgation.astro imports on most pages
-
 + Many more small edits/changes
 
 - Added sticky on navigation, fallback styles for iOS
+- Removed sticky hero on index.astro for mobile
 
 ---
