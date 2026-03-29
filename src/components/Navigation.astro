@@ -98,7 +98,8 @@ const currentPath = Astro.url.pathname;
         aria-label="Open menu"
         aria-expanded="false"
     >
-        <span class="material-symbols-outlined">menu</span>
+        <span class="material-symbols-outlined" id="mobile-menu-icon">menu</span
+        >
     </button>
 </nav>
 
@@ -309,6 +310,11 @@ const currentPath = Astro.url.pathname;
             color: var(--text-primary);
         }
 
+        &:active {
+            background-color: var(--bg-default);
+            color: var(--text-primary);
+        }
+
         .material-symbols-outlined {
             font-size: 20px;
         }
@@ -318,9 +324,9 @@ const currentPath = Astro.url.pathname;
     .mobile-menu {
         display: none;
         position: fixed;
-        top: 56px;
-        right: 0;
-        z-index: 99;
+        top: 8px;
+        right: 8px;
+        z-index: 1000;
         background: var(--bg-page);
         border: 1px solid var(--bg-default);
         border-radius: var(--radius-8);
@@ -498,6 +504,7 @@ const currentPath = Astro.url.pathname;
 
     /* ── Mobile menu ──────────────────────────────────────── */
     const menuToggle = document.getElementById("mobile-menu-toggle");
+    const menuIcon = document.getElementById("mobile-menu-icon");
     const menuClose = document.getElementById("mobile-menu-close");
     const mobileMenu = document.getElementById("mobile-menu");
     const mobileThemeToggle = document.getElementById("mobile-theme-toggle");
@@ -506,15 +513,19 @@ const currentPath = Astro.url.pathname;
         mobileMenu?.classList.add("is-open");
         menuToggle?.setAttribute("aria-expanded", "true");
         mobileMenu?.setAttribute("aria-hidden", "false");
+        if (menuIcon) menuIcon.textContent = "close";
     }
 
     function closeMenu() {
         mobileMenu?.classList.remove("is-open");
         menuToggle?.setAttribute("aria-expanded", "false");
         mobileMenu?.setAttribute("aria-hidden", "true");
+        if (menuIcon) menuIcon.textContent = "menu";
     }
 
-    menuToggle?.addEventListener("click", openMenu);
+    menuToggle?.addEventListener("click", () => {
+        mobileMenu?.classList.contains("is-open") ? closeMenu() : openMenu();
+    });
     menuClose?.addEventListener("click", closeMenu);
     mobileThemeToggle?.addEventListener("click", toggleTheme);
 

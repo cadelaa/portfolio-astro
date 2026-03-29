@@ -262,5 +262,6 @@ Work in progress
 - Removed sticky hero on index.astro for mobile
 - Started to add, tyopgraphy breakpoints in the .css file, for mobile
 - Added early version of mobile navigation bar, including a dropdown/modal
+- Repositioning the mobile menu
 
 ---
