@@ -10,7 +10,6 @@ import mitchell_zeller from "../assets/logos/mitchell_zeller.png";
 export interface Props {
     hasLogo?: boolean;
     hasBackLink?: boolean;
-
     backLink?: string;
 }
 
@@ -32,7 +31,7 @@ const currentPath = Astro.url.pathname;
 
         {
             hasLogo && (
-                <a class="H6 link-item">
+                <a class="H6 link-item" href="/">
                     <img
                         src={mitchell_zeller.src}
                         width={mitchell_zeller.width}
@@ -46,6 +45,8 @@ const currentPath = Astro.url.pathname;
             )
         }
     </div>
+
+    <!-- Desktop nav links -->
     <div class="nav-links">
         <a
             href="/"
@@ -64,6 +65,8 @@ const currentPath = Astro.url.pathname;
             class="H6 link-item">Resume</a
         >
     </div>
+
+    <!-- Desktop social links -->
     <div class="social-links">
         <a
             href="https://www.linkedin.com/in/mitchell-zeller"
@@ -79,7 +82,6 @@ const currentPath = Astro.url.pathname;
             class="H6 link-item social-link-item logo"
             set:html={GitHub_Invertocat_Black}
         />
-
         <button
             id="theme-toggle"
             class="H6 link-item social-link-item theme-toggle"
@@ -88,12 +90,128 @@ const currentPath = Astro.url.pathname;
             <span class="theme-icon material-symbols-outlined"></span>
         </button>
     </div>
+
+    <!-- Mobile hamburger -->
+    <button
+        id="mobile-menu-toggle"
+        class="mobile-menu-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+    >
+        <span class="material-symbols-outlined">menu</span>
+    </button>
 </nav>
 
+<!-- Mobile dropdown -->
+<div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <!-- Topbar: Dark / Light + close -->
+    <div class="mobile-menu-topbar">
+        <button
+            id="mobile-theme-toggle"
+            class="theme-switch"
+            aria-label="Toggle theme"
+        >
+            <span class="theme-label" id="mobile-theme-label-dark">Dark</span>
+            <span class="theme-label" id="mobile-theme-label-light">Light</span>
+        </button>
+        <button
+            id="mobile-menu-close"
+            class="mobile-close-btn"
+            aria-label="Close menu"
+        >
+            <span class="material-symbols-outlined">close</span>
+        </button>
+    </div>
+
+    <!-- Divider below topbar -->
+    <div class="mobile-divider"></div>
+
+    <!-- Primary links -->
+    <div class="mobile-menu-section">
+        <a
+            href="/"
+            class={`H6 mobile-link ${currentPath === "/" ? "active" : ""}`}
+        >
+            <span class="material-symbols-outlined">work</span>
+            Work
+        </a>
+        <a
+            href="/about/"
+            class={`H6 mobile-link ${currentPath === "/about/" ? "active" : ""}`}
+        >
+            <span class="material-symbols-outlined">person</span>
+            About
+        </a>
+        <a
+            href="https://drive.google.com/file/d/15mY_T3Rp1-_Z5XYOSLWzO3FgcqKUoA4d/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="H6 mobile-link"
+        >
+            <span class="material-symbols-outlined">description</span>
+            Resume
+        </a>
+    </div>
+
+    <!-- Divider between primary and secondary -->
+    <div class="mobile-divider"></div>
+
+    <!-- Secondary links -->
+    <div class="mobile-menu-section secondary">
+        <a
+            href="/currently-working-on/"
+            class={`H6 mobile-link ${currentPath === "/currently-working-on/" ? "active" : ""}`}
+        >
+            <span class="material-symbols-outlined">devices</span>
+            Timeline of Work
+        </a>
+        <a
+            href="/ideas/"
+            class={`H6 mobile-link ${currentPath === "/ideas/" ? "active" : ""}`}
+        >
+            <span class="material-symbols-outlined">lightbulb</span>
+            Ideas
+        </a>
+        <a
+            href="/archived/"
+            class={`H6 mobile-link ${currentPath === "/archived/" ? "active" : ""}`}
+        >
+            <span class="material-symbols-outlined">inventory_2</span>
+            Archived
+        </a>
+    </div>
+
+    <!-- Divider between secondary and socials -->
+    <div class="mobile-divider"></div>
+
+    <!-- Social links -->
+    <div class="mobile-menu-section secondary">
+        <a
+            href="https://www.linkedin.com/in/mitchell-zeller"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="H6 mobile-link"
+        >
+            <span class="social-svg-wrap" set:html={linkedin_logo} />
+            LinkedIn
+        </a>
+        <a
+            href="https://github.com/cadelaa"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="H6 mobile-link"
+        >
+            <span class="social-svg-wrap" set:html={GitHub_Invertocat_Black} />
+            GitHub
+        </a>
+    </div>
+</div>
+
 <style lang="scss">
+    /* ── Desktop nav ───────────────────────────────────────── */
     .nav-container {
         display: flex;
-        position: -webkit-sticky; /* iOS Safari fallback */
+        position: -webkit-sticky;
         position: sticky;
         top: 0;
         align-items: center;
@@ -101,9 +219,8 @@ const currentPath = Astro.url.pathname;
         background: var(--bg-page);
         padding: var(--space-12) 0;
         z-index: 100;
-        transition: none;
-        transform: translateZ(0); /* forces GPU layer, fixes iOS repaint bug */
-        will-change: transform; /* tells Safari to keep this on its own layer */
+        transform: translateZ(0);
+        will-change: transform;
     }
 
     .nav-links {
@@ -128,7 +245,6 @@ const currentPath = Astro.url.pathname;
         height: 36px;
         color: var(--text-subtle);
         text-decoration: none;
-        transition: color 0 ease;
         border-radius: var(--radius-8);
 
         &:hover {
@@ -156,6 +272,7 @@ const currentPath = Astro.url.pathname;
     .theme-toggle {
         background: none;
         border: none;
+        cursor: pointer;
     }
 
     .label {
@@ -176,13 +293,170 @@ const currentPath = Astro.url.pathname;
     .material-symbols-outlined {
         font-variation-settings: "FILL" 1;
     }
+
+    /* ── Mobile hamburger ──────────────────────────────────── */
+    .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--space-4);
+        color: var(--text-subtle);
+        border-radius: var(--radius-8);
+
+        &:hover {
+            background-color: var(--bg-default);
+            color: var(--text-primary);
+        }
+
+        .material-symbols-outlined {
+            font-size: 20px;
+        }
+    }
+
+    /* ── Mobile dropdown ───────────────────────────────────── */
+    .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 56px;
+        right: 0;
+        z-index: 99;
+        background: var(--bg-page);
+        border: 1px solid var(--bg-default);
+        border-radius: var(--radius-8);
+        min-width: 200px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+
+        &.is-open {
+            display: block;
+        }
+    }
+
+    /* Topbar row */
+    .mobile-menu-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--space-8) var(--space-8) var(--space-8) var(--space-12);
+        gap: var(--space-8);
+    }
+
+    .theme-switch {
+        display: flex;
+        gap: var(--space-8);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .theme-label {
+        font-size: 13px;
+        color: var(--text-subtle);
+
+        &.active {
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+    }
+
+    .mobile-close-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-subtle);
+        padding: var(--space-4);
+        border-radius: var(--radius-8);
+
+        &:hover {
+            background-color: var(--bg-default);
+            color: var(--text-primary);
+        }
+
+        .material-symbols-outlined {
+            font-size: 18px;
+        }
+    }
+
+    /* Divider */
+    .mobile-divider {
+        height: 1px;
+        background: var(--bg-default);
+    }
+
+    /* Link sections */
+    .mobile-menu-section {
+        display: flex;
+        flex-direction: column;
+        padding: var(--space-8);
+        gap: var(--space-2);
+    }
+
+    .mobile-link {
+        display: flex;
+        align-items: center;
+        gap: var(--space-8);
+        padding: var(--space-6) var(--space-8);
+        border-radius: var(--radius-8);
+        color: var(--text-primary);
+        text-decoration: none;
+        font-size: 15px;
+
+        .material-symbols-outlined {
+            font-size: 16px;
+            color: var(--text-subtle);
+        }
+
+        &:hover {
+            background-color: var(--bg-default);
+        }
+
+        &.active {
+            background-color: var(--bg-default);
+        }
+    }
+
+    .secondary .mobile-link {
+        font-size: 13px;
+        color: var(--text-subtle);
+    }
+
+    .social-svg-wrap {
+        display: flex;
+        align-items: center;
+        width: 16px;
+        height: 16px;
+
+        :global(svg) {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+    }
+
+    /* ── Responsive ────────────────────────────────────────── */
+    @media (max-width: 640px) {
+        .nav-links,
+        .social-links {
+            display: none;
+        }
+
+        .mobile-menu-toggle {
+            display: flex;
+        }
+    }
 </style>
 
 <script>
+    /* ── Desktop theme toggle ─────────────────────────────── */
     const toggle = document.getElementById("theme-toggle");
     const icon = toggle?.querySelector(".theme-icon");
 
-    // Apply saved theme immediately (also needs to run in <head> to avoid flash — see step 3)
     const saved = localStorage.getItem("theme");
     if (saved) document.documentElement.setAttribute("data-theme", saved);
 
@@ -192,7 +466,19 @@ const currentPath = Astro.url.pathname;
         if (icon) icon.textContent = isDark ? "dark_mode" : "sunny";
     }
 
+    function updateMobileThemeLabels() {
+        const isDark =
+            document.documentElement.getAttribute("data-theme") === "dark";
+        document
+            .getElementById("mobile-theme-label-dark")
+            ?.classList.toggle("active", isDark);
+        document
+            .getElementById("mobile-theme-label-light")
+            ?.classList.toggle("active", !isDark);
+    }
+
     updateIcon();
+    updateMobileThemeLabels();
 
     function toggleTheme() {
         document.documentElement.classList.add("theme-transitioning");
@@ -201,6 +487,7 @@ const currentPath = Astro.url.pathname;
         document.documentElement.setAttribute("data-theme", next);
         localStorage.setItem("theme", next);
         updateIcon();
+        updateMobileThemeLabels();
         document.documentElement.dispatchEvent(new Event("themechange"));
         setTimeout(() => {
             document.documentElement.classList.remove("theme-transitioning");
@@ -208,4 +495,37 @@ const currentPath = Astro.url.pathname;
     }
 
     toggle?.addEventListener("click", toggleTheme);
+
+    /* ── Mobile menu ──────────────────────────────────────── */
+    const menuToggle = document.getElementById("mobile-menu-toggle");
+    const menuClose = document.getElementById("mobile-menu-close");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileThemeToggle = document.getElementById("mobile-theme-toggle");
+
+    function openMenu() {
+        mobileMenu?.classList.add("is-open");
+        menuToggle?.setAttribute("aria-expanded", "true");
+        mobileMenu?.setAttribute("aria-hidden", "false");
+    }
+
+    function closeMenu() {
+        mobileMenu?.classList.remove("is-open");
+        menuToggle?.setAttribute("aria-expanded", "false");
+        mobileMenu?.setAttribute("aria-hidden", "true");
+    }
+
+    menuToggle?.addEventListener("click", openMenu);
+    menuClose?.addEventListener("click", closeMenu);
+    mobileThemeToggle?.addEventListener("click", toggleTheme);
+
+    // Close when clicking outside
+    document.addEventListener("click", (e) => {
+        if (
+            mobileMenu?.classList.contains("is-open") &&
+            !mobileMenu.contains(e.target as Node) &&
+            !menuToggle?.contains(e.target as Node)
+        ) {
+            closeMenu();
+        }
+    });
 </script>
