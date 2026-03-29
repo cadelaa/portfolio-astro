@@ -265,6 +265,7 @@ Work in progress
 - Starting to move images to /assets/ folder, updating image strings etc 
 - Added a image layout component to be used within astro slots
 - Added slot to default layout component
+- Added ImageLayout component, to be used wherever, very reusable, might even remove Showcase component now considering
 - Many more small edits/changes
 
 ---

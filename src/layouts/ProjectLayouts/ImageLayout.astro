@@ -1,0 +1,116 @@
+---
+import { Image as AstroImage } from "astro:assets";
+
+export interface Props {
+    desktopImage?: ImageMetadata;
+    desktopImageAlt?: string;
+    mobileImages?: { src: ImageMetadata; alt?: string }[];
+    columns?: 1 | 2 | 3;
+}
+
+const {
+    desktopImage,
+    desktopImageAlt,
+    mobileImages,
+    columns = 1,
+} = Astro.props;
+---
+
+<div class="images-grid" data-columns={columns} style={`--columns: ${columns}`}>
+    {
+        mobileImages?.map(({ src, alt }) => (
+            <div class="image-card">
+                <div class="card-image card-image--mobile">
+                    <AstroImage src={src} alt={alt ?? ""} />
+                </div>
+            </div>
+        ))
+    }
+    {
+        desktopImage && (
+            <div class="image-card">
+                <div class="card-image card-image--desktop">
+                    <AstroImage
+                        src={desktopImage}
+                        alt={desktopImageAlt ?? ""}
+                    />
+                </div>
+            </div>
+        )
+    }
+</div>
+
+<style lang="scss">
+    .images-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-16);
+        width: 100%;
+
+        &[data-columns="1"] .image-card {
+            height: 700px;
+        }
+
+        &[data-columns="2"] .image-card,
+        &[data-columns="3"] .image-card {
+            height: 500px;
+        }
+
+        @media (min-width: 1120px) {
+            grid-template-columns: repeat(var(--columns), 1fr);
+        }
+    }
+
+    .image-card {
+        display: flex;
+        justify-content: center;
+        background-color: var(--bg-default);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-8);
+        padding: var(--space-32);
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .card-image {
+        img {
+            display: block;
+            object-fit: cover;
+        }
+
+        &--mobile {
+            align-self: center;
+            width: 260px;
+            max-width: 100%;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        &--desktop {
+            align-self: center;
+            width: 100%;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    @media (min-width: 1120px) {
+        .card-image {
+            &--mobile {
+                width: 50%;
+                height: 100%;
+            }
+
+            &--desktop {
+                width: 600px;
+                height: 100%;
+            }
+        }
+    }
+</style>

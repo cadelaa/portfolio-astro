@@ -19,3 +19,4 @@ export { default as ProjectGrid } from "../layouts/ProjectLayouts/ProjectGrid.as
 export { default as Overview } from "../layouts/ProjectLayouts/Overview.astro";
 export { default as Default } from "../layouts/ProjectLayouts/Default.astro";
 export { default as Showcase } from "../layouts/ProjectLayouts/Showcase.astro";
+export { default as ImageLayout } from "../layouts/ProjectLayouts/ImageLayout.astro";
