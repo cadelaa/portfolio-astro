@@ -16,8 +16,6 @@ with a focus on component architecture, theming, and responsive layout.
 
 [Mitchell Zeller](https://portfolio-astro-silk.vercel.app/)
 
-[![Mitchell Zeller](badge-url)]([link-url](https://portfolio-astro-silk.vercel.app/))
-
 ---
 
 # Changelog
