@@ -14,6 +14,8 @@ A ground-up rebuild of my Framer portfolio in Astro — a framework I picked up 
 for this project. Built to demonstrate front-end development capability alongside design, 
 with a focus on component architecture, theming, and responsive layout.
 
+[Mitchell Zeller]([url](https://portfolio-astro-silk.vercel.app/))
+
 ---
 
 # Changelog
