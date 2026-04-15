@@ -7,7 +7,8 @@
 
 Rebuilding my Framer portfolio, [Mitchell Zeller](https://mitchellzeller.framer.website/), in Astro.
 
-> [!This project is unfinished and somewhat expanded the scope. Mainly need to finished implementing the content for the project pages.]
+> [!NOTE]
+> This project is unfinished. It mainly needs the project page content to be added and or updated. The scope has also expanded slightly and specifically the `about.astro` has changed.
 
 ---
 
