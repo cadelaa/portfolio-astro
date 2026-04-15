@@ -1,11 +1,13 @@
-# Portfolio — Astro Rebuild
-
-Rebuilding my Framer portfolio, [Mitchell Zeller](https://mitchellzeller.framer.website/), in Astro.
-
 ![Commits](https://img.shields.io/github/commit-activity/t/cadelaa/portfolio-astro?label=Total%20Commits&style=flat-square&color=blue)
 ![Last Commit](https://img.shields.io/github/last-commit/cadelaa/portfolio-astro?style=flat-square&color=green)
 ![Contributors](https://img.shields.io/github/contributors/cadelaa/portfolio-astro?style=flat-square&color=orange)
 ![Repo Size](https://img.shields.io/github/repo-size/cadelaa/portfolio-astro?style=flat-square&color=purple)
+
+# Portfolio — Astro Rebuild
+
+Rebuilding my Framer portfolio, [Mitchell Zeller](https://mitchellzeller.framer.website/), in Astro.
+
+> [!This project is unfinished and somewhat expanded the scope. Mainly need to finished implementing the content for the project pages.]
 
 ---
 
