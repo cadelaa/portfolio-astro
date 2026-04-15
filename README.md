@@ -1,3 +1,6 @@
+> [!NOTE]
+> This project is unfinished. It mainly needs the project page content to be added and or updated. The scope has also expanded slightly and specifically the `about.astro` has changed.
+
 ![Commits](https://img.shields.io/github/commit-activity/t/cadelaa/portfolio-astro?label=Total%20Commits&style=flat-square&color=blue)
 ![Last Commit](https://img.shields.io/github/last-commit/cadelaa/portfolio-astro?style=flat-square&color=green)
 ![Contributors](https://img.shields.io/github/contributors/cadelaa/portfolio-astro?style=flat-square&color=orange)
@@ -5,10 +8,9 @@
 
 # Portfolio — Astro Rebuild
 
-Rebuilding my Framer portfolio, [Mitchell Zeller](https://mitchellzeller.framer.website/), in Astro.
-
-> [!NOTE]
-> This project is unfinished. It mainly needs the project page content to be added and or updated. The scope has also expanded slightly and specifically the `about.astro` has changed.
+A ground-up rebuild of my Framer portfolio in Astro — a framework I picked up specifically 
+for this project. Built to demonstrate front-end development capability alongside design, 
+with a focus on component architecture, theming, and responsive layout.
 
 ---
 
